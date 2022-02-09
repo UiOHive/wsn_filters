@@ -1,49 +1,94 @@
 # Network
-network_name: Kongsvegen
-network_owner: NPI
-network_year: 2021
-network_description: WSN network on the Kongsvegen glacier in Svalbard
-network_country: Svalbard
-ACDD_meta: 
-    
-network_nodes:
-    # List of nodes
-    - node_name: sw-001
-      common_name: KNG6
-      operational: True
-      first_installation_date: 
-      version:
-      
-        - start_date:
-          end_date:
-          sensors: [bat, gps, acc, bme_int, mb, atmos]
-          sensors_sios: [tmp_temperature, mb_distance]
-          sampling_config: bat=10 gps=12:00 acc=10 lan=30 bme_int=10 mb=10 atmos=10 qtpy=10
-          QC_done: False
-          
-        - start_date:
-          end_date:
-          sensors: [bat, gps, acc, bme_int, mb, atmos, qtpy]
-          sensors_sios:
-          sampling_config: bat=10 gps=12:00 acc=10 lan=30 bme_int=10 mb=10 atmos=10 qtpy=10
-          QC_done: False
+network:
+  name: Kongsvegen
+  owner: NPI
+  date_installation: 2021/04/01
+  date_update:
+  description: WSN network on the Kongsvegen glacier in Svalbard
+  country: Svalbard
 
-      meteoio_ini_template: wsn_meteoio.ini
-      location:
-        epsg: 32633
-        northing:
-        easting: 
-        
-    - node_name: sw-200
-      common_name: KNG4
-      operational: False
-    
-    - node_name: sw-205
-      common_name: KNG5
-      operational: False
+node:
+  # List of nodes
+  - id: sw-001
+    name: KNG6
+    location:
+      epsg: 32633
+      northing: 8746171.97
+      easting: 459771.23
+    operational: True
+    date_installation: 2021/04/29 12:57:44.000
+    snow:
+      date: [ 2021/04/29,2021/04/29,2021/04/29 ]
+      dist_to_sensor: [ 1, 2, 3 ]
+      depth: [ 0.3, 0.5 ,07 ]
+    meteoio_ini_template: wsn_meteoio.ini
+    version:
+      - date_start: 2021/04/29
+        date_end: 2022/01/01
+        version: 2
+        config:
+          adress: 215
+          run_systwm: bat=10 gps=12:00 acc=10 lan=30
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
+          destination: 2
+          lora_mode: 6
+        sensor: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mb_distance,
+       vl_distance, tmp_temperature, ds1820, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object,
+       mlx_ambient, received, momsn, iridium_cep, iridium_latitude, iridium_longitude]
+        output_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
+        QC_done: False
 
-    
-    
+#    version_QC:
+#      - date_start: 2019/01/01
+#       date_end: 2021/01/01
+#        sensor: [ tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed ]
+#        QC_done: False
+
+
+  - id: sw-200
+    name: KNG9
+    operational: False
+    version:
+      - date_start: 2019/01/01
+        date_end: 2020/01/01
+    location:
+      epsg: 32633
+      northing: 8742023.89
+      easting: 465968.58
+
+  - id: sw-205
+    name: KNG8
+    operational: False
+    version:
+      - date_start: 2019/01/01
+        date_end: 2020/01/01
+    location:
+      epsg: 32633
+      northing: 8743256.31
+      easting: 463765.02
+
+ACDD:
+  WRITE: TRUE
+  CREATOR: [Simon Filhol, Pierre Marie Lefeuvre] #????
+  CREATOR_EMAIL: simon.filhol@geo.uio.no
+  CREATOR_INSTITUTION: [University of Oslo, Norwegian Polar Institute]
+  CREATOR_URL: https://www.mn.uio.no/geo/english/research/projects/hive/
+  CREATOR_TYPE: person
+  PUBLISHER: Pierre-Marie Lefeuvre
+  PUBLISHER_EMAIL: pierre.lefeuvre@npolar.no
+  PUBLISHER_URL: npolar.no
+  PUBLISHER_TYPE: institute #????
+  INSTITUTION: SLF #????
+  ID: #DOI
+  NAMING_AUTHORITY: NPI
+  TITLE: Wireless sensor network at the glacier Kongsvegen in Svalbard
+  SUMMARY: WSN of automatic weather stations at Kongsvegen, Svalbard
+  LICENSE: CC-BY-NC
+  PROCESSING_LEVEL: quality controlled #????
+  ACTIVITY_TYPE: in situ land-based station
+  OPERATIONAL_STATUS: scientific
+
+
 # ===========
 # YAML format: https://yaml.org/
 

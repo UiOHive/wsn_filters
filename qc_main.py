@@ -28,10 +28,21 @@ import os, sys, datetime
 from wsn_client import query
 import yaml
 import argparse
+import configobj
 
 #==========  DEFINE FUNCTION  =========
 
-
+dict_corres = {
+    'TA':['tmp_temperature','bme_tc'],      # Air temperature
+    'RH':'bme_hum',                         # Relative humidity
+    'HS':['mb_distance','vl_distance'],     # Height of snow
+    'P':'bme_pres',                         # Air pressure
+    'VW':'wind_speed',                      # Wind velocity
+    'DW':'wind_dir',                        # Wind direction
+    'TSS': 'mlx_object',    # Temperature of the snow surface
+    'TSG': '',              # Temperature of the ground surface
+    'VW_MAX':''
+}
 
 #========== Script ============
 
