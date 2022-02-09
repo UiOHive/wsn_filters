@@ -1,0 +1,49 @@
+# Network
+network_name: Kongsvegen
+network_owner: NPI
+network_year: 2021
+network_description: WSN network on the Kongsvegen glacier in Svalbard
+network_country: Svalbard
+ACDD_meta: 
+    
+network_nodes:
+    # List of nodes
+    - node_name: sw-001
+      common_name: KNG6
+      operational: True
+      first_installation_date: 
+      version:
+      
+        - start_date:
+          end_date:
+          sensors: [bat, gps, acc, bme_int, mb, atmos]
+          sensors_sios: [tmp_temperature, mb_distance]
+          sampling_config: bat=10 gps=12:00 acc=10 lan=30 bme_int=10 mb=10 atmos=10 qtpy=10
+          QC_done: False
+          
+        - start_date:
+          end_date:
+          sensors: [bat, gps, acc, bme_int, mb, atmos, qtpy]
+          sensors_sios:
+          sampling_config: bat=10 gps=12:00 acc=10 lan=30 bme_int=10 mb=10 atmos=10 qtpy=10
+          QC_done: False
+
+      meteoio_ini_template: wsn_meteoio.ini
+      location:
+        epsg: 32633
+        northing:
+        easting: 
+        
+    - node_name: sw-200
+      common_name: KNG4
+      operational: False
+    
+    - node_name: sw-205
+      common_name: KNG5
+      operational: False
+
+    
+    
+# ===========
+# YAML format: https://yaml.org/
+
