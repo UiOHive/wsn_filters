@@ -28,20 +28,23 @@ import os, sys, datetime
 from wsn_client import query
 import yaml
 import argparse
-import configobj
+from configobj import ConfigObj
+
 
 #==========  DEFINE FUNCTION  =========
 
 dict_corres = {
-    'TA':['tmp_temperature','bme_tc'],      # Air temperature
-    'RH':'bme_hum',                         # Relative humidity
-    'HS':['mb_distance','vl_distance'],     # Height of snow
-    'P':'bme_pres',                         # Air pressure
-    'VW':'wind_speed',                      # Wind velocity
-    'DW':'wind_dir',                        # Wind direction
-    'TSS': 'mlx_object',    # Temperature of the snow surface
-    'TSG': '',              # Temperature of the ground surface
-    'VW_MAX':''
+    'tmp_temperature':['TA',1,273.15], # Air temperature [K]
+    'bme_tc':['TA',1,273.15],          # Air temperature [K]
+    'bme_hum':['RH',0.01,0],            # Relative humidity [%]
+    'mb_distance':['HS',0.01,0],       # Height of snow [cm]
+    'vl_distance':['HS',0.01,0],       # Height of snow [cm]
+    'bme_pres':['P',1,0],              # Air pressure [Pa]
+    'wind_speed':['VW',1,0],           # Wind velocity [m.s-1]
+    'wind_dir':['DW',1,0],             # Wind direction [degree from North]
+    'mlx_object':['TSS',1,273.15],     # Temperature of the snow surface [K]
+    '':['TSG',1,273.15],               # Temperature of the ground surface [K]
+    '':['VW_MAX',1,0]
 }
 
 #========== Script ============
@@ -65,38 +68,48 @@ if __name__ == "__main__":
     # Open Meteoio ini template
     
 
-    for node in conf['network_nodes']:
+    for node in conf['node']:
         print('======================================')
-        print('---> Preparing for QC node {}'.format(node['common_name']))
-        
+        print('---> Preparing QC node {} - {}'.format(node['id'],node['name']))
+
         for version in node['version']:
-            print('---> Version {} to {}'.format(version['start_date'], version['end_date']))
+            date_start=pd.to_datetime(version['date_start'])
+            date_end=pd.to_datetime(version['date_end'])
+            print('---> Version {} to {}'.format(format(date_start,"%Y-%m-%d"), format(date_end,"%Y-%m-%d")))
             
             if not version['QC_done']:
                 try:
                     # Query database
-                    start_date = version['start_date']
-                    end_date = version['end_date']
-                    
                     df = query.query('postgresql', 
-                                     name=node['node_name'], 
-                                     fields=version['sensors_sios'],
-                                     time__gte=start_date, 
-                                     time__lte=end_date, 
-                                     limit=2000000000000)
+                    name=node['id'], 
+                    fields=version['data_sios'],
+                    time__gte=date_start, 
+                    time__lte=date_end, 
+                    limit=2000000000000)
+                    print('---> Downloading {}',format(version['data_sios']))
                     
                     # handle MB. 1) median, 2) convert to SD
                     df['mb_median'] = df.mb_distance.apply(lambda x: np.median(np.array(x)))
 
 
                     # save to CSV
-                    fname_csv = '{}_{}_{}'.format(node['node_name'],
-                                                 version['start_date'],
-                                                 version['end_date'])
-                    df.to_csv(fname_csv)
+                    fname_csv = '{}_{}_{}.csv'.format(node['id'],
+                                                      format(date_start,"%Y%m%d"),
+                                                      format(date_end,"%Y%m%d"))
+                    print('---> Filename: {}'.format(fname_csv))
                     
                 except IOerror:
                     
                 # save custom ini
-                
+                # [Input]
+                config_ini['Input'][METEOPATH]='.'
+                config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
+                config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
+                config_ini['Input']['CSV_FIELDS']='TIMESTAMP {}'.format(' '.join([dict_corres[d][0]  for d in version['data_sios'] ]))
+                config_ini['Input']['CSV_NAME']=node['id']
+                config_ini['Input']['CSV_ID']=node['id']
+                config_ini['Input']['POSITION']='xy({},{},{})'.format(node['location']['easting'],node['location']['northing'],node['location']['elevation'])
+                config_ini['Input']['STATION1']='{}.csv'.format(node['id'])
+                # [Output]
+            
                     

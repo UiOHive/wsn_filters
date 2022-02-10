@@ -13,29 +13,29 @@ node:
     name: KNG6
     location:
       epsg: 32633
-      northing: 8746171.97
       easting: 459771.23
+      northing: 8746171.97
+      elevation: 400
     operational: True
-    date_installation: 2021/04/29 12:57:44.000
+    date_installation: 2021/04/29 12:57:44
     snow:
       date: [ 2021/04/29,2021/04/29,2021/04/29 ]
       dist_to_sensor: [ 1, 2, 3 ]
       depth: [ 0.3, 0.5 ,07 ]
     meteoio_ini_template: wsn_meteoio.ini
     version:
-      - date_start: 2021/04/29
-        date_end: 2022/01/01
+      - date_start: 2021/04/29 00:00:00
+        date_end: 2022/01/01 00:00:00
         version: 2
+        sensor: [bme_int, mb, atmos, qtpy]
         config:
           adress: 215
           run_systwm: bat=10 gps=12:00 acc=10 lan=30
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
           destination: 2
           lora_mode: 6
-        sensor: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mb_distance,
-       vl_distance, tmp_temperature, ds1820, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object,
-       mlx_ambient, received, momsn, iridium_cep, iridium_latitude, iridium_longitude]
-        output_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
+        data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mb_distance, vl_distance, tmp_temperature, ds1820, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object, mlx_ambient, received, momsn, iridium_cep, iridium_latitude, iridium_longitude]
+        data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         QC_done: False
 
 #    version_QC:
@@ -45,31 +45,31 @@ node:
 #        QC_done: False
 
 
-  - id: sw-200
-    name: KNG9
-    operational: False
-    version:
-      - date_start: 2019/01/01
-        date_end: 2020/01/01
-    location:
-      epsg: 32633
-      northing: 8742023.89
-      easting: 465968.58
-
-  - id: sw-205
-    name: KNG8
-    operational: False
-    version:
-      - date_start: 2019/01/01
-        date_end: 2020/01/01
-    location:
-      epsg: 32633
-      northing: 8743256.31
-      easting: 463765.02
+#  - id: sw-200
+#    name: KNG9
+#    operational: False
+#    version:
+#      - date_start: 2019/01/01
+#        date_end: 2020/01/01
+#    location:
+#      epsg: 32633
+#      northing: 8742023.89
+#      easting: 465968.58
+#
+#  - id: sw-205
+#    name: KNG8
+#    operational: False
+#    version:
+#      - date_start: 2019/01/01
+#        date_end: 2020/01/01
+#    location:
+#      epsg: 32633
+#      northing: 8743256.31
+#      easting: 463765.02
 
 ACDD:
   WRITE: TRUE
-  CREATOR: [Simon Filhol, Pierre Marie Lefeuvre] #????
+  CREATOR: [Simon Filhol, Pierre Marie Lefeuvre, Jean-Charles Gallet] #????
   CREATOR_EMAIL: simon.filhol@geo.uio.no
   CREATOR_INSTITUTION: [University of Oslo, Norwegian Polar Institute]
   CREATOR_URL: https://www.mn.uio.no/geo/english/research/projects/hive/
