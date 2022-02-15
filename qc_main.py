@@ -29,21 +29,56 @@ from wsn_client import query
 import yaml
 import argparse
 from configobj import ConfigObj
+import logging
 
 
 #==========  DEFINE FUNCTION  =========
 
+def calibration_snow(df,node_snow):
+    ##########################
+    # Snow depth calibration #
+    ##########################
+    
+    # Extract dates defining a hydrological year (sept. - sept)
+    date_snow=node_snow['year_hydro']
+
+    # Compute median value and assign to new column for output
+    df = df.apply(lambda x: np.median(np.array(x)))
+
+    # loop through hydrological year to calibrate snow depth
+    for d in range(1,len(date_snow)):
+
+        # Constrain loop to calibrate only period with data
+        if date_snow[d] < df.index.min().date(): break
+        if date_snow[d-1] > df.index.max().date(): break
+
+        # Compute distance between sensor and reference surface i.e. ice or last summer surface
+        height_sensor_to_ice = node_snow['dist_to_sensor'][d-1] + node_snow['depth'][d-1]
+
+        logging.info( '---> Process snow depth from {} to {}'.format(format(date_snow[d-1],"%Y-%m-%d"), format(date_snow[d],"%Y-%m-%d")))
+        logging.debug('     Calibration reference surface to sensor: {} mm on {} '.format(height_sensor_to_ice, format(node_snow['date'][d-1],"%Y-%m-%d")))
+
+        # Calibration of snow depth - Remove negative value i.e. ice melt
+        snow_depth = height_sensor_to_ice - df[date_snow[d-1]:date_snow[d]]
+        snow_depth[snow_depth<0]= 0
+
+        # Assign in dataframe
+        df[date_snow[d-1]:date_snow[d]] = snow_depth
+    return df
+    ##########################
+
+# Dictionary for variables to meteoIO input format    
 dict_corres = {
-    'tmp_temperature':['TA',1,273.15], # Air temperature [K]
-    'bme_tc':['TA',1,273.15],          # Air temperature [K]
-    'bme_hum':['RH',0.01,0],            # Relative humidity [%]
-    'mb_distance':['HS',0.01,0],       # Height of snow [cm]
-    'vl_distance':['HS',0.01,0],       # Height of snow [cm]
+    'tmp_temperature':['TA',1,273.15], # Air temperature [deg. C -> K]
+    'bme_tc':['TA',1,273.15],          # Air temperature [deg. C -> K]
+    'bme_hum':['RH',0.01,0],            # Relative humidity [% -> 1-0]
+    'mb_distance':['HS',0.01,0],       # Height of snow [cm -> m]
+    'vl_distance':['HS',0.01,0],       # Height of snow [cm -> m]
     'bme_pres':['P',1,0],              # Air pressure [Pa]
     'wind_speed':['VW',1,0],           # Wind velocity [m.s-1]
     'wind_dir':['DW',1,0],             # Wind direction [degree from North]
-    'mlx_object':['TSS',1,273.15],     # Temperature of the snow surface [K]
-    '':['TSG',1,273.15],               # Temperature of the ground surface [K]
+    'mlx_object':['TSS',1,273.15],     # Temperature of the snow surface [deg. C -> K]
+    '':['TSG',1,273.15],               # Temperature of the ground surface [deg. C -> K]
     '':['VW_MAX',1,0]
 }
 
@@ -51,6 +86,17 @@ dict_corres = {
 
 if __name__ == "__main__":
     
+    # Log info/debug/error
+    logging.basicConfig(level=logging.DEBUG,
+                        format="%(asctime)s %(levelname)s %(threadName)s %(name)s %(message)s",
+                        # datefmt='%m-%d %H:%M',
+                        filename='log_qc_main',
+                        filemode='w')
+    console = logging.StreamHandler()
+    console.setLevel(logging.DEBUG)
+    logging.getLogger('').addHandler(console)
+    
+    logging.info('Parse arguments')
     # Parse script input
     parser = argparse.ArgumentParser()
     parser.add_argument('--network_config', '-nc', help='Path to config file of the network', default='/home/config.yml')
@@ -63,53 +109,63 @@ if __name__ == "__main__":
 
     # Open network 
     with open(args.net, 'r') as file:
-        conf = yaml.safe_load(file)
-    
-    # Open Meteoio ini template
-    
+        conf = yaml.safe_load(file)    
 
     for node in conf['node']:
-        print('======================================')
-        print('---> Preparing QC node {} - {}'.format(node['id'],node['name']))
+        logging.info('======================================')
+        logging.info('---> Preparing QC node {} - {}'.format(node['id'],node['name']))
 
+        # Open the meteoIO configuration template (ini file)  
+        config_ini = ConfigObj(node['meteoio_ini_template'])
+        
+        # Loop through several version i.e. sensor types
         for version in node['version']:
-            date_start=pd.to_datetime(version['date_start'])
-            date_end=pd.to_datetime(version['date_end'])
-            print('---> Version {} to {}'.format(format(date_start,"%Y-%m-%d"), format(date_end,"%Y-%m-%d")))
+            date_start=version['date_start']
+            date_end=version['date_end']
+            logging.info('---> Version {} to {}'.format(format(date_start,"%Y-%m-%d"), format(date_end,"%Y-%m-%d")))
             
             if not version['QC_done']:
                 try:
                     # Query database
-                    df = query.query('postgresql', 
-                    name=node['id'], 
-                    fields=version['data_sios'],
-                    time__gte=date_start, 
-                    time__lte=date_end, 
-                    limit=2000000000000)
-                    print('---> Downloading {}',format(version['data_sios']))
+                    df = query.query('postgresql',
+                                     name=node['id'],
+                                     fields=version['data_sios'],
+                                     time__gte=date_start,
+                                     time__lte=date_end,
+                                     limit=2000000000000)
+                    logging.info('---> Downloading {}',format(version['data_sios']))
                     
-                    # handle MB. 1) median, 2) convert to SD
-                    df['mb_median'] = df.mb_distance.apply(lambda x: np.median(np.array(x)))
+                    ## Formatting
+                    # Replace Nones in empty lists by NaNs 
+                    df = df.fillna(value=np.nan)
+                    # Remove column with time as number
+                    del df['time']
+                    
+                    ## Snow depth calibration
+                    df['mb_distance']=calibration_snow(df['mb_distance'],node['snow'])
 
-
-                    # save to CSV
+                    ## Save to CSV
                     fname_csv = '{}_{}_{}.csv'.format(node['id'],
                                                       format(date_start,"%Y%m%d"),
                                                       format(date_end,"%Y%m%d"))
-                    print('---> Filename: {}'.format(fname_csv))
+                    logging.info('---> Filename: {}'.format(fname_csv))
+                    df.to_csv(fname_csv)
+
+                    ## Save custom ini
+                    # [Input]
+                    config_ini['Input']['METEOPATH']='.'
+                    config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
+                    config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
+                    config_ini['Input']['CSV_FIELDS']='TIMESTAMP {}'.format(' '.join([dict_corres[d][0]  for d in version['data_sios'] ]))
+                    config_ini['Input']['CSV_NAME']=node['id']
+                    config_ini['Input']['CSV_ID']=node['id']
+                    config_ini['Input']['POSITION']='xy({},{},{})'.format(node['location']['easting'],node['location']['northing'],node['location']['elevation'])
+                    config_ini['Input']['STATION1']='{}.csv'.format(node['id'])
+                    # [Output]
+                    config_ini['Output']['NC_ID']=node['id']
+                    config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],network['description'])
                     
+                    #save ini
+                
                 except IOerror:
-                    
-                # save custom ini
-                # [Input]
-                config_ini['Input'][METEOPATH]='.'
-                config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
-                config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
-                config_ini['Input']['CSV_FIELDS']='TIMESTAMP {}'.format(' '.join([dict_corres[d][0]  for d in version['data_sios'] ]))
-                config_ini['Input']['CSV_NAME']=node['id']
-                config_ini['Input']['CSV_ID']=node['id']
-                config_ini['Input']['POSITION']='xy({},{},{})'.format(node['location']['easting'],node['location']['northing'],node['location']['elevation'])
-                config_ini['Input']['STATION1']='{}.csv'.format(node['id'])
-                # [Output]
-            
                     

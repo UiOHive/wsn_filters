@@ -15,22 +15,23 @@ node:
       epsg: 32633
       easting: 459771.23
       northing: 8746171.97
-      elevation: 400
+      elevation: 530
     operational: True
-    date_installation: 2021/04/29 12:57:44
+    date_installation: 2019-04-11 00:00:00
     snow:
-      date: [ 2021/04/29,2021/04/29,2021/04/29 ]
-      dist_to_sensor: [ 1, 2, 3 ]
-      depth: [ 0.3, 0.5 ,07 ]
+      date: [2019-04-11,2020-09-14,2021-04-29 ]
+      dist_to_sensor: [ 1280, 3070, 50 ]
+      depth: [ 1370, 0, 1440 ]
+      year_hydro: [ 2018-09-01,2019-09-14,2020-09-01,2021-09-01,2022-09-01 ]
     meteoio_ini_template: wsn_meteoio.ini
     version:
-      - date_start: 2021/04/29 00:00:00
-        date_end: 2022/01/01 00:00:00
+      - date_start: 2019-04-11 00:00:00
+        date_end: 2022-01-01 00:00:00
         version: 2
         sensor: [bme_int, mb, atmos, qtpy]
         config:
           adress: 215
-          run_systwm: bat=10 gps=12:00 acc=10 lan=30
+          run_system: bat=10 gps=12:00 acc=10 lan=30
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
           destination: 2
           lora_mode: 6
