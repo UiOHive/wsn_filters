@@ -175,7 +175,10 @@ if __name__ == "__main__":
                     config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],network['description'])
                     config_ini['Output']['NC_ID']=node['id']
                     config_ini['Output']['ACDD_CREATOR']=conf['ACDD']['CREATOR']
-                    
+                    # Add ACDD values
+                    for ACDD,value in conf['ACDD'].items():
+                        if not ACDD=='WRITE': config_ini['Output']['ACDD_'+ACDD]=value
+            
                     # write and copy ini
                     config_ini.write()
                     shutil.copyfile(fname_ini,'io.ini')
