@@ -40,7 +40,7 @@ def calibration_snow(df,node_snow):
     ##########################
     
     # Extract dates defining a hydrological year (sept. - sept)
-    date_snow=node_snow['year_hydro']
+    date_snow = node_snow['year_hydro']
 
     # Compute median value and assign to new column for output
     df = df.apply(lambda x: np.median(np.array(x)))
@@ -60,7 +60,7 @@ def calibration_snow(df,node_snow):
 
         # Calibration of snow depth - Remove negative value i.e. ice melt
         snow_depth = height_sensor_to_ice - df[date_snow[d-1]:date_snow[d]]
-        snow_depth[snow_depth<0]= 0
+        snow_depth[snow_depth<0] = 0
 
         # Assign in dataframe
         df[date_snow[d-1]:date_snow[d]] = snow_depth
@@ -116,12 +116,12 @@ if __name__ == "__main__":
         logging.info('---> Preparing QC node {} - {}'.format(node['id'],node['name']))
 
         # Open the meteoIO configuration template (ini file)  
-        config_ini = ConfigObj(node['meteoio_ini_template'])
+        config_ini = ConfigObj('ini/'+node['meteoio_ini_template'])
         
         # Loop through several version i.e. sensor types
         for version in node['version']:
-            date_start=version['date_start']
-            date_end=version['date_end']
+            date_start = version['date_start']
+            date_end = version['date_end']
             logging.info('---> Version {} to {}'.format(format(date_start,"%Y-%m-%d"), format(date_end,"%Y-%m-%d")))
             
             if not version['QC_done']:
@@ -142,7 +142,7 @@ if __name__ == "__main__":
                     del df['time']
                     
                     ## Snow depth calibration
-                    df['mb_distance']=calibration_snow(df['mb_distance'],node['snow'])
+                    df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
 
                     ## Save to CSV
                     fname_csv = '{}_{}_{}.csv'.format(node['id'],
