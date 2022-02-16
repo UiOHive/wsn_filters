@@ -152,6 +152,15 @@ if __name__ == "__main__":
                     df.to_csv(fname_csv)
 
                     ## Save custom ini
+                    # filename ini
+                    fname_ini = 'ini/{}_{}_{}.ini'.format(node['id'],
+                                                          format(date_start,"%Y%m%d"),
+                                                          format(date_end,"%Y%m%d"))
+        
+                    # Copy and load configuration file template for meteoIO
+                    shutil.copyfile('ini/'+node['meteoio_ini_template'],fname_ini)
+                    config_ini = ConfigObj(fname_ini)
+               
                     # [Input]
                     config_ini['Input']['METEOPATH']='.'
                     config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
@@ -162,10 +171,14 @@ if __name__ == "__main__":
                     config_ini['Input']['POSITION']='xy({},{},{})'.format(node['location']['easting'],node['location']['northing'],node['location']['elevation'])
                     config_ini['Input']['STATION1']='{}.csv'.format(node['id'])
                     # [Output]
-                    config_ini['Output']['NC_ID']=node['id']
+                    config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
                     config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],network['description'])
+                    config_ini['Output']['NC_ID']=node['id']
+                    config_ini['Output']['ACDD_CREATOR']=conf['ACDD']['CREATOR']
                     
-                    #save ini
+                    # write and copy ini
+                    config_ini.write()
+                    shutil.copyfile(fname_ini,'io.ini')
                 
                 except IOerror:
                     
