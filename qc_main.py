@@ -193,7 +193,7 @@ if __name__ == "__main__":
 
                     # write and copy ini - and remove double quotes
                     config_ini.write()
-                    subprocess.run(['sed -i \'\' \'s/"//g\' {}'.format(fname_ini)], shell=True)
+                    #subprocess.run(['sed -i \'\' \'s/"//g\' {}'.format(fname_ini)], shell=True)
                     shutil.copyfile(fname_ini,'io.ini')
                     logging.info('---> Save meteoIO configurations and make io.ini file')
 
