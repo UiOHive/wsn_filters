@@ -1,3 +1,4 @@
+#!/bin/python
 '''
 S. Filhol and P. Lefeuvre, Feb 2022
 
@@ -22,9 +23,11 @@ Logic:
 '''
 
 
-import xarray as xr
+#import xarray as xr
+import numpy as np
 import pandas as pd
-import os, sys, datetime
+import os, sys, datetime, shutil
+import subprocess
 from wsn_client import query
 import yaml
 import argparse
@@ -55,7 +58,7 @@ def calibration_snow(df,node_snow):
         # Compute distance between sensor and reference surface i.e. ice or last summer surface
         height_sensor_to_ice = node_snow['dist_to_sensor'][d-1] + node_snow['depth'][d-1]
 
-        logging.info( '---> Process snow depth from {} to {}'.format(format(date_snow[d-1],"%Y-%m-%d"), format(date_snow[d],"%Y-%m-%d")))
+        logging.info( '     Process snow depth from {} to {}'.format(format(date_snow[d-1],"%Y-%m-%d"), format(date_snow[d],"%Y-%m-%d")))
         logging.debug('     Calibration reference surface to sensor: {} mm on {} '.format(height_sensor_to_ice, format(node_snow['date'][d-1],"%Y-%m-%d")))
 
         # Calibration of snow depth - Remove negative value i.e. ice melt
@@ -99,16 +102,16 @@ if __name__ == "__main__":
     logging.info('Parse arguments')
     # Parse script input
     parser = argparse.ArgumentParser()
-    parser.add_argument('--network_config', '-nc', help='Path to config file of the network', default='/home/config.yml')
+    parser.add_argument('--network_config', '-nc', help='Path to config file of the network', default='network.yml')
     parser.add_argument('--meteoio_template', '-ini', help='Path to Meteoio .ini file template', default='/home/meteoio.ini')
     args = parser.parse_args()
     
     # csv filename convention:  node_startdate_enddate.csv    ex: sw-001_20210419_20220412.csv
     # meteoio ini file per version per node                   ex: sw-001_20210419_20220412.ini
     
-
+    print(args)
     # Open network 
-    with open(args.net, 'r') as file:
+    with open(args.network_config, 'r') as file:
         conf = yaml.safe_load(file)    
 
     for node in conf['node']:
@@ -124,64 +127,74 @@ if __name__ == "__main__":
             date_end = version['date_end']
             logging.info('---> Version {} to {}'.format(format(date_start,"%Y-%m-%d"), format(date_end,"%Y-%m-%d")))
             
-            if not version['QC_done']:
-                try:
-                    # Query database
-                    df = query.query('postgresql',
-                                     name=node['id'],
-                                     fields=version['data_sios'],
-                                     time__gte=date_start,
-                                     time__lte=date_end,
-                                     limit=2000000000000)
-                    logging.info('---> Downloading {}',format(version['data_sios']))
-                    
-                    ## Formatting
-                    # Replace Nones in empty lists by NaNs 
-                    df = df.fillna(value=np.nan)
-                    # Remove column with time as number
-                    del df['time']
-                    
-                    ## Snow depth calibration
-                    df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
+            #if not version['QC_done']:
+                #try:
+            # Query database
+            df = query.query('postgresql',
+                             name=node['id'],
+                             fields=version['data_sios'],
+                             time__gte=date_start,
+                             time__lte=date_end,
+                             limit=2000000000000)
+            logging.info('---> Downloading {}'.format(version['data_sios']))
 
-                    ## Save to CSV
-                    fname_csv = '{}_{}_{}.csv'.format(node['id'],
-                                                      format(date_start,"%Y%m%d"),
-                                                      format(date_end,"%Y%m%d"))
-                    logging.info('---> Filename: {}'.format(fname_csv))
-                    df.to_csv(fname_csv)
+            ## Formatting
+            # Replace Nones in empty lists by NaNs 
+            df = df.fillna(value=np.nan)
+            # Remove column with time as number
+            del df['time']
 
-                    ## Save custom ini
-                    # filename ini
-                    fname_ini = 'ini/{}_{}_{}.ini'.format(node['id'],
-                                                          format(date_start,"%Y%m%d"),
-                                                          format(date_end,"%Y%m%d"))
-        
-                    # Copy and load configuration file template for meteoIO
-                    shutil.copyfile('ini/'+node['meteoio_ini_template'],fname_ini)
-                    config_ini = ConfigObj(fname_ini)
-               
-                    # [Input]
-                    config_ini['Input']['METEOPATH']='.'
-                    config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
-                    config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
-                    config_ini['Input']['CSV_FIELDS']='TIMESTAMP {}'.format(' '.join([dict_corres[d][0]  for d in version['data_sios'] ]))
-                    config_ini['Input']['CSV_NAME']=node['id']
-                    config_ini['Input']['CSV_ID']=node['id']
-                    config_ini['Input']['POSITION']='xy({},{},{})'.format(node['location']['easting'],node['location']['northing'],node['location']['elevation'])
-                    config_ini['Input']['STATION1']='{}.csv'.format(node['id'])
-                    # [Output]
-                    config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
-                    config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],network['description'])
-                    config_ini['Output']['NC_ID']=node['id']
-                    config_ini['Output']['ACDD_CREATOR']=conf['ACDD']['CREATOR']
-                    # Add ACDD values
-                    for ACDD,value in conf['ACDD'].items():
-                        if not ACDD=='WRITE': config_ini['Output']['ACDD_'+ACDD]=value
+            ## Snow depth calibration
+            logging.info('---> Snow depth calibration')
+            df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
+
+            ## Save to CSV
+            fname = '{}_{}_{}'.format(node['id'],
+                                      format(date_start,"%Y%m%d"),
+                                      format(date_end,"%Y%m%d"))
+            fname_csv = 'data/{}.csv'.format(fname)
+            logging.info('---> Save data output in: {}'.format(fname_csv))
+            df.to_csv(fname_csv)
+
+            ## Save custom ini
+            # filename ini
+            fname_ini = 'ini/{}.ini'.format(fname)
+            logging.info('---> Copy and fill meteoIO configurations: {}'.format(fname_ini))
+
+            # Copy and load configuration file template for meteoIO
+            shutil.copyfile('ini/'+node['meteoio_ini_template'],fname_ini)
+            config_ini = ConfigObj(fname_ini)
             
-                    # write and copy ini
-                    config_ini.write()
-                    shutil.copyfile(fname_ini,'io.ini')
-                
-                except IOerror:
-                    
+
+            # [Input]
+            config_ini['Input']['METEOPATH']='.'
+            config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
+            config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
+            config_ini['Input']['CSV_FIELDS']='TIMESTAMP {}'.format(' '.join([dict_corres[d][0]  for d in version['data_sios'] ]))
+            config_ini['Input']['CSV_NAME']=node['id']
+            config_ini['Input']['CSV_ID']=node['id']
+            config_ini['Input']['POSITION']='xy({},{},{})'.format(node['location']['easting'],node['location']['northing'],node['location']['elevation'])
+            config_ini['Input']['STATION1']='{}'.format(fname_csv)
+            # [Output]
+            config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
+            config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])
+            config_ini['Output']['NC_ID']='data_qc/{}.csv'.format(fname)
+            config_ini['Output']['ACDD_CREATOR']=conf['ACDD']['CREATOR']
+            # Add ACDD values
+            for ACDD,value in conf['ACDD'].items():
+                if not ACDD=='WRITE':
+                    config_ini['Output']['ACDD_'+ACDD]=value
+
+            # write and copy ini
+            config_ini.write()
+            shutil.copyfile(fname_ini,'io.ini')
+            logging.info('---> Save meteoIO configurations and make io.ini file')
+
+            # run MeteoIO
+            sampling_rate=10 # in minutes
+            subprocess.run(['/Users/ronea/code/meteoio/doc/examples/data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
+                                                                                      format(date_end,"%Y-%m-%dT%H:%M:%S"),
+                                                                                      sampling_rate)], shell=True)
+               # except IOerror:
+                    #logging.info(e)
+                    #logging.info(sys.exc_type)
