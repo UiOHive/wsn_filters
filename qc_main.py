@@ -1,6 +1,6 @@
 #!/bin/python
 '''
-S. Filhol and P. Lefeuvre, Feb 2022
+ P. Lefeuvre and S. Filhol, Feb 2022
 
 Script to control QC routine 
 
@@ -127,74 +127,81 @@ if __name__ == "__main__":
             date_end = version['date_end']
             logging.info('---> Version {} to {}'.format(format(date_start,"%Y-%m-%d"), format(date_end,"%Y-%m-%d")))
             
-            #if not version['QC_done']:
-                #try:
-            # Query database
-            df = query.query('postgresql',
-                             name=node['id'],
-                             fields=version['data_sios'],
-                             time__gte=date_start,
-                             time__lte=date_end,
-                             limit=2000000000000)
-            logging.info('---> Downloading {}'.format(version['data_sios']))
+            if not version['QC_done']:
+                try:
+                    # Query database
+                    df = query.query('postgresql',
+                                     name=node['id'],
+                                     fields=version['data_sios'],
+                                     time__gte=date_start,
+                                     time__lte=date_end,
+                                     limit=2000000000000)
+                    logging.info('---> Downloading {}'.format(version['data_sios']))
 
-            ## Formatting
-            # Replace Nones in empty lists by NaNs 
-            df = df.fillna(value=np.nan)
-            # Remove column with time as number
-            del df['time']
+                    ## Formatting
+                    # Replace Nones in empty lists by NaNs 
+                    df = df.fillna(value=np.nan)
+                    # Remove column with time as number
+                    del df['time']
 
-            ## Snow depth calibration
-            logging.info('---> Snow depth calibration')
-            df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
+                    ## Snow depth calibration
+                    logging.info('---> Snow depth calibration')
+                    df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
 
-            ## Save to CSV
-            fname = '{}_{}_{}'.format(node['id'],
-                                      format(date_start,"%Y%m%d"),
-                                      format(date_end,"%Y%m%d"))
-            fname_csv = 'data/{}.csv'.format(fname)
-            logging.info('---> Save data output in: {}'.format(fname_csv))
-            df.to_csv(fname_csv)
+                    ## Save to CSV
+                    fname = '{}_{}_{}'.format(node['id'],
+                                              format(date_start,"%Y%m%d"),
+                                              format(date_end,"%Y%m%d"))
+                    fname_csv = 'data/{}.csv'.format(fname)
+                    logging.info('---> Save data output in: {}'.format(fname_csv))
+                    df.to_csv(fname_csv)
 
-            ## Save custom ini
-            # filename ini
-            fname_ini = 'ini/{}.ini'.format(fname)
-            logging.info('---> Copy and fill meteoIO configurations: {}'.format(fname_ini))
+                    ## Save custom ini
+                    # filename ini
+                    fname_ini = 'ini/{}.ini'.format(fname)
+                    logging.info('---> Copy and fill meteoIO configurations: {}'.format(fname_ini))
 
-            # Copy and load configuration file template for meteoIO
-            shutil.copyfile('ini/'+node['meteoio_ini_template'],fname_ini)
-            config_ini = ConfigObj(fname_ini)
-            
+                    # Copy and load configuration file template for meteoIO
+                    shutil.copyfile('ini/'+node['meteoio_ini_template'],fname_ini)
+                    config_ini = ConfigObj(fname_ini)
 
-            # [Input]
-            config_ini['Input']['METEOPATH']='.'
-            config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
-            config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
-            config_ini['Input']['CSV_FIELDS']='TIMESTAMP {}'.format(' '.join([dict_corres[d][0]  for d in version['data_sios'] ]))
-            config_ini['Input']['CSV_NAME']=node['id']
-            config_ini['Input']['CSV_ID']=node['id']
-            config_ini['Input']['POSITION']='xy({},{},{})'.format(node['location']['easting'],node['location']['northing'],node['location']['elevation'])
-            config_ini['Input']['STATION1']='{}'.format(fname_csv)
-            # [Output]
-            config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
-            config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])
-            config_ini['Output']['NC_ID']='data_qc/{}.csv'.format(fname)
-            config_ini['Output']['ACDD_CREATOR']=conf['ACDD']['CREATOR']
-            # Add ACDD values
-            for ACDD,value in conf['ACDD'].items():
-                if not ACDD=='WRITE':
-                    config_ini['Output']['ACDD_'+ACDD]=value
 
-            # write and copy ini
-            config_ini.write()
-            shutil.copyfile(fname_ini,'io.ini')
-            logging.info('---> Save meteoIO configurations and make io.ini file')
+                    # [Input]
+                    config_ini['Input']['METEOPATH']='data'
+                    config_ini['Input']['METEOFILE']='{}.csv'.format(fname)
+                    config_ini['Input']['STATION1']='{}.csv'.format(fname)
+                    config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
+                    config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
+                    config_ini['Input']['CSV_FIELDS']='TIMESTAMP {}'.format(' '.join([dict_corres[d][0]  for d in version['data_sios'] ]))
+                    config_ini['Input']['CSV_NAME']=node['id']
+                    config_ini['Input']['CSV_ID']=node['id']
+                    config_ini['Input']['POSITION']='xy({},{},{})'.format(node['location']['easting'],
+                                                                          node['location']['northing'],
+                                                                          node['location']['elevation'])
+                    # [Output]
+                    config_ini['Output']['METEOPATH']='data_qc'
+                    config_ini['Output']['NC_SINGLE_FILE']='TRUE'
+                    config_ini['Output']['METEOFILE']='{}.nc'.format(fname)
+                    config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
+                    config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])
+                    config_ini['Output']['NC_ID']='{}'.format(fname)
+                    config_ini['Output']['ACDD_CREATOR']=conf['ACDD']['CREATOR']
+                    # Add ACDD values
+                    for ACDD,value in conf['ACDD'].items():
+                        if not ACDD=='WRITE':
+                            config_ini['Output']['ACDD_'+ACDD]=value
 
-            # run MeteoIO
-            sampling_rate=10 # in minutes
-            subprocess.run(['/Users/ronea/code/meteoio/doc/examples/data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
-                                                                                      format(date_end,"%Y-%m-%dT%H:%M:%S"),
-                                                                                      sampling_rate)], shell=True)
-               # except IOerror:
-                    #logging.info(e)
-                    #logging.info(sys.exc_type)
+                    # write and copy ini - and remove double quotes
+                    config_ini.write()
+                    subprocess.run(['sed -i \'\' \'s/"//g\' {}'.format(fname_ini)], shell=True)
+                    shutil.copyfile(fname_ini,'io.ini')
+                    logging.info('---> Save meteoIO configurations and make io.ini file')
+
+                    # run MeteoIO
+                    sampling_rate=10 # in minutes
+                    subprocess.run(['/Users/ronea/code/meteoio/doc/examples/data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
+                                                                                              format(date_end,"%Y-%m-%dT%H:%M:%S"),
+                                                                                              sampling_rate)], shell=True)
+                except IOerror:
+                    logging.info(e)
+                    logging.info(sys.exc_type)
