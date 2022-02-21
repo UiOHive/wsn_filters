@@ -29,6 +29,8 @@ node:
       - date_start: 2019-04-11 00:00:00
         date_end: 2022-01-01 00:00:00
         version: 2
+        QC_done: False
+        data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
           adress: 215
@@ -37,8 +39,7 @@ node:
           destination: 2
           lora_mode: 6
         data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mb_distance, vl_distance, tmp_temperature, ds1820, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object, mlx_ambient, received, momsn, iridium_cep, iridium_latitude, iridium_longitude]
-        data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
-        QC_done: False
+        
 
 #    version_QC:
 #      - date_start: 2019/01/01
@@ -71,25 +72,34 @@ node:
 
 ACDD:
   WRITE: TRUE
-  CREATOR: [Simon Filhol, Pierre Marie Lefeuvre, Jean-Charles Gallet] #????
+  CREATOR: [Simon Filhol, Pierre Marie Lefeuvre, Jean-Charles Gallet]
   CREATOR_EMAIL: simon.filhol@geo.uio.no
   CREATOR_INSTITUTION: [University of Oslo, Norwegian Polar Institute]
-  CREATOR_URL: https://www.mn.uio.no/geo/english/research/projects/hive/
+  CREATOR_URL: https://www.mn.uio.no/geo/english/people/aca/geohyd/simonfi/index.html
   CREATOR_TYPE: person
   PUBLISHER: Pierre-Marie Lefeuvre
   PUBLISHER_EMAIL: pierre.lefeuvre@npolar.no
-  PUBLISHER_URL: npolar.no
-  PUBLISHER_TYPE: institute #????
-  INSTITUTION: SLF #????
+  PUBLISHER_URL: https://www.npolar.no/en/people/pierre.marie.lefeuvre
+  PUBLISHER_TYPE: institute
+  INSTITUTION: Norwegian Polar Institute
+  KEYWORDS: [Arctic region, Meteorology, Glaciers, Snow, Land/atmosphere interactions]
+  KEYWORDS_VOCABULARY: AGU
+  TITLE: Wireless sensor network of automatic weather stations at the glacier Kongsvegen in Svalbard
+  PROJECT: "Hive Wireless Sensor Network at Department of Geosciences, University of Oslo, Norway"
+  PROGRAM: SIOS Svalbard Integrated Arctic Earth Observing System
+  SOURCE: Automatic weather station
   ID: #DOI
-  NAMING_AUTHORITY: NPI
-  TITLE: Wireless sensor network at the glacier Kongsvegen in Svalbard
-  SUMMARY: WSN of automatic weather stations at Kongsvegen, Svalbard
+  NAMING_AUTHORITY: Norwegian Polar Institute
+  PROCESSING_LEVEL: filtered and not modelled
+  SUMMARY: "A Hive WSN kits records near surface meteorological variables: air temperature, relative humidity, air pressure, snow height, ..."
+  COMMENT: "Height above the snow/ice surface varies over time as the sensor box is attached to a stake drilled into the snow/ice"
+  ACKNOWLEDGEMENT: "The Hive WSN kit development is supported by the eInfrastructure hub UiO Hive, and implemented to collect data on the archipelago of Svalbard in collaboration with the Norwegian Polar Institute. Additional support from SIOS."
+  METADATA_LINK: https://www.mn.uio.no/geo/english/research/projects/hive
+  REFERENCES: https://hive-wireless-sensor-network.readthedocs.io/en/latest/source/hardware.html
   LICENSE: CC-BY-NC
-  PROCESSING_LEVEL: quality controlled #????
-  ACTIVITY_TYPE: in situ land-based station
-  OPERATIONAL_STATUS: scientific
-
+  PROCESSING_LEVEL: 1.0
+  ACTIVITY_TYPE: In Situ Ice-based station
+  OPERATIONAL_STATUS: Scientific
 
 # ===========
 # YAML format: https://yaml.org/

@@ -168,8 +168,8 @@ if __name__ == "__main__":
 
                     # [Input]
                     config_ini['Input']['METEOPATH']='data'
-                    config_ini['Input']['METEOFILE']='{}.csv'.format(fname)
-                    config_ini['Input']['STATION1']='{}.csv'.format(fname)
+                    #config_ini['Input']['METEOFILE']='{}.csv'.format(fname)
+                    config_ini['Input']['STATION1']='{}.csv'.format(fname) 
                     config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
                     config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
                     config_ini['Input']['CSV_FIELDS']='TIMESTAMP {}'.format(' '.join([dict_corres[d][0]  for d in version['data_sios'] ]))
@@ -180,11 +180,11 @@ if __name__ == "__main__":
                                                                           node['location']['elevation'])
                     # [Output]
                     config_ini['Output']['METEOPATH']='data_qc'
-                    config_ini['Output']['NC_SINGLE_FILE']='TRUE'
+                    config_ini['Output']['NC_SINGLE_FILE']='FALSE'
                     config_ini['Output']['METEOFILE']='{}.nc'.format(fname)
                     config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
                     config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])
-                    config_ini['Output']['NC_ID']='{}'.format(fname)
+                    config_ini['Output']['NC_ID']=node['id']
                     config_ini['Output']['ACDD_CREATOR']=conf['ACDD']['CREATOR']
                     # Add ACDD values
                     for ACDD,value in conf['ACDD'].items():
@@ -193,7 +193,7 @@ if __name__ == "__main__":
 
                     # write and copy ini - and remove double quotes
                     config_ini.write()
-                    #subprocess.run(['sed -i \'\' \'s/"//g\' {}'.format(fname_ini)], shell=True)
+                    subprocess.run(['sed -i \'\' \'s/"//g\' {}'.format(fname_ini)], shell=True)
                     shutil.copyfile(fname_ini,'io.ini')
                     logging.info('---> Save meteoIO configurations and make io.ini file')
 
