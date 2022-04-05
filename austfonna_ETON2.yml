@@ -1,0 +1,61 @@
+# Austfonna ETON2 station
+network:
+  name: Austfonna
+  owner: UiO
+  date_installation: 2021/04/01
+  date_update: 2022-04-04
+  description: Weather stations on Austfonna. ETON2 station
+  country: Svalbard
+
+node:
+  # List of nodes
+  - id: eton-2
+    name: ETON 2
+    operational: True
+    date_installation: 2004-04-21 16:00:00
+    meteoio_ini_template: meteoio_austfonna.ini
+    location:
+      epsg: 32633  #(UTM 33N)
+      easting: TO BE ADDED
+      northing: TO BE ADDED
+      elevation: TO BE ADDED
+      date: 2004-04-21
+        
+
+ACDD:
+  WRITE: TRUE
+  CREATOR: [Thomas V. Schuler, Simon Filhol]
+  CREATOR_EMAIL: [t.v.schuler@geo.uio.no, simon.filhol@geo.uio.no]
+  CREATOR_INSTITUTION: [University of Oslo]
+  CREATOR_URL: [https://www.mn.uio.no/geo/english/people/aca/geohyd/thomasc/, https://www.mn.uio.no/geo/english/people/aca/geohyd/simonfi/index.html]
+  CREATOR_TYPE: [person, person]
+  PUBLISHER: University of Oslo
+  PUBLISHER_EMAIL: t.v.schuler@geo.uio.no
+  PUBLISHER_URL: https://www.mn.uio.no
+  PUBLISHER_TYPE: university
+  INSTITUTION: University of Oslo
+  #KEYWORDS: [9315 Arctic region, 0720 Glaciers, 0736 Snow, 1631 Land/atmosphere interactions, 3349 Polar meteorology]
+  #KEYWORDS_VOCABULARY: AGU
+  #KEYWORDS: [GCMDLOC:ARCTIC d40d9651-aa19-4b2c-9764-7371bb64b9a7, GCMDSK:GLACIERS 68eed887-8008-4352-b420-949457ab59ab, GCMDSK:SNOW/ICE aa35a52f-e3d9-41bd-abd2-ec7e1a8101d1, GCMDSK:SNOW ENERGY BALANCE a3520db9-7bed-4f55-a9f6-028d52af6091, GCMDSK:SNOW DEPTH 47bc8942-6fdd-4173-bf38-209e933d843f]
+  KEYWORDS: [GCMDLOC:GEOGRAPHIC REGION>ARCTIC:d40d9651-aa19-4b2c-9764-7371bb64b9a7, GCMDSK:EARTH SCIENCE>CRYOSPHERE>GLACIERS/ICE SHEETS>GLACIERS:68eed887-8008-4352-b420-949457ab59ab, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE:aa35a52f-e3d9-41bd-abd2-ec7e1a8101d1, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE>SNOW ENERGY BALANCE:a3520db9-7bed-4f55-a9f6-028d52af6091, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE>SNOW DEPTH:47bc8942-6fdd-4173-bf38-209e933d843f]
+  KEYWORDS_VOCABULARY: [GCMDSK:GCMD Science Keywords:https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords, GCMDLOC:GCMD Locations:https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/locations]
+  TITLE: Wireless sensor network of automatic weather stations at the glacier Kongsvegen in Svalbard
+  PROJECT: [SIOS Svalbard Integrated Arctic Earth Observing System (SIOS InfraNOR)]
+  #PROGRAM: SIOS Svalbard Integrated Arctic Earth Observing System
+  SOURCE: Automatic weather station
+  ID: #DOI
+  NAMING_AUTHORITY: University of Oslo
+  PROCESSING_LEVEL: filtered and not modelled
+  SUMMARY: "THOMAS FILL HERE"
+  #COMMENT: "Height above the snow/ice surface varies over time as the sensor box is attached to a stake drilled into the snow/ice"
+  ACKNOWLEDGEMENT: "THOMAS FILL HERE"
+  #METADATA_LINK: https://www.mn.uio.no/geo/english/research/projects/hive
+  REFERENCES: 
+  LICENSE: https://spdx.org/licenses/CC-BY-NC-4.0.html (CC-BY-NC-4.0)
+  PROCESSING_LEVEL: 1.0
+  ACTIVITY_TYPE: In Situ Ice-based station
+  OPERATIONAL_STATUS: Scientific
+
+# ===========
+# YAML format: https://yaml.org/
+

@@ -6,8 +6,8 @@ Script to control QC routine
 
 
 Scipt input (parse with argparse):
-   - network.yml
-   - WSN_meteoio_template.ini
+   - austfonna_ETON2.yml
+   - meteoio_austfonna.ini
    - path
 
 Logic:
@@ -21,8 +21,6 @@ Logic:
 
 
 '''
-
-
 #import xarray as xr
 import numpy as np
 import pandas as pd
@@ -34,55 +32,21 @@ import argparse
 from configobj import ConfigObj
 import logging
 
-
 #==========  DEFINE FUNCTION  =========
-
-def calibration_snow(df,node_snow):
-    ##########################
-    # Snow depth calibration #
-    ##########################
-    
-    # Extract dates defining a hydrological year (sept. - sept)
-    date_snow = node_snow['year_hydro']
-
-    # Compute median value and assign to new column for output
-    df = df.apply(lambda x: np.median(np.array(x)))
-
-    # loop through hydrological year to calibrate snow depth
-    for d in range(1,len(date_snow)):
-
-        # Constrain loop to calibrate only period with data
-        if date_snow[d] < df.index.min().date(): break
-        if date_snow[d-1] > df.index.max().date(): break
-
-        # Compute distance between sensor and reference surface i.e. ice or last summer surface
-        height_sensor_to_ice = node_snow['dist_to_sensor'][d-1] + node_snow['depth'][d-1]
-
-        logging.info( '     Process snow depth from {} to {}'.format(format(date_snow[d-1],"%Y-%m-%d"), format(date_snow[d],"%Y-%m-%d")))
-        logging.debug('     Calibration reference surface to sensor: {} mm on {} '.format(height_sensor_to_ice, format(node_snow['date'][d-1],"%Y-%m-%d")))
-
-        # Calibration of snow depth - Remove negative value i.e. ice melt
-        snow_depth = height_sensor_to_ice - df[date_snow[d-1]:date_snow[d]]
-        snow_depth[snow_depth<0] = 0
-
-        # Assign in dataframe
-        df[date_snow[d-1]:date_snow[d]] = snow_depth
-    return df
-    ##########################
 
 # Dictionary for variables to meteoIO input format    
 dict_corres = {
-    'tmp_temperature':['TA',1,273.15], # Air temperature [deg. C -> K]
-    'bme_tc':['TA',1,273.15],          # Air temperature [deg. C -> K]
-    'bme_hum':['RH',0.01,0],            # Relative humidity [% -> 1-0]
-    'mb_distance':['HS',0.01,0],       # Height of snow [cm -> m]
-    'vl_distance':['HS',0.01,0],       # Height of snow [cm -> m]
-    'bme_pres':['P',1,0],              # Air pressure [Pa]
-    'wind_speed':['VW',1,0],           # Wind velocity [m.s-1]
-    'wind_dir':['DW',1,0],             # Wind direction [degree from North]
-    'mlx_object':['TSS',1,273.15],     # Temperature of the snow surface [deg. C -> K]
-    '':['TSG',1,273.15],               # Temperature of the ground surface [deg. C -> K]
-    '':['VW_MAX',1,0]
+    'TA':['TA', 1, 0], # Air temperature [deg. K]
+    'RH':['RH',0.01,0],            # Relative humidity [% -> 1-0]
+    'HS':['HS',1,0],       # Height of snow [cm -> m]
+    'P':['P',100, 0],              # Air pressure [Pa]
+    'VW':['VW',1,0],           # Wind velocity [m.s-1]
+    'DW':['DW',1,0],             # Wind direction [degree from North]
+    'TSS':['TSS',1,0],     # Temperature of the snow surface [deg. C -> K]
+    'ISWR':['ISWR',1,0],               # Incoming SW [W/m2]
+    'RSWR':['RSWR',1,0],               # Reflected SW []
+    'ILWR':['ILWR',1,0],               # Incoming LW []
+    
 }
 
 #========== Script ============
@@ -128,33 +92,6 @@ if __name__ == "__main__":
             
             if not version['QC_done']:
                 try:
-                    # Query database
-                    df = query.query('postgresql',
-                                     name=node['id'],
-                                     fields=version['data_sios'],
-                                     time__gte=date_start,
-                                     time__lte=date_end,
-                                     limit=2000000000000)
-                    logging.info('---> Downloading {}'.format(version['data_sios']))
-
-                    ## Formatting
-                    # Replace Nones in empty lists by NaNs 
-                    df = df.fillna(value=np.nan)
-                    # Remove column with time as number
-                    del df['time']
-
-                    ## Snow depth calibration
-                    logging.info('---> Snow depth calibration')
-                    df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
-
-                    ## Save to CSV
-                    fname = '{}_{}_{}'.format(node['id'],
-                                              format(date_start,"%Y%m%d"),
-                                              format(date_end,"%Y%m%d"))
-                    fname_csv = 'data/{}.csv'.format(fname)
-                    logging.info('---> Save data output in: {}'.format(fname_csv))
-                    df.to_csv(fname_csv)
-
                     ## Save custom ini
                     # filename ini
                     fname_ini = 'ini/{}.ini'.format(fname)
@@ -163,7 +100,6 @@ if __name__ == "__main__":
                     # Copy and load configuration file template for meteoIO
                     shutil.copyfile('ini/'+node['meteoio_ini_template'],fname_ini)
                     config_ini = ConfigObj(fname_ini)
-
 
                     # [Input]
                     config_ini['Input']['METEOPATH']='data'
