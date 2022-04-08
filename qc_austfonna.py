@@ -36,9 +36,9 @@ import logging
 
 # Dictionary for variables to meteoIO input format    
 dict_corres = {
-    'TA':['TA', 1, 0], # Air temperature [deg. K]
+    'TA':['TA', 1, 273.15], # Air temperature [deg. K]
     'RH':['RH',0.01,0],            # Relative humidity [% -> 1-0]
-    'HS':['HS',0.01,0],       # Height of snow [cm -> m]
+    'HS':['HS',1,0],       # Height of snow [cm -> m]
     'P':['P',100, 0],              # Air pressure [Pa]
     'VW':['VW',1,0],           # Wind velocity [m.s-1]
     'DW':['DW',1,0],             # Wind direction [degree from North]
