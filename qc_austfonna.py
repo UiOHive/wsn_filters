@@ -92,6 +92,9 @@ if __name__ == "__main__":
             
             if not version['QC_done']:
                 try:
+                    # Filename of the data without extension
+                    fname = 'ETON2_all'
+                    
                     ## Save custom ini
                     # filename ini
                     fname_ini = 'ini/{}.ini'.format(fname)
