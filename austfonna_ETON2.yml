@@ -24,8 +24,7 @@ node:
     - date_start: 2004-04-21 16:00:00
       date_end: 2019-09-14 00:00:00
       QC_done: False
-      data_sios: [TA, RH, P, HS, DW, VW, RSWR, ISWR, ILWR, TSS]
-        
+      data_sios: [TA, HS, RH, DW, VW, RSWR, ISWR, ILWR, TSS, P]
 
 ACDD:
   WRITE: TRUE
