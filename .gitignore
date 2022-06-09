@@ -3,3 +3,4 @@ data/*.csv
 *.DS_Store
 data_qc/*.nc
 *.nc
+log/*.log

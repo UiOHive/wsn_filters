@@ -1,0 +1,6 @@
+2022-06-09 12:10:10,302 INFO MainThread root Parse arguments
+2022-06-09 12:10:10,313 INFO MainThread root ======================================
+2022-06-09 12:10:10,313 INFO MainThread root ---> Preparing QC node eton-2 - ETON 2
+2022-06-09 12:10:10,314 INFO MainThread root ---> Version 2004-04-21 to 2021-09-14
+2022-06-09 12:10:10,314 INFO MainThread root ---> Copy and fill meteoIO configurations: ini/aws-eton-stake2.ini
+2022-06-09 12:10:10,328 INFO MainThread root ---> Save meteoIO configurations and make io.ini file
