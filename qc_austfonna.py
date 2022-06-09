@@ -31,6 +31,7 @@ import yaml
 import argparse
 from configobj import ConfigObj
 import logging
+import datetime
 
 #==========  DEFINE FUNCTION  =========
 
@@ -53,10 +54,11 @@ dict_corres = {
 if __name__ == "__main__":
     
     # Log info/debug/error
+    logfile = 'log/qc_austfonna_{}.log'.format(datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
     logging.basicConfig(level=logging.DEBUG,
                         format="%(asctime)s %(levelname)s %(threadName)s %(name)s %(message)s",
                         # datefmt='%m-%d %H:%M',
-                        filename='log_qc_main',
+                        filename=logfile,
                         filemode='w')
     console = logging.StreamHandler()
     console.setLevel(logging.DEBUG)
@@ -93,7 +95,7 @@ if __name__ == "__main__":
             if not version['QC_done']:
                 try:
                     # Filename of the data without extension
-                    fname = 'ETON2_all'
+                    fname = 'aws-eton-stake2'
                     
                     ## Save custom ini
                     # filename ini
@@ -135,9 +137,9 @@ if __name__ == "__main__":
                     shutil.copyfile(fname_ini,'io.ini')
                     logging.info('---> Save meteoIO configurations and make io.ini file')
 
-                    # run MeteoIO
+                    # run MeteoIO (need to alias data_converter)
                     sampling_rate=10 # in minutes
-                    subprocess.run(['/Users/ronea/code/meteoio/doc/examples/data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
+                    subprocess.run(['data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
                                                                                               format(date_end,"%Y-%m-%dT%H:%M:%S"),
                                                                                               sampling_rate)], shell=True)
                 except IOerror:

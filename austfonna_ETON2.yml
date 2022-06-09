@@ -13,7 +13,7 @@ node:
     name: ETON 2
     operational: True
     date_installation: 2004-04-21 16:00:00
-    meteoio_ini_template: meteoio_austfonna.ini
+    meteoio_ini_template: template_meteoio_austfonna.ini
     location:
       epsg: 25833  #(ETRS89 UTM 33N)
       easting: 647148.25

@@ -88,11 +88,12 @@ dict_corres = {
 #========== Script ============
 if __name__ == "__main__":
     
-    # Log info/debug/error
+        # Log info/debug/error
+    logfile = 'log/qc_austfonna_{}.log'.format(datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
     logging.basicConfig(level=logging.DEBUG,
                         format="%(asctime)s %(levelname)s %(threadName)s %(name)s %(message)s",
                         # datefmt='%m-%d %H:%M',
-                        filename='log_qc_main',
+                        filename=logfile,
                         filemode='w')
     console = logging.StreamHandler()
     console.setLevel(logging.DEBUG)
@@ -198,7 +199,7 @@ if __name__ == "__main__":
 
                     # run MeteoIO
                     sampling_rate=10 # in minutes
-                    subprocess.run(['/Users/ronea/code/meteoio/doc/examples/data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
+                    subprocess.run(['data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
                                                                                               format(date_end,"%Y-%m-%dT%H:%M:%S"),
                                                                                               sampling_rate)], shell=True)
                 except IOerror:
