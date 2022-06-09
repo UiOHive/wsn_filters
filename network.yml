@@ -13,7 +13,7 @@ node:
     name: KNG6
     operational: True
     date_installation: 2019-04-11 00:00:00
-    meteoio_ini_template: wsn_meteoio.ini
+    meteoio_ini_template: template_meteoio_wsn.ini
     location:
       epsg: 32633
       easting: 459771

@@ -1,2 +1,5 @@
 .ipynb_checkpoints/
 data/*.csv
+*.DS_Store
+data_qc/*.nc
+*.nc

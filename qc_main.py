@@ -180,7 +180,7 @@ if __name__ == "__main__":
                     # [Output]
                     config_ini['Output']['METEOPATH']='data_qc'
                     config_ini['Output']['NC_SINGLE_FILE']='FALSE'
-                    config_ini['Output']['METEOFILE']='{}.nc'.format(fname)
+                    config_ini['Output']['METEOFILE']='aws_{}_{}{}.nc'.format(fname)
                     config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
                     config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])
                     config_ini['Output']['NC_ID']=node['id']
