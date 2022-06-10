@@ -1,6 +1,13 @@
+# ignore hidden system files
 .ipynb_checkpoints/
-data/*.csv
+.idea/
 *.DS_Store
+
+# ignore data folders
+data/*.csv
 data_qc/*.nc
-*.nc
 log/*.log
+
+# ignore data and old backup file
+*.nc
+io_backup.ini
