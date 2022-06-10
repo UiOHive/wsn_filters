@@ -13,9 +13,9 @@ wsn_filters is a process workflow for automatic weather station data that focuse
 - ```notebook_test_filter.ipynb```: a jupyter notebooks containing earlier versions of quality control codes
 
 ## Application 
-The pipeline is designed for weather data from two networks of automatic weather stations installed in Svalbard as described in the [Hive documentation](https://hive-wireless-sensor-network.readthedocs.io/en/latest/). The code is developed to be transferrable to other locations and netwroks such as the one in Finse, Norway, also maintained by the University of Oslo.
+The pipeline is designed for weather data from two networks of automatic weather stations installed in Svalbard as described in the [Hive documentation](https://hive-wireless-sensor-network.readthedocs.io/en/latest/). The code is developed to be transferrable to other locations and networks such as the one in Finse, Norway, also maintained by the University of Oslo.
 
-## Command Line
+## Command line usage
 ### Wireless Sensor Network at Kongsvegen and Midtre Lovenbreen
 The pipeline requires the config file as input parameter and can be ran as follow: 
 ```
@@ -26,7 +26,7 @@ python qc_main.py -nc config_wsn_KNG.yml
 python qc_austfonna.py -nc config_austfonna_ETON2.yml
 ```
 
-## Installation
+## Required installation
 ### meteIO compilation
 A compilitation guide is available on [meteoIO's wiki](https://gitlabext.wsl.ch/snow-models/meteoio/-/wikis/Compiling-MeteoIO) and we provide a short summary here.
 #### Dependencies:
@@ -64,13 +64,15 @@ make
 > Writing output data
 > Done!! in 0.146223 s
 ```
+You can then run the processing code described above in [Application](https://github.com/UiOHive/wsn_filters#application)
 
 ## References
 Documentation about Hive is available:
 - [UiOHive github](https://github.com/UiOHive)
-- 
+- [Hive documentation](https://hive-wireless-sensor-network.readthedocs.io/en/latest/)
 
 You can find a complete description of MeteoIO in:
+- [meteoIO's wiki](https://gitlabext.wsl.ch/snow-models/meteoio/-/wikis)
 - Bavay, M. and Egger, T., "MeteoIO 2.4.2: a preprocessing library for meteorological data", Geosci. Model Dev., 7, 3135-3151, doi:10.5194/gmd-7-3135-2014, 2014 
 and some example applications in: 
 - Bavay, M., Fiddes, J., Fierz, C., Lehning, M., Monti, F. and Egger, T., "The METEOIO pre-processing library for operational applications", In International Snow Science Workshop ISSW, Innsbruck, Austria, 2018.
