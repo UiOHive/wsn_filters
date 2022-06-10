@@ -32,6 +32,7 @@ import argparse
 from configobj import ConfigObj
 import logging
 import datetime
+import time
 
 #==========  DEFINE FUNCTION  =========
 
@@ -95,7 +96,8 @@ if __name__ == "__main__":
             if not version['QC_done']:
                 try:
                     # Filename of the data without extension
-                    fname = 'aws-eton-stake2'
+                    fname = 'aws-eton-2'
+                    fname_out ='{}-{}-{}.nc'.format(fname, format(date_start,"%Y%m%d"), format(date_end,"%Y%m%d"))
                     
                     ## Save custom ini
                     # filename ini
@@ -117,7 +119,7 @@ if __name__ == "__main__":
                                                                           node['location']['northing'],
                                                                           node['location']['elevation'])
                     # [Output]
-                    config_ini['Output']['METEOFILE']='{}.nc'.format(fname)
+                    config_ini['Output']['METEOFILE']=fname_out
                     config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
                     config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])
                     config_ini['Output']['NC_ID']=node['id']
@@ -135,10 +137,13 @@ if __name__ == "__main__":
                     logging.info('---> Save meteoIO configurations and make io.ini file')
 
                     # run MeteoIO (need to alias data_converter)
-                    sampling_rate=10 # in minutes
-                    subprocess.run(['data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
-                                                                                              format(date_end,"%Y-%m-%dT%H:%M:%S"),
-                                                                                              sampling_rate)], shell=True)
+                    sampling_rate = 10 # in minutes
+                    command = 'data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),format(date_end,"%Y-%m-%dT%H:%M:%S"),sampling_rate)
+                    logging.info('---> command: {}'.format(command))
+                    time.sleep(4)
+                    subprocess.run([command], shell=True)
+                    logging.info('---> Netcdf output: {}'.format(fname_out))
+                    
                 except IOerror:
                     logging.info(e)
                     logging.info(sys.exc_type)

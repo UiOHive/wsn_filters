@@ -149,7 +149,7 @@ if __name__ == "__main__":
                     df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
 
                     ## Save to CSV
-                    fname = '{}_{}_{}'.format(node['id'],
+                    fname = 'aws-{}-{}-{}'.format(node['id'],
                                               format(date_start,"%Y%m%d"),
                                               format(date_end,"%Y%m%d"))
                     fname_csv = 'data/{}.csv'.format(fname)
@@ -165,10 +165,7 @@ if __name__ == "__main__":
                     shutil.copyfile('ini/'+node['meteoio_ini_template'],fname_ini)
                     config_ini = ConfigObj(fname_ini)
 
-
                     # [Input]
-                    config_ini['Input']['METEOPATH']='data'
-                    #config_ini['Input']['METEOFILE']='{}.csv'.format(fname)
                     config_ini['Input']['STATION1']='{}.csv'.format(fname) 
                     config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
                     config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
@@ -179,13 +176,12 @@ if __name__ == "__main__":
                                                                           node['location']['northing'],
                                                                           node['location']['elevation'])
                     # [Output]
-                    config_ini['Output']['METEOPATH']='data_qc'
-                    config_ini['Output']['NC_SINGLE_FILE']='FALSE'
-                    config_ini['Output']['METEOFILE']='aws_{}_{}{}.nc'.format(fname)
+                    config_ini['Output']['METEOFILE']=fname
                     config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
                     config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])
                     config_ini['Output']['NC_ID']=node['id']
                     config_ini['Output']['ACDD_CREATOR']=conf['ACDD']['CREATOR']
+                    
                     # Add ACDD values
                     for ACDD,value in conf['ACDD'].items():
                         if not ACDD=='WRITE':
@@ -198,10 +194,13 @@ if __name__ == "__main__":
                     logging.info('---> Save meteoIO configurations and make io.ini file')
 
                     # run MeteoIO (need to alias data_converter)
-                    sampling_rate=10 # in minutes
-                    subprocess.run(['data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
-                                                                                              format(date_end,"%Y-%m-%dT%H:%M:%S"),
-                                                                                              sampling_rate)], shell=True)
+                    sampling_rate = 10 # in minutes
+                    command = 'data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),format(date_end,"%Y-%m-%dT%H:%M:%S"),sampling_rate)
+                    logging.info('---> command: {}'.format(command))
+                    time.sleep(4)
+                    subprocess.run([command], shell=True)
+                    logging.info('---> Netcdf output: {}'.format(fname_out))
+                    
                 except IOerror:
                     logging.info(e)
                     logging.info(sys.exc_type)
