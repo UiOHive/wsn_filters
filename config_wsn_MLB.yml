@@ -4,7 +4,7 @@ network:
   owner: NPI
   date_installation: 2021-04-01
   date_update: 2022-06-10
-  description: WSN network on the Midtre Lovenbreen glacier in Svalbard
+  description: Wireless Sensor Network on the Midtre Lovenbreen glacier in Svalbard
   country: Svalbard
 
 node:
@@ -256,7 +256,7 @@ ACDD:
   CREATOR: [Simon Filhol, Pierre Marie Lefeuvre, Jean-Charles Gallet]
   CREATOR_EMAIL: [simon.filhol@geo.uio.no, pierre.lefeuvre@npolar.no, jean.charles.gallet@npolar.no]
   CREATOR_INSTITUTION: [University of Oslo, Norwegian Polar Institute, Norwegian Polar Institute]
-  CREATOR_URL: [https://www.mn.uio.no/geo/english/people/aca/geohyd/simonfi/index.html, https://www.npolar.no/en/people/pierre.marie.lefeuvre, https://www.npolar.no/en/people/jean.charles.gallet]
+  CREATOR_URL: [www.mn.uio.no/geo/english/people/aca/geohyd/simonfi/index.html,www.npolar.no/en/people/pierre.marie.lefeuvre, www.npolar.no/en/people/jean.charles.gallet]
   CREATOR_TYPE: [person, person, person]
   PUBLISHER: Norwegian Polar Institute
   PUBLISHER_EMAIL: jean.charles.gallet@npolar.no
@@ -275,7 +275,7 @@ ACDD:
   ACKNOWLEDGEMENT: "The Hive WSN kit development is supported by the eInfrastructure hub UiO Hive, and implemented to collect data on the archipelago of Svalbard in collaboration with the Norwegian Polar Institute. Additional support from SIOS."
   REFERENCES: https://hive-wireless-sensor-network.readthedocs.io/en/latest/source/hardware.html
   LICENSE: https://spdx.org/licenses/CC-BY-NC-4.0.html (CC-BY-NC-4.0)
-  PROCESSING_LEVEL: 1.0
+  PRODUCT_VERSION: 1.0
   ACTIVITY_TYPE: In Situ Ice-based station
   OPERATIONAL_STATUS: Scientific
 

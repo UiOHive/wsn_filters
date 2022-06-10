@@ -4,20 +4,180 @@ network:
   owner: NPI
   date_installation: 2021-04-01
   date_update: 2022-06-10
-  description: WSN network on the Kongsvegen glacier in Svalbard
+  description: Wireless Sensor Network on the Kongsvegen glacier in Svalbard
   country: Svalbard
 
 node:
-  # List of nodes
+# List of nodes
+#---------------------------------------------------------
+  - id: sw-200
+    name: KNG9
+    operational: True
+    date_installation: 2019-04-06 15:50:00
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 465969
+      northing: 8742024
+      elevation: 727
+      date: 2021-05-01
+    snow:
+      date: [ 2021-05-01 ]
+      dist_to_sensor: [ 1600 ]
+      depth: [ 2100 ]
+      year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
+    version:
+#---------- 2019 ----------
+      - date_start: 2019-04-06 15:50:00
+        date_end: 2021-05-01 16:49:18 
+        version: 1
+        QC_done: False
+        data_sios: 
+        sensor: 
+        config: 
+          adress: 200
+          run_system:
+          run_sensor:
+          destination:
+          lora_mode:
+        data: [time, frame, type, remote_addr, bat, acc_x, acc_y, acc_z, bme_tc, ds1820, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mb_distance, mlx_ambient, vl_distance, tmp_temperature, received]
+        note:
+#---------- 2021 ----------
+      - date_start: 2021-05-01 16:49:18
+        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        version: 2
+        QC_done: False
+        data_sios:
+        sensor:
+        config: 
+          adress: 200
+          run_system: bat=10 gps=12:00 acc=10 lan=1:00
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
+          destination: 2
+          lora_mode: 6
+        data: [time, frame, received, type, bat, acc_x, acc_y, acc_z, bme_tc, sht_tc, bme_hum, sht_hum, bme_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, remote_addr, int_tc, int_hum, int_pres, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version:
+        QC_done: False
+        data_sios:
+        sensor: 
+        config:
+          adress:
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
+  - id: sw-205
+    name: KNG8
+    operational: True
+    date_installation: 2021-05-01 16:07:48
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 463765
+      northing: 8743256
+      elevation: 659
+      date: 2021-05-01
+    snow:
+      date: [ 2021-05-01 ]
+      dist_to_sensor: [ 1960 ]
+      depth: [ 2080 ]
+      year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
+    version:
+#---------- 2021 ----------
+      - date_start: 2021-05-01 16:07:48
+        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        version: 1
+        QC_done: False
+        data_sios:
+        sensor:
+        config: 
+          adress: 205
+          run_system: 
+          run_sensor:
+          destination:
+          lora_mode:
+        data: [time, frame, received, type, remote_addr, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, ds2_dir, int_hum, bme_pres, ds2_gust, ds2_temp, int_pres, ds2_speed, ds2_zonal, mlx_object, mlx_ambient, vl_distance, ds2_meridional, tmp_temperature, mb_distance]
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version:
+        QC_done: False
+        data_sios:
+        sensor: 
+        config:
+          adress:
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
+  - id: sw-210
+    name: KNG7
+    operational: True
+    date_installation: 2021-04-29 15:08:38
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 461635
+      northing: 8744663
+      elevation: 590
+      date: 2021-04-29
+    snow:
+      date: [ 2021-04-29 ]
+      dist_to_sensor: [ 1570 ]
+      depth: [ 920 ]
+      year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
+    version:
+#---------- 2021 ----------
+      - date_start: 2021-04-29 15:08:38
+        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        version: 2
+        QC_done: False
+        data_sios: [mb_distance, wind_dir, wind_speed]
+        sensor: [bme_int, mb, atmos]
+        config:
+          adress: 210
+          run_system: bat=10 gps=12:00 acc=10 lan=1:00
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
+          destination: 2 #vegvakt
+          lora_mode: 6
+        data: [time, frame, received, type, remote_addr, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version:
+        QC_done: False
+        data_sios:
+        sensor: 
+        config:
+          adress:
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
   - id: sw-001
     name: KNG6
     operational: True
-    date_installation: 2019-04-11 00:00:00
+    date_installation: 2019-04-06 15:00:00 #2019-04-11 00:00:00
     meteoio_ini_template: template_meteoio_wsn.ini
     location:
       epsg: 32633
       easting: 459771
-      northing: 8746171
+      northing: 8746172
       elevation: 530
       date: 2021-04-29
     snow:
@@ -26,7 +186,23 @@ node:
       depth: [ 1370, 0, 1440 ]
       year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
     version:
-      - date_start: 2019-04-11 00:00:00
+#---------- 2019 ----------
+      - date_start: 2019-04-06 15:00:00
+        date_end: 2021-04-29 12:57:44
+        version: 1
+        QC_done: False
+        data_sios: 
+        sensor: 
+        config: 
+          adress: 
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mb_distance, vl_distance, tmp_temperature, ds1820, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object, mlx_ambient, received, momsn, iridium_cep, iridium_latitude, iridium_longitude]
+        note:
+#---------- 2021 ----------
+      - date_start: 2021-04-29 12:57:44
         date_end: 2022-05-01 00:00:00 #to verify
         version: 2
         QC_done: False
@@ -39,110 +215,385 @@ node:
           destination: 2
           lora_mode: 6
         data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mb_distance, vl_distance, tmp_temperature, ds1820, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object, mlx_ambient, received, momsn, iridium_cep, iridium_latitude, iridium_longitude]
-        
-        
-  - id: sw-210
-    name: KNG7
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version: 2
+        QC_done: False
+        data_sios: 
+        sensor: 
+        config:
+          adress: 215
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
+  - id: sw-220
+    name: KNG6S
     operational: True
-    date_installation: 
+    date_installation: 2019-04-06 16:36:00
     meteoio_ini_template: template_meteoio_wsn.ini
     location:
       epsg: 32633
-      easting: 
-      northing: 
-      elevation: 
-      date: 
+      easting: 457647
+      northing: 8744819
+      elevation: 541
+      date: 2021-04-29
     snow:
-      date: 
-      dist_to_sensor: 
-      depth: 
-      year_hydro: 
+      date: [ 2021-04-29 ]
+      dist_to_sensor: [ 520 ]
+      depth: [ 1400 ]
+      year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
     version:
-      - date_start: 2019-04-11 00:00:00
-        date_end: 2022-05-01 00:00:00 #to verify
+#---------- 2019 ----------
+      - date_start: 2019-04-06 16:36:00
+        date_end: 2021-04-29 14:00:21
+        version: 1
+        QC_done: False
+        data_sios: 
+        sensor: 
+        config: 
+          adress: 
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data: [time, frame, type, wind_x, wind_y, wind_dir, wind_gust, wind_temp, wind_speed, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mb_distance, mlx_ambient, vl_distance, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        note:
+#---------- 2021 ----------
+      - date_start: 2021-04-29 14:00:21
+        date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         QC_done: False
-        data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
-        sensor: [bme_int, mb, atmos, qtpy]
-        config:
-          adress: 210
-          run_system: bat=10 gps=12:00 acc=10 lan=30
+        data_sios:
+        sensor:
+        config: 
+          adress: 220
+          run_system: bat=10 gps=12:00 acc=10 lan=1:00
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
           destination: 2
           lora_mode: 6
-        data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mb_distance, vl_distance, tmp_temperature, ds1820, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object, mlx_ambient, received, momsn, iridium_cep, iridium_latitude, iridium_longitude]
-      - date_start: 2022-05-01 00:00:00 #TODO
-        date_end: 2100-01-01 00:00:00 #TODO
+        data: [time, bat, frame, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, wind_dir, wind_gust, wind_temp, mlx_object, wind_speed, mlx_ambient, vl_distance, tmp_temperature, mb_distance, received, remote_addr, sht_tc, sht_hum, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, vcnl_white, veml_white, channel_nir, channel_clear, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version:
+        QC_done: False
+        data_sios:
+        sensor: 
+        config:
+          adress:
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
+  - id: sw-225
+    name: KNG6N
+    operational: True
+    date_installation: 2021-05-01 16:00:00 #2021-04-29 14:49:09
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 460416
+      northing: 8748123
+      elevation: 564
+      date: 2021-04-29
+    snow:
+      date: [ 2021-04-29 ]
+      dist_to_sensor: [ 540 ]
+      depth: [ 1470 ]
+      year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
+    version:
+#---------- 2021 ----------
+      - date_start: 2021-05-01 16:00:00 #2021-04-29 14:49:09
+        date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         QC_done: False
-        data_sios: [mb_distance, wind_dir, wind_speed]
-        sensor: [bme_int, mb, atmos]
-        config:
-          adress: 210
-          run_system: bat=10 gps=12:00 acc=10 lan=10
-          run_sensor: bme_int=10 mb=10 atmos=10
-          destination: 2 #vegvakt
+        data_sios:
+        sensor:
+        config: 
+          adress: 225
+          run_system: bat=10 gps=12:00 acc=10 lan=1:00
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
+          destination: 0
           lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, int_tc, wind_x, wind_y, int_hum, int_pres, wind_dir, wind_gust, wind_temp, wind_speed, mb_distance, remote_addr, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        data: [time, frame, received, type, remote_addr, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version:
+        QC_done: False
+        data_sios:
+        sensor: 
+        config:
+          adress:
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
+  - id: sw-230
+    name: SIDEVEGEN
+    operational: True
+    date_installation: 2019-04-06 15:50:00
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 456707
+      northing: 8744420
+      elevation: 505
+      date: 2021-04-29
+    snow:
+      date: [ 2021-04-29 ]
+      dist_to_sensor: [ 510 ]
+      depth: [ 1870 ]
+      year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
+    version:
+#---------- 2019 ----------
+      - date_start: 2019-04-06 15:50:00
+        date_end: 2021-04-29 13:32:23
+        version: 1
+        QC_done: False
+        data_sios: 
+        sensor: 
+        config: 
+          adress: 
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mb_distance, mlx_ambient, vl_distance, tmp_temperature]
+        note:
+#---------- 2021 ----------
+      - date_start: 2021-04-29 13:32:23
+        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        version: 2
+        QC_done: False
+        data_sios:
+        sensor:
+        config: 
+          adress: 230
+          run_system: bat=10 gps=12:00 acc=10 lan=1:00
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
+          destination: 0
+          lora_mode: 6
+        data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mlx_ambient, vl_distance, tmp_temperature, mb_distance, received, remote_addr, sht_tc, wind_x, wind_y, sht_hum, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, vcnl_white, veml_white, wind_speed, channel_nir, channel_clear, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version:
+        QC_done: False
+        data_sios:
+        sensor: 
+        config:
+          adress:
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
+  - id: sw-235
+    name: KNG5
+    operational: True
+    date_installation: 2021-04-29 11:31:24
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 457820
+      northing: 8747563
+      elevation: 464
+      date: 2021-04-29
+    snow:
+      date: [ 2021-04-29 ]
+      dist_to_sensor: [ 180 ]
+      depth: [ 1250 ]
+      year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
+    version:
+#---------- 2021 ----------
+      - date_start: 2021-04-29 11:31:24
+        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        version: 1
+        QC_done: False
+        data_sios:
+        sensor:
+        config: 
+          adress: 235
+          run_system: bat=10 gps=12:00 acc=10 lan=1:00
+          run_sensor: bme_int=10 mb=10 bme=10 mlx=10 tmp102=10 atmos=10
+          destination: 0
+          lora_mode: 6
+        data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, wind_dir, wind_gust, wind_temp, wind_speed, tmp_temperature, mb_distance, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object, mlx_ambient]
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version:
+        QC_done: False
+        data_sios:
+        sensor: 
+        config:
+          adress:
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
+  - id: sw-240
+    name: KNG4
+    operational: True
+    date_installation: 2019-04-07 18:20:00
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 455727
+      northing: 8748760
+      elevation: 394
+      date: 2021-04-29
+    snow:
+      date: [ 2021-04-29 ]
+      dist_to_sensor: [ 240 ]
+      depth: [ 1210 ]
+      year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
+    version:
+#---------- 2019 ----------
+      - date_start: 2019-04-07 18:20:00
+        date_end: 2021-04-29 10:47:58
+        version: 
+        QC_done: False
+        data_sios: 
+        sensor: 
+        config: 
+          adress: 
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mb_distance, mlx_ambient, vl_distance, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        note:
+#---------- 2021 ----------
+      - date_start: 2021-04-29 10:47:58
+        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        version: 2
+        QC_done: False
+        data_sios:
+        sensor:
+        config: 
+          adress: 240
+          run_system: bat=10 gps=12:00 acc=10 lan=1:00
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
+          destination: 0
+          lora_mode: 6
+        data: [time, frame, received, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, remote_addr, altitude, latitude, longitude, gps_accuracy, gps_satellites, wind_x, wind_y, wind_dir, wind_gust, wind_temp, wind_speed]
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version:
+        QC_done: False
+        data_sios:
+        sensor: 
+        config:
+          adress:
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
+  - id: sw-250
+    name: SETEVATNET
+    operational: True
+    date_installation: 2021-05-01 18:06:43
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 449154
+      northing: 8750764
+      elevation: 184
+      date: 2021-05-05
+    snow:
+      date: [ 2021-05-05 ]
+      dist_to_sensor: [ 510 ]
+      depth: [ 900 ]
+      year_hydro: [ 2020-09-01, 2021-09-01, 2022-09-01 ]
+    version:
+#---------- 2021 ----------
+      - date_start: 2021-05-01 18:06:43
+        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        version: 1
+        QC_done: False
+        data_sios:
+        sensor:
+        config: 
+          adress: 250
+          run_system: bat=10 gps=12:00 acc=10 lan=1:00
+          run_sensor: sdi_ds2=10 bme_int=10 mb=10 bme=10 mlx=10 tmp102=10
+          destination: 0
+          lora_mode: 6
+        data: [time, frame, received, type, remote_addr, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, ds2_dir, int_hum, bme_pres, ds2_gust, ds2_temp, int_pres, ds2_speed, ds2_zonal, mlx_object, mb_distance, mlx_ambient, ds2_meridional, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        note:
+#---------- 2022 ----------
+      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2030-01-01 00:00:00 
+        version:
+        QC_done: False
+        data_sios:
+        sensor: 
+        config:
+          adress:
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data:
+        note:
+#---------------------------------------------------------
 
-
-        
-#  - id: sw-200
-#    name: KNG9
-#    operational: False
-#    version:
-#      - date_start: 2019/01/01
-#        date_end: 2020/01/01
-#    location:
-#      epsg: 32633
-#      northing: 8742023.89
-#      easting: 465968.58
-#
-#  - id: sw-205
-#    name: KNG8
-#    operational: False
-#    version:
-#      - date_start: 2019/01/01
-#        date_end: 2020/01/01
-#    location:
-#      epsg: 32633
-#      northing: 8743256.31
-#      easting: 463765.02
 
 ACDD:
   WRITE: TRUE
   CREATOR: [Simon Filhol, Pierre Marie Lefeuvre, Jean-Charles Gallet]
   CREATOR_EMAIL: [simon.filhol@geo.uio.no, pierre.lefeuvre@npolar.no, jean.charles.gallet@npolar.no]
   CREATOR_INSTITUTION: [University of Oslo, Norwegian Polar Institute, Norwegian Polar Institute]
-  CREATOR_URL: [https://www.mn.uio.no/geo/english/people/aca/geohyd/simonfi/index.html, https://www.npolar.no/en/people/pierre.marie.lefeuvre, https://www.npolar.no/en/people/jean.charles.gallet]
+  CREATOR_URL: [www.mn.uio.no/geo/english/people/aca/geohyd/simonfi/index.html,www.npolar.no/en/people/pierre.marie.lefeuvre, www.npolar.no/en/people/jean.charles.gallet]
   CREATOR_TYPE: [person, person, person]
   PUBLISHER: Norwegian Polar Institute
   PUBLISHER_EMAIL: jean.charles.gallet@npolar.no
   PUBLISHER_URL: https://www.npolar.no/en 
   PUBLISHER_TYPE: institute
   INSTITUTION: Norwegian Polar Institute
-  #KEYWORDS: [9315 Arctic region, 0720 Glaciers, 0736 Snow, 1631 Land/atmosphere interactions, 3349 Polar meteorology]
-  #KEYWORDS_VOCABULARY: AGU
-  #KEYWORDS: [GCMDLOC:ARCTIC d40d9651-aa19-4b2c-9764-7371bb64b9a7, GCMDSK:GLACIERS 68eed887-8008-4352-b420-949457ab59ab, GCMDSK:SNOW/ICE aa35a52f-e3d9-41bd-abd2-ec7e1a8101d1, GCMDSK:SNOW ENERGY BALANCE a3520db9-7bed-4f55-a9f6-028d52af6091, GCMDSK:SNOW DEPTH 47bc8942-6fdd-4173-bf38-209e933d843f]
   KEYWORDS: [GCMDLOC:GEOGRAPHIC REGION>ARCTIC:d40d9651-aa19-4b2c-9764-7371bb64b9a7, GCMDSK:EARTH SCIENCE>CRYOSPHERE>GLACIERS/ICE SHEETS>GLACIERS:68eed887-8008-4352-b420-949457ab59ab, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE:aa35a52f-e3d9-41bd-abd2-ec7e1a8101d1, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE>SNOW ENERGY BALANCE:a3520db9-7bed-4f55-a9f6-028d52af6091, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE>SNOW DEPTH:47bc8942-6fdd-4173-bf38-209e933d843f]
   KEYWORDS_VOCABULARY: [GCMDSK:GCMD Science Keywords:https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords, GCMDLOC:GCMD Locations:https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/locations]
-  TITLE: Wireless sensor network of automatic weather stations at the glacier Kongsvegen in Svalbard
+  TITLE: Wireless sensor network of automatic weather stations at the glacier Midtre Lovenbreen in Svalbard
   PROJECT: [Hive Wireless Sensor Network (Hive WSN), SIOS Svalbard Integrated Arctic Earth Observing System (SIOS InfraNOR)]
-  #PROGRAM: SIOS Svalbard Integrated Arctic Earth Observing System
   SOURCE: Automatic weather station
   ID: #DOI
   NAMING_AUTHORITY: Norwegian Polar Institute
   PROCESSING_LEVEL: filtered and not modelled
   SUMMARY: "The Hive Wireless sensor network project designed and assembled automatic weather stations that are currently installed at Kongsvegen glacier in Svalbard and records near surface meteorological variables: air temperature, relative humidity, air pressure, snow height, wind, surface skin temperature... The HiveWSN kit consists of: 1) a brain box containing the power system, the microcontroller, the communication system and the connectivity to the sensors, 2) A set of sensors either commercially available or custom built at the Department of Geosciences at UiO as part of the UiO Hive project. The kit is autonomous and packaged as a beam that can be installed on simple mast. Currently, there are two versions of the WSN system: v1 from 2019, and v2 from 2021. Both are based on the board Wasmpote v15 which handle power, communication, and data brokerage. The firmware running all instances has been written as part of the project UiO Hive, and include a set of tools described on the HiveWSN project website: https://www.mn.uio.no/geo/english/research/projects/hive. Important note: the height of the sensor to the snow/ice surface is not corrected for variations in surface deposition or melt over time. The sensor box is fixed to a stake drilled into the snow/ice."
-  #COMMENT: "Height above the snow/ice surface varies over time as the sensor box is attached to a stake drilled into the snow/ice"
   ACKNOWLEDGEMENT: "The Hive WSN kit development is supported by the eInfrastructure hub UiO Hive, and implemented to collect data on the archipelago of Svalbard in collaboration with the Norwegian Polar Institute. Additional support from SIOS."
-  #METADATA_LINK: https://www.mn.uio.no/geo/english/research/projects/hive
   REFERENCES: https://hive-wireless-sensor-network.readthedocs.io/en/latest/source/hardware.html
   LICENSE: https://spdx.org/licenses/CC-BY-NC-4.0.html (CC-BY-NC-4.0)
-  PROCESSING_LEVEL: 1.0
+  PRODUCT_VERSION: 1.0
   ACTIVITY_TYPE: In Situ Ice-based station
   OPERATIONAL_STATUS: Scientific
 
 # ===========
 # YAML format: https://yaml.org/
-
