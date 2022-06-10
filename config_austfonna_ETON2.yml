@@ -1,0 +1,58 @@
+# Austfonna ETON2 station
+network:
+  name: Austfonna
+  owner: UiO
+  date_installation: 2004-04-21
+  date_update: 2022-04-04
+  description: Weather stations on Austfonna. Currently only for ETON2 station on Etonbreen
+  country: Svalbard
+
+node:
+  # List of nodes
+  - id: eton-2
+    name: ETON 2
+    operational: True
+    date_installation: 2004-04-21 16:00:00
+    meteoio_ini_template: template_meteoio_austfonna.ini
+    location:
+      epsg: 25833  #(ETRS89 UTM 33N)
+      easting: 647148.25
+      northing: 8861238.33
+      elevation: 360
+      date: 2004-04-21
+    version:
+    - date_start: 2004-04-21 16:00:00
+      date_end: 2021-09-14 00:00:00
+      QC_done: False
+      data_sios: [TA, HS, RH, DW, VW, RSWR, ISWR, ILWR, TSS, P]
+
+ACDD:
+  WRITE: TRUE
+  CREATOR: [Thomas V. Schuler, Simon Filhol]
+  CREATOR_EMAIL: [t.v.schuler@geo.uio.no, simon.filhol@geo.uio.no]
+  CREATOR_INSTITUTION: [University of Oslo, University of Oslo]
+  CREATOR_URL: [https://www.mn.uio.no/geo/english/people/aca/geohyd/thomasc/, https://www.mn.uio.no/geo/english/people/aca/geohyd/simonfi/index.html]
+  CREATOR_TYPE: [person, person]
+  PUBLISHER: University of Oslo
+  PUBLISHER_EMAIL: t.v.schuler@geo.uio.no
+  PUBLISHER_URL: https://www.mn.uio.no
+  PUBLISHER_TYPE: university
+  INSTITUTION: University of Oslo
+  KEYWORDS: [GCMDLOC:GEOGRAPHIC REGION>ARCTIC:d40d9651-aa19-4b2c-9764-7371bb64b9a7, GCMDSK:EARTH SCIENCE>CRYOSPHERE>GLACIERS/ICE SHEETS>GLACIERS:68eed887-8008-4352-b420-949457ab59ab, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE:aa35a52f-e3d9-41bd-abd2-ec7e1a8101d1, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE>SNOW ENERGY BALANCE:a3520db9-7bed-4f55-a9f6-028d52af6091, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE>SNOW DEPTH:47bc8942-6fdd-4173-bf38-209e933d843f]
+  KEYWORDS_VOCABULARY: [GCMDSK:GCMD Science Keywords:https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords, GCMDLOC:GCMD Locations:https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/locations]
+  TITLE: Automatic weather station at Austfonna ice cap in Svalbard
+  PROJECT: [SIOS Svalbard Integrated Arctic Earth Observing System (SIOS InfraNOR)]
+  SOURCE: Automatic weather station
+  ID: #DOI
+  NAMING_AUTHORITY: University of Oslo
+  PROCESSING_LEVEL: filtered and not modelled
+  SUMMARY: Automatic weather station (AWS) on Etonbreen glacier, an outlet from the Austfonna ice cap in North-East Svalbard. The AWS is located at approx 360 m a.s.l. near the long term equilibrium line altitude. The AWS records variables needed for an energy balance assessment. The AWS records Air Temperature, Relative Humidity, Wind Direction and Speed, Air Pressure, Snow Height, Longwave and Shortwave radiations. Data are transferred by Iridium. The extended AWS is the same type of station with heated and ventilated radiation in addition.
+  ACKNOWLEDGEMENT: Installation and maintenance of the weather station has been supported by funding from the European Union 5th Framework Programme through the project SPICE-Space borne measurements of Arctic Glaciers and implications for Sea Level (grant number EUK2-CT-2002-00152), the CryoSat calibration and validation experiment (CryoVEX) coordinated by the European Space Agency, the European Union 7th Framework Programme through the ice2sea project (grant number 226375), the Norwegian Research Council through the IPY-project Glaciodyn, the Nordic Centre of Excellence Stability and Variations of Arctic Land Ice (SVALI), funded by the Nordic Top-level Research Initiative. Since 2018, the AWS is supported by the Norwegian Research Council as part of the SIOS infrastructure (infraNor instrument n.69).
+  REFERENCES: "Schuler, T.V., Dunse, T., Ostby, T.I. and Hagen, J.O. (2014), Meteorological conditions on an Arctic ice cap - 8 years of automatic weather station data from Austfonna, Svalbard. Int. J. Climatol., 34: 2047-2058. doi.org/10.1002/joc.3821"
+  LICENSE: https://spdx.org/licenses/CC-BY-NC-4.0.html (CC-BY-NC-4.0)
+  PROCESSING_LEVEL: 1.0
+  ACTIVITY_TYPE: In Situ Ice-based station
+  OPERATIONAL_STATUS: Scientific
+
+# ===========
+# YAML format: https://yaml.org/
