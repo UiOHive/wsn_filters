@@ -197,7 +197,7 @@ if __name__ == "__main__":
                     shutil.copyfile(fname_ini,'io.ini')
                     logging.info('---> Save meteoIO configurations and make io.ini file')
 
-                    # run MeteoIO
+                    # run MeteoIO (need to alias data_converter)
                     sampling_rate=10 # in minutes
                     subprocess.run(['data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),
                                                                                               format(date_end,"%Y-%m-%dT%H:%M:%S"),

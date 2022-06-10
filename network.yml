@@ -27,7 +27,7 @@ node:
       year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-01, 2022-09-01 ]
     version:
       - date_start: 2019-04-11 00:00:00
-        date_end: 2022-01-01 00:00:00
+        date_end: 2022-05-01 00:00:00 #to verify
         version: 2
         QC_done: False
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
@@ -39,15 +39,82 @@ node:
           destination: 2
           lora_mode: 6
         data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mb_distance, vl_distance, tmp_temperature, ds1820, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object, mlx_ambient, received, momsn, iridium_cep, iridium_latitude, iridium_longitude]
+        
+        
+  - id: sw-210
+    name: KNG7
+    operational: True
+    date_installation: 
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 
+      northing: 
+      elevation: 
+      date: 
+    snow:
+      date: 
+      dist_to_sensor: 
+      depth: 
+      year_hydro: 
+    version:
+      - date_start: 2019-04-11 00:00:00
+        date_end: 2022-05-01 00:00:00 #to verify
+        version: 2
+        QC_done: False
+        data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
+        sensor: [bme_int, mb, atmos, qtpy]
+        config:
+          adress: 210
+          run_system: bat=10 gps=12:00 acc=10 lan=30
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
+          destination: 2
+          lora_mode: 6
+        data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mb_distance, vl_distance, tmp_temperature, ds1820, altitude, latitude, longitude, gps_accuracy, gps_satellites, mlx_object, mlx_ambient, received, momsn, iridium_cep, iridium_latitude, iridium_longitude]
+      - date_start: 2022-05-01 00:00:00 #TODO
+        date_end: 2100-01-01 00:00:00 #TODO
+        version: 2
+        QC_done: False
+        data_sios: [mb_distance, wind_dir, wind_speed]
+        sensor: [bme_int, mb, atmos]
+        config:
+          adress: 210
+          run_system: bat=10 gps=12:00 acc=10 lan=10
+          run_sensor: bme_int=10 mb=10 atmos=10
+          destination: 2 #vegvakt
+          lora_mode: 6
+        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, int_tc, wind_x, wind_y, int_hum, int_pres, wind_dir, wind_gust, wind_temp, wind_speed, mb_distance, remote_addr, altitude, latitude, longitude, gps_accuracy, gps_satellites]
 
-
-#    version_QC:
-#      - date_start: 2019/01/01
-#       date_end: 2021/01/01
-#        sensor: [ tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed ]
-#        QC_done: False
-
-
+  - id: sw-
+    name: KNG
+    operational: True
+    date_installation: 
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 
+      northing: 
+      elevation: 
+      date: 
+    snow:
+      date: 
+      dist_to_sensor: 
+      depth: 
+      year_hydro: 
+    version:
+      - date_start: 
+        date_end: 
+        version: 
+        QC_done: 
+        data_sios: 
+        config:
+          adress: 
+          run_system: 
+          run_sensor:
+          destination:
+          lora_mode:
+        data:
+        
 #  - id: sw-200
 #    name: KNG9
 #    operational: False

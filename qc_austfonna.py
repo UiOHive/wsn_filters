@@ -107,8 +107,6 @@ if __name__ == "__main__":
                     config_ini = ConfigObj(fname_ini)
 
                     # [Input]
-                    config_ini['Input']['METEOPATH']='data'
-                    #config_ini['Input']['METEOFILE']='{}.csv'.format(fname)
                     config_ini['Input']['STATION1']='{}.csv'.format(fname) 
                     config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
                     config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
@@ -119,13 +117,12 @@ if __name__ == "__main__":
                                                                           node['location']['northing'],
                                                                           node['location']['elevation'])
                     # [Output]
-                    config_ini['Output']['METEOPATH']='data_qc'
-                    config_ini['Output']['NC_SINGLE_FILE']='FALSE'
                     config_ini['Output']['METEOFILE']='{}.nc'.format(fname)
                     config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
                     config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])
                     config_ini['Output']['NC_ID']=node['id']
                     config_ini['Output']['ACDD_CREATOR']=conf['ACDD']['CREATOR']
+                    
                     # Add ACDD values
                     for ACDD,value in conf['ACDD'].items():
                         if not ACDD=='WRITE':
