@@ -7,8 +7,8 @@ network:
   description: Wireless Sensor Network on the Midtre Lovenbreen glacier in Svalbard
   country: Svalbard
 
-node:
 # List of nodes
+node:
 #---------------------------------------------------------
   - id: sw-110
     name: MLB3
@@ -31,6 +31,7 @@ node:
       - date_start: 2021-04-26 14:52:17
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
+        commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
@@ -46,15 +47,16 @@ node:
       - date_start: 2022-05-01 00:00:00 #TO VERIFY
         date_end: 2030-01-01 00:00:00 
         version: 2
+        commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_done: False
         data_sios:
         sensor: 
         config:
           adress: 110
-          run_system: 
-          run_sensor: 
-          destination: 
-          lora_mode: 
+          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
+          destination: 20 #corbel
+          lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note:
 #---------------------------------------------------------
@@ -78,7 +80,8 @@ node:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:29:03
         date_end: 2022-05-01 00:00:00 #TO VERIFY
-        version: 2
+        version: 2 
+        commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
@@ -93,16 +96,17 @@ node:
 #---------- 2022 ----------
       - date_start: 2022-05-01 00:00:00 #TO VERIFY
         date_end: 2030-01-01 00:00:00 
-        version: 2
+        version: 2 
+        commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_done: False
         data_sios:
         sensor: 
         config:
           adress: 120
-          run_system:
-          run_sensor: 
-          destination: 
-          lora_mode: 
+          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
+          destination: 20 #corbel
+          lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note:
 #---------------------------------------------------------
@@ -126,7 +130,8 @@ node:
 #---------- 2021 ----------
       - date_start: 2021-04-27 08:03:41
         date_end: 2022-05-01 00:00:00 #TO VERIFY
-        version: 1
+        version: 1 
+        commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
         data_sios: [tmp_temperature, mb_distance, mlx_object]
         sensor: [bme_int, mb, mlx, tmp102]
@@ -141,7 +146,8 @@ node:
 #---------- 2022 ----------
       - date_start: 2022-05-01 00:00:00 #TO VERIFY
         date_end: 2030-01-01 00:00:00 
-        version: 1
+        version: 1 
+        commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_done: False
         data_sios:
         sensor: 
@@ -174,7 +180,8 @@ node:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:07:09
         date_end: 2022-05-01 00:00:00 #TO VERIFY
-        version: 2
+        version: 2 
+        commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy]
@@ -189,7 +196,8 @@ node:
 #---------- 2022 ----------
       - date_start: 2022-05-01 00:00:00 #TO VERIFY
         date_end: 2030-01-01 00:00:00 
-        version: 2
+        version: 2 
+        commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_done: False
         data_sios:
         sensor:
@@ -222,7 +230,8 @@ node:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:22:56
         date_end: 2022-05-01 00:00:00 #TO VERIFY
-        version: 2
+        version: 2 
+        commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
@@ -237,7 +246,8 @@ node:
 #---------- 2022 ----------
       - date_start: 2022-05-01 00:00:00 #TO VERIFY
         date_end: 2030-01-01 00:00:00 
-        version: 2
+        version: 2 
+        commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_done: False
         data_sios:
         sensor:
@@ -245,9 +255,94 @@ node:
           adress: 140
           run_system: 
           run_sensor:
-          destination:
+          destination: 
           lora_mode:
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
+        note:
+#---------------------------------------------------------
+  - id: sw-corbel
+    name: corbel
+    operational: True
+    date_installation: 
+    meteoio_ini_template: template_meteoio_wsn.ini
+    location:
+      epsg: 32633
+      easting: 
+      northing: 
+      elevation: 
+      date: 
+    snow:
+      date: [  ]
+      dist_to_sensor: [  ] 
+      depth: [  ]
+      year_hydro:  [  ]
+    version:
+#---------- 2021 ----------
+      - date_start: 
+        date_end: 
+        version: 1
+        commit: e3313958b542ed0e2dda5b943a53e0d197722355  
+        QC_done: False
+        data_sios: 
+        sensor: 
+        config:
+          adress: 
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data: 
+        note:
+#---------- 2022 ----------
+      - date_start: 
+        date_end: 
+        version: 1
+        commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
+        QC_done: False
+        data_sios:
+        sensor:
+        config:
+          adress: 
+          run_system: 
+          run_sensor:
+          destination: 
+          lora_mode:
+        data:
+        note:
+#---------------------------------------------------------
+template:
+  - id: sw-template
+    name: 
+    operational: 
+    date_installation: 
+    meteoio_ini_template: 
+    location:
+      epsg:
+      easting: 
+      northing: 
+      elevation: 
+      date: 
+    snow:
+      date: [  ]
+      dist_to_sensor: [  ] 
+      depth: [  ]
+      year_hydro:  [  ]
+    version:
+#---------- 2021 ----------
+      - date_start: 
+        date_end: 
+        version: 
+        commit:
+        QC_done: 
+        data_sios: 
+        sensor: 
+        config:
+          adress: 
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data: 
         note:
 #---------------------------------------------------------
 

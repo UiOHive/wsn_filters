@@ -7,8 +7,8 @@ network:
   description: Wireless Sensor Network on the Kongsvegen glacier in Svalbard
   country: Svalbard
 
-node:
 # List of nodes
+node:
 #---------------------------------------------------------
   - id: sw-200
     name: KNG9
@@ -576,7 +576,7 @@ ACDD:
   CREATOR_TYPE: [person, person, person]
   PUBLISHER: Norwegian Polar Institute
   PUBLISHER_EMAIL: jean.charles.gallet@npolar.no
-  PUBLISHER_URL: https://www.npolar.no/en 
+  PUBLISHER_URL: www.npolar.no/en 
   PUBLISHER_TYPE: institute
   INSTITUTION: Norwegian Polar Institute
   KEYWORDS: [GCMDLOC:GEOGRAPHIC REGION>ARCTIC:d40d9651-aa19-4b2c-9764-7371bb64b9a7, GCMDSK:EARTH SCIENCE>CRYOSPHERE>GLACIERS/ICE SHEETS>GLACIERS:68eed887-8008-4352-b420-949457ab59ab, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE:aa35a52f-e3d9-41bd-abd2-ec7e1a8101d1, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE>SNOW ENERGY BALANCE:a3520db9-7bed-4f55-a9f6-028d52af6091, GCMDSK:EARTH SCIENCE>CRYOSPHERE>SNOW/ICE>SNOW DEPTH:47bc8942-6fdd-4173-bf38-209e933d843f]

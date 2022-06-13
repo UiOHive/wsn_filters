@@ -16,10 +16,14 @@ wsn_filters is a process workflow for automatic weather station data that focuse
 The pipeline is designed for weather data from two networks of automatic weather stations installed in Svalbard as described in the [Hive documentation](https://hive-wireless-sensor-network.readthedocs.io/en/latest/). The code is developed to be transferrable to other locations and networks such as the one in Finse, Norway, also maintained by the University of Oslo.
 
 ### Command line usage
-#### Wireless Sensor Network at Kongsvegen and Midtre Lovenbreen
 The pipeline requires the config file as input parameter and can be ran as followed: 
+#### Wireless Sensor Network at Kongsvegen
 ```
 python qc_main.py -nc config_wsn_KNG.yml
+```
+#### Wireless Sensor Network at Midtre Lovenbreen
+```
+python qc_main.py -nc config_wsn_MLB.yml
 ```
 #### AWS at Austfonna
 ```
@@ -78,3 +82,53 @@ You can find a complete description of MeteoIO in:
 - Bavay, M. and Egger, T., "MeteoIO 2.4.2: a preprocessing library for meteorological data", Geosci. Model Dev., 7, 3135-3151, doi:10.5194/gmd-7-3135-2014, 2014 
 and some example applications in: 
 - Bavay, M., Fiddes, J., Fierz, C., Lehning, M., Monti, F. and Egger, T., "The METEOIO pre-processing library for operational applications", In International Snow Science Workshop ISSW, Innsbruck, Austria, 2018.
+
+## YAML metadata field description
+### Network
+```YAML
+network:
+  name: "string" "Name of the network" "Midtre Lovenbreen"
+  owner: "string" "Name of the owner of the nertwork" "NPI"
+  date_installation: "date" "Date of the original installation of the network" "2021-04-01"
+  date_update: "date" "Date of the last maintenance of the network" "2022-05-10"
+  description: "string" "Description of the network" "Wireless Sensor Network on the Midtre Lovenbreen glacier in Svalbard"
+  country: "string" "Country where the network is installed" "Svalbard"
+```
+### List of nodes
+```YAML
+node:
+  - id: "string" "unique id of the node" "sw-110"
+    name: "string" "colloquial name of the node, often associated to known location" "MLB3"
+    operational: "boolean" "True if station is still operational otherwise False" "True"
+    date_installation: "date" "Date of the original installation of the node" "2021-04-18 15:32:09"
+    meteoio_ini_template: "string" "Filename of the template containing meteoIO's preset input/filter parameters" "template_meteoio_wsn.ini"
+    location: 
+      epsg: "integer" "Coordinate reference system in epsg code" "32633"
+      easting: "integer/float" "x coordinate in UTM (rounded to metre) or longitude (in decimal degrees)" "436655"
+      northing: "integer/float" "y coordinate in UTM (rounded to metre) or latitude (in decimal degrees)" "8759315"
+      elevation: "integer/float" "z coordinate (rounded to metre)" "143"
+      date: "date" "Date of the measurement of the node location (in case, the node is moving, i.e. on a glacier)" "2021-04-26"
+    snow:
+      date: "date array" "Date of snow measurements" "[ 2021-04-26 ]"
+      dist_to_sensor: "integer array" "Distance from the node's sensor to the snow surface in millimetre" "[ 1240 ]"
+      depth: "integer array" "Distance from the snow surface to the ground/ice surface in millimetre" "[ 240 ]"
+      year_hydro: "date array" "Date of the end of the hydrological year to set the reference surface  each year (set the zero)" "[ 2020-09-01, 2021-09-01, 2022-09-01 ]"
+    version:
+#---------- 2021 ----------
+      - date_start: "date" "Start date of this node's version" "2021-04-26 14:52:17"
+        date_end: "date" "End date of this node's version" "2022-05-01 00:00:00"
+        version: "integer" "Hardware version of the node" "2"
+        commit: "string" "Software version of the code uploaded to the node" "e3313958b542ed0e2dda5b943a53e0d197722355"
+        QC_done: "boolean" "Set to False if quality controlled has not be completed" "False"
+        data_sios: "string array" "Array of sensor's data name to be quality controlled and published" "[tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]"
+        sensor: "string array" "Array of sensors installed on the node" "[bme_int, mb, atmos, qtpy]"
+        config:
+          address: "integer" "Address of the node" "110"
+          run_system: "string array" "Code to run the node's system" "bat=10 gps=12:00 acc=10 lan=30"
+          run_sensor: "string array" "Code to run the node's sensors" "bme_int=10 mb=10 atmos=10 qtpy=10"
+          destination: "integer" "Destination's address" "2"
+          lora_mode: "integer" "Mode of LoRa communcation" "6"
+        data: "string array" "Array of all data saved by the node -  extracted from the database" "[time, bat, frame, received, type, acc_x, ...]"
+        note: "string" "Description of the node's maintenance or observations" "Stake has been redrilled and station reinstalled ..."
+#---------------------------------------------------------
+```
