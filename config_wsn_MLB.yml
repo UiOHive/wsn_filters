@@ -29,7 +29,7 @@ node:
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 14:52:17
-        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2022-04-01 08:00:00
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
@@ -39,25 +39,25 @@ node:
           adress: 110
           run_system: bat=10 gps=12:00 acc=10 lan=30
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
-          destination: 2
+          destination: 2 #sw-sverdrup
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance]
-        note:
+        note: "Drill for first time."
 #---------- 2022 ----------
-      - date_start: 2022-05-01 00:00:00 #TO VERIFY
-        date_end: 2030-01-01 00:00:00 
+      - date_start: 2022-04-29 11:00:00 
+        date_end: 2030-01-01 00:00:00 #TO VERIFY
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_done: False
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
-        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY
+        sensor: [bme_int, mb, atmos, qtpy]
           adress: 110
           run_system: bat=10 gps=12:00 acc=10 lan=10 #TO VERIFY in LOG
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 #TO VERIFY in LOG
-          destination: 20 #corbel
-          lora_mode: 6 #TO VERIFY in LOG
+          destination: 20 #sw-corbel
+          lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
-        note: 
+        note: "Node placed on a new stake. Re.launched as is. New QtPy firmware"
 #---------------------------------------------------------
   - id: sw-120
     name: MLB5
@@ -78,7 +78,7 @@ node:
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:29:03
-        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2022-03-30 12:00:00
         version: 2 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
@@ -88,26 +88,26 @@ node:
           adress: 120
           run_system: bat=10 gps=4:00 acc=10 lan=1:00
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 
-          destination: 0
+          destination: 0 #find closest node
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, remote_addr, altitude, latitude, longitude, gps_accuracy, gps_satellites]
-        note:
+        note: "Drill for first time."
 #---------- 2022 ----------
-      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+      - date_start: 2022-04-29 10:00:00 
         date_end: 2030-01-01 00:00:00 
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_done: False
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
-        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY
+        sensor: [bme_int, mb, atmos, qtpy]
         config:
           adress: 120
           run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
           destination: 20 #corbel
-          lora_mode: 6 #TO VERIFY in LOG
+          lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
-        note:
+        note: "Station was taken indoor for troobleshooting. Relaunched complete at different height on same stake than previous version. New QtPy firmware"
 #---------------------------------------------------------
   - id: sw-125
     name: MLBB3
@@ -125,10 +125,10 @@ node:
       dist_to_sensor: [ 1130 ]
       depth: [ 2160 ]
       year_hydro: [ 2020-09-01, 2021-09-01, 2022-09-01 ]
-    version:
+    version: 
 #---------- 2021 ----------
       - date_start: 2021-04-27 08:03:41
-        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2022-04-01 00:00:00
         version: 1 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
@@ -138,10 +138,10 @@ node:
           adress: 125
           run_system: bat=10 gps=12:00 acc=10 lan=30 
           run_sensor: bme_int=10 mb=10 mlx=10 tmp102=10
-          destination: 0
+          destination: 0 #find closest node
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, int_tc, int_hum, int_pres, mlx_object, mb_distance, mlx_ambient, tmp_temperature, remote_addr]
-        note:
+        note: "Drill for first time."
 #---------- 2022 ----------
       - date_start: 2022-05-01 00:00:00 #TO VERIFY
         date_end: 2030-01-01 00:00:00 
@@ -154,10 +154,10 @@ node:
           adress: 125
           run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
-          destination: 20 #corbel
-          lora_mode: 6 #TO VERIFY in LOG
+          destination: 20 #sw-corbel
+          lora_mode: 6
         data: [time, frame, received, type]
-        note:
+        note: "Disconnected lagopus board to avoid shorts and compromising I2C line, relaunched as is. New QtPy firmware"
 #---------------------------------------------------------
   - id: sw-130
     name: MLB9
@@ -178,7 +178,7 @@ node:
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:07:09
-        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2022-04-01 09:00:00
         version: 2 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
@@ -188,13 +188,13 @@ node:
           adress: 130
           run_system: bat=10 gps=12:00 acc=10 lan=1:00
           run_sensor: bme_int=10 mb=10 qtpy=10
-          destination: 0
+          destination: 0 #find closest node
           lora_mode: 6
         data: [time, frame, received, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, remote_addr]
-        note:
+        note: "Drill for first time."
 #---------- 2022 ----------
-      - date_start: 2022-05-01 00:00:00 #TO VERIFY
-        date_end: 2030-01-01 00:00:00 
+      - date_start: 2022-04-29 10:00:00
+        date_end: 2030-01-01 00:00:00 #TO VERIFY
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_done: False
@@ -204,10 +204,10 @@ node:
           adress: 130
           run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
           run_sensor: bme_int=10 mb=10 qtpy=10 # to verify in LOG
-          destination: 20 #corbel
-          lora_mode: 6 #TO VERIFY in LOG
+          destination: 20 #sw-corbel
+          lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
-        note:
+        note: "Relaunched with new code commit as is. New QtPy firmware"
 #---------------------------------------------------------
   - id: sw-140
     name: MLB10
@@ -238,12 +238,12 @@ node:
           adress: 140
           run_system: bat=10 gps=12:00 acc=10 lan=1:00
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 
-          destination: 0
+          destination: 0 #find closest node
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, remote_addr, mb_distance]
-        note:
+        note: "Drill for first time."
 #---------- 2022 ----------
-      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+      - date_start: 2022-04-29 09:00:00
         date_end: 2030-01-01 00:00:00 
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
@@ -255,9 +255,9 @@ node:
           run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
           destination: 20 #corbel
-          lora_mode: 6 #TO VERIFY in LOG
+          lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
-        note:
+        note: "Node placed on a new stake as it was by mistake placed on one of the mass balance stake. New QtPy firmware"
 #---------------------------------------------------------
   - id: sw-corbel
     name: corbel
@@ -277,8 +277,8 @@ node:
       year_hydro:  [  ]
     version:
 #---------- 2021 ----------
-      - date_start: 
-        date_end: 
+      - date_start: 2021-04-26 12:22:56
+        date_end: 2022-04-29 08:00:00
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355  
         QC_done: False
@@ -291,10 +291,10 @@ node:
           destination: 2 #TO CHECK
           lora_mode: 6
         data: 
-        note:
+        note: "node attach on pluviometer at the Corbel station. Running MB and Lagopus v1"
 #---------- 2022 ----------
-      - date_start: 
-        date_end: 
+      - date_start: 2022-04-29 09:00:00
+        date_end: 2030-01-01 00:00:00
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_done: False
@@ -307,7 +307,7 @@ node:
           destination: 2
           lora_mode: 6
         data:
-        note:
+        note: "Lagopus disconnected to reduce risk of short that occured on other v1 station"
 #---------------------------------------------------------
 template:
   - id: sw-template
