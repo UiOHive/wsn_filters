@@ -89,10 +89,11 @@ and some example applications in:
 network:
   name: "string" "Name of the network" "Midtre Lovenbreen"
   owner: "string" "Name of the owner of the nertwork" "NPI"
+  country: "string" "Country where the network is installed" "Svalbard"  
+  description: "string" "Description of the network" "Wireless Sensor Network on the Midtre Lovenbreen glacier in Svalbard"
   date_installation: "date" "Date of the original installation of the network" "2021-04-01"
   date_update: "date" "Date of the last maintenance of the network" "2022-05-10"
-  description: "string" "Description of the network" "Wireless Sensor Network on the Midtre Lovenbreen glacier in Svalbard"
-  country: "string" "Country where the network is installed" "Svalbard"
+  year_hydro: "date array" "Date of the end of the hydrological year to set the reference surface  each year (set the zero)" "[ 2020-09-01, 2021-09-01, 2022-09-01 ]"
 ```
 ### List of nodes
 ```YAML
@@ -112,7 +113,6 @@ node:
       date: "date array" "Date of snow measurements" "[ 2021-04-26 ]"
       dist_to_sensor: "integer array" "Distance from the node's sensor to the snow surface in millimetre" "[ 1240 ]"
       depth: "integer array" "Distance from the snow surface to the ground/ice surface in millimetre" "[ 240 ]"
-      year_hydro: "date array" "Date of the end of the hydrological year to set the reference surface  each year (set the zero)" "[ 2020-09-01, 2021-09-01, 2022-09-01 ]"
     version:
 #---------- 2021 ----------
       - date_start: "date" "Start date of this node's version" "2021-04-26 14:52:17"
@@ -131,4 +131,79 @@ node:
         data: "string array" "Array of all data saved by the node -  extracted from the database" "[time, bat, frame, received, type, acc_x, ...]"
         note: "string" "Description of the node's maintenance or observations" "Stake has been redrilled and station reinstalled ..."
 #---------------------------------------------------------
+```
+
+```
+network:
+  name:
+  owner:
+  country:  
+  description:
+  date_installation:
+  date_update:
+  year_hydro:
+  
+node:
+#---------------------------------------------------------
+  - id: sw-template
+    name: 
+    operational: 
+    date_installation: 
+    meteoio_ini_template: 
+    location:
+      epsg:
+      easting: 
+      northing: 
+      elevation: 
+      date: 
+    snow:
+      date: [  ]
+      dist_to_sensor: [  ] 
+      depth: [  ]
+    version:
+#---------- 2021 ----------
+      - date_start: 
+        date_end: 
+        version: 
+        commit:
+        QC_done: 
+        data_sios: 
+        sensor: 
+        config:
+          adress: 
+          run_system: 
+          run_sensor: 
+          destination: 
+          lora_mode: 
+        data: 
+        note:
+#---------------------------------------------------------
+
+ACDD:
+  WRITE:
+  CREATOR:
+  CREATOR_EMAIL:
+  CREATOR_INSTITUTION:
+  CREATOR_URL:
+  CREATOR_TYPE:
+  PUBLISHER:
+  PUBLISHER_EMAIL:
+  PUBLISHER_URL:
+  PUBLISHER_TYPE:
+  INSTITUTION:
+  KEYWORDS:
+  KEYWORDS_VOCABULARY:
+  TITLE: 
+  PROJECT:
+  SOURCE:
+  ID:
+  NAMING_AUTHORITY:
+  PROCESSING_LEVEL:
+  SUMMARY:
+  ACKNOWLEDGEMENT:
+  REFERENCES:
+  LICENSE:
+  PRODUCT_VERSION:
+  ACTIVITY_TYPE:
+  OPERATIONAL_STATUS:
 ```
