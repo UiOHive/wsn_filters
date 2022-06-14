@@ -11,3 +11,5 @@ log/*.log
 # ignore data and old backup file
 *.nc
 io_backup.ini
+
+log_qc_main
