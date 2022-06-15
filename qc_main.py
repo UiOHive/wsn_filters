@@ -73,16 +73,18 @@ def calibration_snow(df,node_snow, date_snow):
 # Dictionary for variables to meteoIO input format    
 dict_corres = {
     'tmp_temperature':['TA',1,273.15], # Air temperature [deg. C -> K]
+    'wind_temp':['TA',1,273.15],       # Air temperature [deg. C -> K]
+    'ds2_temp':['TA',1,273.15],        # Air temperature [deg. C -> K]
     'bme_tc':['TA',1,273.15],          # Air temperature [deg. C -> K]
-    'bme_hum':['RH',0.01,0],            # Relative humidity [% -> 1-0]
-    'sht_hum':['RH',0.01,0],            # Relative humidity [% -> 1-0]
-    'mb_distance':['HS',0.01,0],       # Height of snow [cm -> m]
-    'vl_distance':['HS',0.01,0],       # Height of snow [cm -> m]
-    'bme_pres':['P',1,0],              # Air pressure [Pa]
+    'bme_hum':['RH',0.01,0],           # Relative humidity [% -> 1-0]
+    'sht_hum':['RH',0.01,0],           # Relative humidity [% -> 1-0]
+    'mb_distance':['HS',1,0],          # Height of snow [mm]
+    'vl_distance':['HS',1,0],          # Height of snow [mm]
+    'bme_pres':['P',100,0],            # Air pressure [Pa -> hPa]
     'wind_speed':['VW',1,0],           # Wind velocity [m.s-1]
     'wind_dir':['DW',1,0],             # Wind direction [degree from North]
-    'ds2_speed':['VW',1,0],           # Wind velocity [m.s-1]
-    'ds2_dir':['DW',1,0],             # Wind direction [degree from North]
+    'ds2_speed':['VW',1,0],            # Wind velocity [m.s-1]
+    'ds2_dir':['DW',1,0],              # Wind direction [degree from North]
     'mlx_object':['TSS',1,273.15],     # Temperature of the snow surface [deg. C -> K]
     '':['TSG',1,273.15],               # Temperature of the ground surface [deg. C -> K]
     '':['VW_MAX',1,0]
@@ -130,6 +132,10 @@ if __name__ == "__main__":
             date_end = version['date_end']
             logging.info('---> Version {} to {}'.format(format(date_start,"%Y-%m-%d"), format(date_end,"%Y-%m-%d")))
             
+            # Check if data_sios is empty
+            if version['data_sios']=="NA":
+                continue
+            
             if not version['QC_done']:
                 try:
                     # Query database
@@ -148,8 +154,11 @@ if __name__ == "__main__":
                     del df['time']
 
                     ## Snow depth calibration
-                    logging.info('---> Snow depth calibration')
-                    df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'], conf['network']['year_hydro'])
+                    if "mb_distance" in version['data_sios']:
+                        logging.info('---> Snow depth calibration')
+                        df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'], conf['network']['year_hydro'])
+                    else:
+                        logging.info('---> No snow depth data: skip calibration')
 
                     ## Save to CSV
                     fname = 'aws-{}-{}-{}'.format(node['id'],
@@ -179,7 +188,7 @@ if __name__ == "__main__":
                                                                           node['location']['northing'],
                                                                           node['location']['elevation'])
                     # [Output]
-                    config_ini['Output']['METEOFILE']=fname
+                    config_ini['Output']['METEOFILE']='{}.nc'.format(fname)
                     config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
                     config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])
                     config_ini['Output']['NC_ID']=node['id']

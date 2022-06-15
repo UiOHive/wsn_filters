@@ -48,7 +48,7 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: False
+        QC_done: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
         sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY
         config:
@@ -100,7 +100,7 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: False
+        QC_done: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -136,7 +136,7 @@ node:
         version: 1 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
-        data_sios: [tmp_temperature, mb_distance, mlx_object]
+        data_sios: [tmp_temperature, mlx_object]
         sensor: [bme_int, mb, mlx, tmp102]
         config:
           adress: 125
@@ -147,12 +147,13 @@ node:
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, int_tc, int_hum, int_pres, mlx_object, mb_distance, mlx_ambient, tmp_temperature, remote_addr]
         note:
           - 2021-04-XX: "Drill for first time."
+          - 2022-06-15: "mb_distance did not work in 2021, removed from data_sios list"
 #---------- 2022 ----------
       - date_start: 2022-05-01 00:00:00 #TO VERIFY
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 1 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: False
+        QC_done: True
         data_sios: NA
         sensor: NA
         config:
@@ -205,7 +206,7 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: False
+        QC_done: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object] #TO VERIFY
         sensor: [bme_int, mb, qtpy] #TO VERIFY
         config:
@@ -237,7 +238,7 @@ node:
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:22:56
-        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2022-04-29 09:00:00
         version: 2 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
         QC_done: False
@@ -257,7 +258,7 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: False
+        QC_done: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
         sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
         config:
@@ -293,7 +294,7 @@ node:
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355  
         QC_done: False
-        data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
+        data_sios: [tmp_temperature, bme_hum, bme_pres, mlx_object] #TO CHECK
         sensor: [bme, mb] #TO CHECK
         config:
           adress: corbel #TO CHECK
@@ -304,12 +305,13 @@ node:
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mlx_ambient, tmp_temperature, altitude, latitude, longitude, mb_distance, gps_accuracy, gps_satellites, remote_addr]
         note:
           - 2022-05-XX: "Node fastened to pluviometer tower at the Corbel station. Running mb and lagopus v1"
+          - 2022-06-15: "mb_distance failed to properly measure snow surface height due to reflections form buildings/tower, removed from data_sios list"
 #---------- 2022 ----------
       - date_start: 2022-04-29 09:00:00
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: False
+        QC_done: True
         data_sios: NA
         sensor: NA
         config:
