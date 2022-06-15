@@ -33,17 +33,17 @@ import yaml
 import argparse
 from configobj import ConfigObj
 import logging
+import time
 
 
 #==========  DEFINE FUNCTION  =========
 
-def calibration_snow(df,node_snow):
+def calibration_snow(df,node_snow, date_snow):
     ##########################
     # Snow depth calibration #
     ##########################
     
-    # Extract dates defining a hydrological year (sept. - sept)
-    date_snow = node_snow['year_hydro']
+    # date_snow= Extract dates defining a hydrological year (sept. - sept)
 
     # Compute median value and assign to new column for output
     df = df.apply(lambda x: np.median(np.array(x)))
@@ -75,11 +75,14 @@ dict_corres = {
     'tmp_temperature':['TA',1,273.15], # Air temperature [deg. C -> K]
     'bme_tc':['TA',1,273.15],          # Air temperature [deg. C -> K]
     'bme_hum':['RH',0.01,0],            # Relative humidity [% -> 1-0]
+    'sht_hum':['RH',0.01,0],            # Relative humidity [% -> 1-0]
     'mb_distance':['HS',0.01,0],       # Height of snow [cm -> m]
     'vl_distance':['HS',0.01,0],       # Height of snow [cm -> m]
     'bme_pres':['P',1,0],              # Air pressure [Pa]
     'wind_speed':['VW',1,0],           # Wind velocity [m.s-1]
     'wind_dir':['DW',1,0],             # Wind direction [degree from North]
+    'ds2_speed':['VW',1,0],           # Wind velocity [m.s-1]
+    'ds2_dir':['DW',1,0],             # Wind direction [degree from North]
     'mlx_object':['TSS',1,273.15],     # Temperature of the snow surface [deg. C -> K]
     '':['TSG',1,273.15],               # Temperature of the ground surface [deg. C -> K]
     '':['VW_MAX',1,0]
@@ -88,8 +91,8 @@ dict_corres = {
 #========== Script ============
 if __name__ == "__main__":
     
-        # Log info/debug/error
-    logfile = 'log/qc_austfonna_{}.log'.format(datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
+    # Log info/debug/error
+    logfile = 'log/qc_main_{}.log'.format(datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
     logging.basicConfig(level=logging.DEBUG,
                         format="%(asctime)s %(levelname)s %(threadName)s %(name)s %(message)s",
                         # datefmt='%m-%d %H:%M',
@@ -146,7 +149,7 @@ if __name__ == "__main__":
 
                     ## Snow depth calibration
                     logging.info('---> Snow depth calibration')
-                    df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
+                    df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'], conf['network']['year_hydro'])
 
                     ## Save to CSV
                     fname = 'aws-{}-{}-{}'.format(node['id'],
@@ -199,7 +202,7 @@ if __name__ == "__main__":
                     logging.info('---> command: {}'.format(command))
                     time.sleep(4)
                     subprocess.run([command], shell=True)
-                    logging.info('---> Netcdf output: {}'.format(fname_out))
+                    logging.info('---> Netcdf output: {}'.format(fname))
                     
                 except IOerror:
                     logging.info(e)

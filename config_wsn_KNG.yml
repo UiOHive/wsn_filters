@@ -639,7 +639,7 @@ node:
         data: NA
         note: 
           - 2022-04-30: "SD card formated, clock ok."
-	  - 2022-05-XX: "Disconnected lagopus, drilled new stake, and station moved"
+          - 2022-05-XX: "Disconnected lagopus, drilled new stake, and station moved"
           - 2022-06-14: "Communication failure for the last year - version 1 issue"
 #---------------------------------------------------------
 

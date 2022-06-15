@@ -31,7 +31,6 @@ import yaml
 import argparse
 from configobj import ConfigObj
 import logging
-import datetime
 import time
 
 #==========  DEFINE FUNCTION  =========
