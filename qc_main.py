@@ -78,9 +78,9 @@ dict_corres = {
     'bme_tc':['TA',1,273.15],          # Air temperature [deg. C -> K]
     'bme_hum':['RH',0.01,0],           # Relative humidity [% -> 1-0]
     'sht_hum':['RH',0.01,0],           # Relative humidity [% -> 1-0]
-    'mb_distance':['HS',1,0],          # Height of snow [mm]
-    'vl_distance':['HS',1,0],          # Height of snow [mm]
-    'bme_pres':['P',100,0],            # Air pressure [Pa -> hPa]
+    'mb_distance':['HS',0.001,0],          # Height of snow [mm -> m]
+    'vl_distance':['HS',0.001,0],          # Height of snow [mm -> m]
+    'bme_pres':['P',100,0],            # Air pressure [hPa -> Pa]
     'wind_speed':['VW',1,0],           # Wind velocity [m.s-1]
     'wind_dir':['DW',1,0],             # Wind direction [degree from North]
     'ds2_speed':['VW',1,0],            # Wind velocity [m.s-1]
@@ -159,18 +159,30 @@ if __name__ == "__main__":
                         df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'], conf['network']['year_hydro'])
                     else:
                         logging.info('---> No snow depth data: skip calibration')
-
-                    ## Save to CSV
+                    
+                    ## Handling filenames
                     fname = 'aws-{}-{}-{}'.format(node['id'],
                                               format(date_start,"%Y%m%d"),
                                               format(date_end,"%Y%m%d"))
                     fname_csv = 'data/{}.csv'.format(fname)
+                    fname_out ='{}.nc'.format(fname)
+                    
+                    ## Delete existing files
+                    path_out = 'data_qc/{}'.format(fname_out)
+                    if os.path.exists(path_out):
+                        os.remove(path_out)
+                        logging.info('---> Deleted existing file: {}'.format(path_out))
+                    
+                    ## Save to CSV
                     logging.info('---> Save data output in: {}'.format(fname_csv))
                     df.to_csv(fname_csv)
 
                     ## Save custom ini
                     # filename ini
                     fname_ini = 'ini/{}.ini'.format(fname)
+                    if os.path.exists(fname_ini):
+                        os.remove(fname_ini)
+                        logging.info('---> Deleted existing file: {}'.format(fname_ini))
                     logging.info('---> Copy and fill meteoIO configurations: {}'.format(fname_ini))
 
                     # Copy and load configuration file template for meteoIO
@@ -209,9 +221,9 @@ if __name__ == "__main__":
                     sampling_rate = 10 # in minutes
                     command = 'data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),format(date_end,"%Y-%m-%dT%H:%M:%S"),sampling_rate)
                     logging.info('---> command: {}'.format(command))
-                    time.sleep(4)
+                    #time.sleep(4)
                     subprocess.run([command], shell=True)
-                    logging.info('---> Netcdf output: {}'.format(fname))
+                    logging.info('---> Netcdf output: {}'.format(fname_out))
                     
                 except IOerror:
                     logging.info(e)

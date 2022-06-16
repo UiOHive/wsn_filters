@@ -6,7 +6,7 @@ network:
   description: Wireless Sensor Network on the Midtre Lovenbreen glacier in Svalbard
   date_installation: 2021-04-01
   date_update: 2022-06-10
-  year_hydro: [ 2020-09-01, 2021-09-01, 2022-09-01, 2023-09-01 ]
+  year_hydro: [ 2020-09-01, 2021-09-25, 2022-09-01, 2023-09-01 ]
 
 # List of nodes
 node:
