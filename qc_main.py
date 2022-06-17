@@ -38,35 +38,57 @@ import time
 
 #==========  DEFINE FUNCTION  =========
 
-def calibration_snow(df,node_snow, date_snow):
+def calibration_snow(df,node_snow,year_hydro):
     ##########################
     # Snow depth calibration #
     ##########################
     
-    # date_snow= Extract dates defining a hydrological year (sept. - sept)
+    # Time span
+    date_start = df2.index.min().date()
+    date_end = df2.index.max().date()
+    logging.debug('     Data range: {} - {}'.format(date_start,date_end))
+    
+    # Extract dates defining a hydrological year (sept. - sept)
+    #date_snow=node_snow['year_hydro']
 
     # Compute median value and assign to new column for output
     df = df.apply(lambda x: np.median(np.array(x)))
 
     # loop through hydrological year to calibrate snow depth
-    for d in range(1,len(date_snow)):
+    for d in range(1,len(year_hydro)):
+        
+        logging.debug('     Hydrological year span: {} - {}'.format(year_hydro[d-1],year_hydro[d]))
+        #print('Last melt day: {}'.format(year_hydro[d]))
 
         # Constrain loop to calibrate only period with data
-        if date_snow[d] < df.index.min().date(): break
-        if date_snow[d-1] > df.index.max().date(): break
+        if any(( year_hydro[d] < date_start, year_hydro[d-1] > date_end )):
+            logging.debug('     No data for hydrological year')
+            continue
+
+        # Find calibration parameters matching the hydrological year
+        extract = [(date >= year_hydro[d-1] and date <= year_hydro[d]) for date in node_snow['date']]
+        if not any(extract):
+            logging.debug('     No calibration data for hydrological year')
+            continue
+        date_snow = np.extract(extract,node_snow['date'])
+        dist_to_sensor = np.extract(extract,node_snow['dist_to_sensor'])
+        snow_depth = np.extract(extract,node_snow['depth'])
 
         # Compute distance between sensor and reference surface i.e. ice or last summer surface
-        height_sensor_to_ice = node_snow['dist_to_sensor'][d-1] + node_snow['depth'][d-1]
+        height_sensor_to_ice = dist_to_sensor + snow_depth
+        print('     {} + {} = {}'.format(dist_to_sensor, snow_depth, height_sensor_to_ice))
 
-        logging.info( '     Process snow depth from {} to {}'.format(format(date_snow[d-1],"%Y-%m-%d"), format(date_snow[d],"%Y-%m-%d")))
-        logging.debug('     Calibration reference surface to sensor: {} mm on {} '.format(height_sensor_to_ice, format(node_snow['date'][d-1],"%Y-%m-%d")))
+        logging.info('     Process snow depth from {} to {}'.format(format(year_hydro[d-1],"%Y-%m-%d"), format(year_hydro[d],"%Y-%m-%d")))
+        logging.debug('     Calibration reference surface to sensor: {} mm on {} '.format(height_sensor_to_ice, date_snow))
 
         # Calibration of snow depth - Remove negative value i.e. ice melt
-        snow_depth = height_sensor_to_ice - df[date_snow[d-1]:date_snow[d]]
+        snow_depth = height_sensor_to_ice - df2[year_hydro[d-1]:year_hydro[d]]
         snow_depth[snow_depth<0] = 0
 
         # Assign in dataframe
-        df[date_snow[d-1]:date_snow[d]] = snow_depth
+        df2[year_hydro[d-1]:year_hydro[d]] = snow_depth
+        #df2.plot()
+                                              
     return df
     ##########################
 
@@ -93,6 +115,12 @@ dict_corres = {
 #========== Script ============
 if __name__ == "__main__":
     
+    # Create directory tree
+    if not os.path.exists('log'): os.makedirs('log')
+    if not os.path.exists('ini'): os.makedirs('log')
+    if not os.path.exists('data'): os.makedirs('data')
+    if not os.path.exists('data_qc'): os.makedirs('data_qc')
+        
     # Log info/debug/error
     logfile = 'log/qc_main_{}.log'.format(datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
     logging.basicConfig(level=logging.DEBUG,
@@ -156,7 +184,8 @@ if __name__ == "__main__":
                     ## Snow depth calibration
                     if "mb_distance" in version['data_sios']:
                         logging.info('---> Snow depth calibration')
-                        df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'], conf['network']['year_hydro'])
+                        #df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'], conf['network']['year_hydro'])
+                        df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'],node['snow']['date_last_melt'])
                     else:
                         logging.info('---> No snow depth data: skip calibration')
                     
