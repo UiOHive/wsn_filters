@@ -44,8 +44,8 @@ def calibration_snow(df,node_snow,year_hydro):
     ##########################
     
     # Time span
-    date_start = df2.index.min().date()
-    date_end = df2.index.max().date()
+    date_start = df.index.min().date()
+    date_end = df.index.max().date()
     logging.debug('     Data range: {} - {}'.format(date_start,date_end))
     
     # Extract dates defining a hydrological year (sept. - sept)
@@ -82,12 +82,12 @@ def calibration_snow(df,node_snow,year_hydro):
         logging.debug('     Calibration reference surface to sensor: {} mm on {} '.format(height_sensor_to_ice, date_snow))
 
         # Calibration of snow depth - Remove negative value i.e. ice melt
-        snow_depth = height_sensor_to_ice - df2[year_hydro[d-1]:year_hydro[d]]
+        snow_depth = height_sensor_to_ice - df[year_hydro[d-1]:year_hydro[d]]
         snow_depth[snow_depth<0] = 0
 
         # Assign in dataframe
-        df2[year_hydro[d-1]:year_hydro[d]] = snow_depth
-        #df2.plot()
+        df[year_hydro[d-1]:year_hydro[d]] = snow_depth
+        #df.plot()
                                               
     return df
     ##########################
@@ -250,7 +250,7 @@ if __name__ == "__main__":
                     sampling_rate = 10 # in minutes
                     command = 'data_converter {} {} {}'.format(format(date_start,"%Y-%m-%dT%H:%M:%S"),format(date_end,"%Y-%m-%dT%H:%M:%S"),sampling_rate)
                     logging.info('---> command: {}'.format(command))
-                    #time.sleep(4)
+                    time.sleep(4)
                     subprocess.run([command], shell=True)
                     logging.info('---> Netcdf output: {}'.format(fname_out))
                     
