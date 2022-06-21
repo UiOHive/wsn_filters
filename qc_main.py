@@ -51,6 +51,11 @@ def calibration_snow(df,node_snow,year_hydro):
     # Compute median value and assign to new column for output
     df = df.apply(lambda x: np.median(np.array(x)))
 
+    # Extract hydrological station 
+    year_hydro = []
+    for node_last_melt in node['date_last_melt']:
+        year_hydro.append(node_last_melt['date'])
+        
     # loop through hydrological year to calibrate snow depth
     for d in range(1,len(year_hydro)):
 
@@ -183,8 +188,7 @@ if __name__ == "__main__":
                     ## Snow depth calibration
                     if "mb_distance" in version['data_sios']:
                         logging.info('---> Snow depth calibration')
-                        #df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'], conf['network']['year_hydro'])
-                        df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'],node['snow']['date_last_melt'])
+                        df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'],node['date_last_melt'])
                     else:
                         logging.info('---> No snow depth data: skip calibration')
                     
