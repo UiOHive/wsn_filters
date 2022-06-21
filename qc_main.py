@@ -46,7 +46,7 @@ def calibration_snow(df,node_snow,year_hydro):
     # Time span
     date_start = df.index.min().date()
     date_end = df.index.max().date()
-    print('     Data range: {} - {}'.format(date_start,date_end))
+    logging.info('     Data range: {} - {}'.format(date_start,date_end))
 
     # Compute median value and assign to new column for output
     df = df.apply(lambda x: np.median(np.array(x)))
@@ -62,7 +62,7 @@ def calibration_snow(df,node_snow,year_hydro):
         # Constrain loop to calibrate only period with data
         str_hydro_year = '     Period {} - {}:'.format(year_hydro[d-1],year_hydro[d])
         if any(( year_hydro[d] < date_start, year_hydro[d-1] > date_end )):
-            print('{} No data for hydrological year'.format(str_hydro_year))
+            logging.info('{} No data for hydrological year'.format(str_hydro_year))
             continue
 
         # Find calibration parameters matching the hydrological year
@@ -76,13 +76,13 @@ def calibration_snow(df,node_snow,year_hydro):
                     date_snow = date
                     dist_surf_sensor = node_snow['dist_surf_sensor']
                     snow_depth = node_snow['snow_depth']
-                    if not node_snow['dist_surf_sensor'] or not node_snow['snow_depth']:
-                        print("No calibration data for hydrological year")
+                    if node_snow['dist_surf_sensor'] is None or node_snow['snow_depth'] is None:
+                        logging.info("{} No calibration data for hydrological year".format(str_hydro_year))
                         continue
 
         # Compute distance between sensor and reference surface i.e. ice or last summer surface
         height_sensor_to_ice = dist_surf_sensor + snow_depth
-        print('{} Apply snow calibration ... {} + {} = {} mm on {}'.format(str_hydro_year,dist_surf_sensor,snow_depth,
+        logging.info('{} Apply snow calibration ... {} + {} = {} mm on {}'.format(str_hydro_year,dist_surf_sensor,snow_depth,
                                                                            height_sensor_to_ice,date_snow))
 
         # Calibration of snow depth - Remove negative value i.e. ice melt
@@ -146,7 +146,7 @@ if __name__ == "__main__":
     # csv filename convention:  node_startdate_enddate.csv    ex: sw-001_20210419_20220412.csv
     # meteoio ini file per version per node                   ex: sw-001_20210419_20220412.ini
     
-    print(args)
+    logging.info(args)
     # Open network 
     with open(args.network_config, 'r') as file:
         conf = yaml.safe_load(file)    
@@ -182,6 +182,8 @@ if __name__ == "__main__":
                     ## Formatting
                     # Replace Nones in empty lists by NaNs 
                     df = df.fillna(value=np.nan)
+                    # Assign NaNs to -9999 values
+                    df = df.replace('-9999',np.nan)
                     # Remove column with time as number
                     del df['time']
 

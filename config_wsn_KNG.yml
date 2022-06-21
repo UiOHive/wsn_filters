@@ -6,7 +6,7 @@ network:
   description: Wireless Sensor Network on the Kongsvegen glacier in Svalbard
   date_installation: 2021-04-01
   date_update: 2022-06-10
-  year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-25, 2022-09-01, 2023-09-01 ]
+  year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-24, 2022-09-01, 2023-09-01 ]
       
 # List of nodes
 node:
@@ -24,18 +24,18 @@ node:
       date: 2021-05-01
     snow:
       - {date: 2019-04-11, dist_surf_sensor: 2220, snow_depth: 2160, source: 'field observation', usage: 'calibration',  pers: 'SF' }
-      - {date: 2019-08-13, dist_surf_sensor: 3400, snow_depth: .NaN, source: 'record analysis',   usage: 'validation',   pers: 'PML'}
+      - {date: 2019-08-13, dist_surf_sensor: 3400, snow_depth: 0,    source: 'record analysis',   usage: 'validation',   pers: 'PML'}
       - {date: 2021-05-01, dist_surf_sensor: 1600, snow_depth: 2100, source: 'field observation', usage: 'calibration',  pers: 'PML'}
-      - {date: 2021-08-14, dist_surf_sensor: 2720, snow_depth: .NaN, source: 'record analysis',   usage: 'validation',   pers: 'PML'}
-      - {date: 2021-08-21, dist_surf_sensor: .NaN, snow_depth: 1410, source: 'field observation', usage: 'validation',   pers: 'JCG'}
-      - {date: 2022-04-10, dist_surf_sensor: 440,  snow_depth: 2060, source: 'field observation', usage: 'calibration',  pers: 'PML'}
+      - {date: 2021-08-14, dist_surf_sensor: 2720, snow_depth: 0,    source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
+      - {date: 2021-08-21, dist_surf_sensor: .NaN, snow_depth: 1410, source: 'field observation', usage: 'obs error',    pers: 'JCG'} 
+      - {date: 2022-04-10, dist_surf_sensor: 440,  snow_depth: 2060, source: 'field observation', usage: 'obs error',    pers: 'PML'}
       - {date: 2022-04-30, dist_surf_sensor: 495,  snow_depth: .NaN, source: 'field observation', usage: 'validation',   pers: 'SF' }
       - {date: 2022-05-03, dist_surf_sensor: 2600, snow_depth: .NaN, source: 'field observation', usage: 'height reset', pers: 'SF' }
     date_last_melt:
       - {date: 2018-09-01, source: 'default', author: 'PML'}
       - {date: 2019-08-13, source: 'record',  author: 'PML'}
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-08-14, source: 'record',  author: 'PML'}
+      - {date: 2021-08-13, source: 'record',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -92,6 +92,7 @@ node:
           - {date: 2022-04-10, text: "Reset with green and red lights on. Some moisture refroze in the box. Data dowloaded", author: 'PML' }
           - {date: 2022-04-30, text: "Updated qtpy/wasp code. Needs new pole and to be turned south.", author: 'SF' }
           - {date: 2022-05-03, text: "Station installed on a new stake", author: 'SF' }
+          - {date: 2022-06-21, text: "Snow depth observations made on 2021-08-21 seems to show old accumulated firn instead of fresh snow as lowest summer surface is reached on 2021-08-14. Same issue than sw-230 with the 2021-2022 ice surface reference height causes snowfall cut-off. There is a mismatch between field observation, 440 + 2060 = 2500 mm made on 2022-04-10, and investigated records of the ice surface height at 2720 mm on 2021-08-14. 220 cm of super-imposed ice is assumed to be the error source.", author: 'PML' }
 
 #---------------------------SW-205------------------------------
   - id: sw-205
@@ -106,19 +107,19 @@ node:
       elevation: 659
       date: 2021-05-01
     snow:
-      - {date: 2021-05-01, dist_surf_sensor: 1960, snow_depth: 2080, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2021-08-21, dist_surf_sensor: 2520, snow_depth: 1110, source: 'field observation', usage: 'calibration', pers: 'JCG'}
-      - {date: 2022-04-09, dist_surf_sensor: -150, snow_depth: 2080, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2022-05-03, dist_surf_sensor: 1620, snow_depth: .NaN, source: 'field observation', usage: 'calibration', pers: 'SF' }
+      - {date: 2021-05-01, dist_surf_sensor: 1960, snow_depth: 2080, source: 'field observation', usage: 'calibration',  pers: 'PML'}
+      - {date: 2021-08-21, dist_surf_sensor: 2520, snow_depth: 1110, source: 'field observation', usage: 'validation',   pers: 'JCG'}
+      - {date: 2022-04-09, dist_surf_sensor: -150, snow_depth: 2080, source: 'field observation', usage: 'calibration',  pers: 'PML'}
+      - {date: 2022-05-03, dist_surf_sensor: 1620, snow_depth: .NaN, source: 'field observation', usage: 'reset height', pers: 'SF' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-03, source: 'approx',  author: 'PML'}
+      - {date: 2021-09-02, source: 'approx',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-05-01 16:07:48
-        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2022-05-02 00:00:00 #TO VERIFY
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
         QC_done: False
@@ -134,7 +135,7 @@ node:
         note: 
           - {date: 2021-05-01, text: "Installation of revamped station.", author: 'PML' }
 #---------- 2022 ----------
-      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+      - date_start: 2022-05-02 00:00:00 #TO VERIFY
         date_end: 2023-05-01 00:00:00 
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
@@ -168,13 +169,13 @@ node:
       date: 2021-04-29
     snow:
       - {date: 2021-04-29, dist_surf_sensor: 1570, snow_depth: 920,  source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2021-09-03, dist_surf_sensor: 2550, snow_depth: .NaN, source: 'record analysis',   usage: 'validation',  pers: 'PML'}
+      - {date: 2021-09-03, dist_surf_sensor: 2550, snow_depth: 0,    source: 'record analysis',   usage: 'validation',  pers: 'PML'}
       - {date: 2021-08-21, dist_surf_sensor: 2300, snow_depth: 315,  source: 'field observation', usage: 'validation',  pers: 'JCG'}
       - {date: 2022-04-09, dist_surf_sensor: 920,  snow_depth: 1670, source: 'field observation', usage: 'calibration', pers: 'PML'}
       - {date: 2022-04-30, dist_surf_sensor: 830,  snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-03, source: 'record',  author: 'PML'}
+      - {date: 2021-09-02, source: 'record',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -234,9 +235,9 @@ node:
       - {date: 2022-04-09, dist_surf_sensor: -3,   snow_depth: 1600, source: 'field observation', usage: 'calibration', pers: 'PML'}
     date_last_melt:
       - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-02, source: 'record',  author: 'PML'}
+      - {date: 2019-10-01, source: 'record',  author: 'PML'}
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-25, source: 'record',  author: 'PML'}
+      - {date: 2021-09-24, source: 'record',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -313,9 +314,9 @@ node:
       - {date: 2022-04-30, dist_surf_sensor: 755,  snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
       - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-02, source: 'approx',  author: 'PML'}
+      - {date: 2019-10-01, source: 'approx',  author: 'PML'}
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-25, source: 'approx',  author: 'PML'}
+      - {date: 2021-09-24, source: 'approx',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -390,9 +391,9 @@ node:
       - {date: 2022-04-30, dist_surf_sensor: 920,  snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
       - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-02, source: 'approx',  author: 'PML'}
+      - {date: 2019-10-01, source: 'approx',  author: 'PML'}
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-25, source: 'approx',  author: 'PML'}
+      - {date: 2021-09-24, source: 'approx',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -466,14 +467,14 @@ node:
       - {date: 2019-04-11, dist_surf_sensor: 1530, snow_depth: 1670, source: 'field observation', usage: 'calibration', pers: 'SF' }
       - {date: 2019-10-02, dist_surf_sensor: 3470, snow_depth: 0,    source: 'record analysis',   usage: 'validation',  pers: 'PML'}
       - {date: 2021-04-29, dist_surf_sensor: 510,  snow_depth: 1870, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2021-09-26, dist_surf_sensor: 2680, snow_depth: 0,    source: 'record analysis',   usage: 'validation',  pers: 'PML'}
-      - {date: 2022-04-10, dist_surf_sensor: 630,  snow_depth: 1560, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2021-09-26, dist_surf_sensor: 2680, snow_depth: 0,    source: 'record analysis',   usage: 'calibration', pers: 'PML'}
+      - {date: 2022-04-10, dist_surf_sensor: 630,  snow_depth: 1560, source: 'field observation', usage: 'obs error',   pers: 'PML'}
       - {date: 2022-04-30, dist_surf_sensor: 543,  snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
       - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-02, source: 'record',  author: 'PML'}
+      - {date: 2019-10-01, source: 'record',  author: 'PML'}
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-25, source: 'approx',  author: 'PML'}
+      - {date: 2021-09-25, source: 'record',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -529,6 +530,7 @@ node:
         note: 
           - {date: 2022-04-10, text: "Transferred data but log corrupted. Reset shows blinking light green and then red. Hard layer in snow at 118 cm", author: 'PML' }
           - {date: 2022-04-30, text: "SD card formatted and updated qtpy/wasp code", author: 'SF' }
+          - {date: 2022-06-21, text: "The 2021-2022 ice surface reference height needed for the snow depth calibration cuts off the early snow fall due to the field observation of 630 + 1560 = 2190 mm made on 2022-04-10. Retrospecitvely, the records show an ice surface at 2680 mm on 2021-09-26. 50 cm of super-imposed ice is assumed to be the error source.", author: "PML"}
         
 #---------------------------SW-235------------------------------
   - id: sw-235
@@ -606,15 +608,15 @@ node:
       - {date: 2020-10-15, dist_surf_sensor: 1860, snow_depth: 0,    source: 'record approx',     usage: 'calibration',  pers: 'PML'}
       - {date: 2021-04-29, dist_surf_sensor: 240,  snow_depth: 1210, source: 'field observation', usage: 'calibration',  pers: 'PML'}
       - {date: 2021-08-21, dist_surf_sensor: 1960, snow_depth: 0,    source: 'field observation', usage: 'validation',   pers: 'JCG'}
-      - {date: 2021-09-27, dist_surf_sensor: 2440, snow_depth: 0,    source: 'record analysis',   usage: 'validation',  pers: 'PML'}
+      - {date: 2021-09-27, dist_surf_sensor: 2440, snow_depth: 0,    source: 'record analysis',   usage: 'validation',   pers: 'PML'}
       - {date: 2022-04-10, dist_surf_sensor: 1300, snow_depth: 1110, source: 'field observation', usage: 'calibration',  pers: 'PML'}
       - {date: 2022-04-30, dist_surf_sensor: 1215, snow_depth: .NaN, source: 'field observation', usage: 'validation',   pers: 'SF' }
       - {date: 2022-05-01, dist_surf_sensor: 680,  snow_depth: 1160, source: 'field observation', usage: 'height reset', pers: 'SF' }
     date_last_melt:
       - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-02, source: 'record',  author: 'PML'}
-      - {date: 2020-10-15, source: 'record',  author: 'PML'} #rough estimate could be 2020-11-11
-      - {date: 2021-09-27, source: 'record',  author: 'PML'} #could be 2021-10-30
+      - {date: 2019-10-01, source: 'record',  author: 'PML'}
+      - {date: 2020-10-14, source: 'record',  author: 'PML'} #rough estimate could be 2020-11-11
+      - {date: 2021-09-26, source: 'record',  author: 'PML'} #could be 2021-10-30
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -689,7 +691,7 @@ node:
       - {date: 2022-04-30, dist_surf_sensor: 2335, snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-27, source: 'approx',  author: 'PML'}
+      - {date: 2021-09-26, source: 'approx',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
