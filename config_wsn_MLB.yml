@@ -23,9 +23,13 @@ node:
       elevation: 143
       date: 2021-04-26
     snow:
-      date: [ 2021-04-26, 2022-04-01 ]
-      dist_to_sensor: [ 1240, 1975 ]
-      depth: [ 240, 920 ] #240 TO CHECK
+      - {date: 2021-04-26, dist_surf_sensor: 1240, snow_depth: 240, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 1975, snow_depth: 920, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+    date_last_melt:
+      - {date: 2020-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-25, source: 'record',  author: 'PML'}
+      - {date: 2022-09-01, source: 'default', author: 'PML'}
+      - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 14:52:17
@@ -42,7 +46,8 @@ node:
           destination: 2 #sw-sverdrup
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance]
-        note: "Drill for first time."
+        note:
+          - {date: 2021-04-XX, text: "Drill for first time.", author: 'SF'}
 #---------- 2022 ----------
       - date_start: 2022-04-29 11:00:00 
         date_end: 2023-01-01 00:00:00 #TO VERIFY
@@ -59,8 +64,7 @@ node:
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note:
-          - 2022-05-XX: "Node placed on a new stake. Re-launched as is with new QtPy firmware"
-
+          - {date: 2022-05-XX, text: "Node placed on a new stake. Re-launched as is with new QtPy firmware", author: 'SF'}
 #---------------------------SW-120------------------------------
   - id: sw-120
     name: MLB5
@@ -74,9 +78,13 @@ node:
       elevation: 219
       date: 2021-04-26
     snow:
-      date: [ 2021-04-26, 2022-04-01 ]
-      dist_to_sensor: [ 80, 1440 ] # CHeck 80 or 800
-      depth: [ 1380, 990 ]
+      - {date: 2021-04-26, dist_surf_sensor: 80,   snow_depth: 1380, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 1440, snow_depth: 990,  source: 'field observation', usage: 'calibration',  pers: 'PML' }
+    date_last_melt:
+      - {date: 2020-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2022-09-01, source: 'default', author: 'PML'}
+      - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:29:03
@@ -94,7 +102,7 @@ node:
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, remote_addr, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note:
-          - 2021-04-XX: "Drill for first time."
+          - {date: 2021-04-XX, text: "Drill for first time.", author: 'SF'}
 #---------- 2022 ----------
       - date_start: 2022-04-29 10:00:00 
         date_end: 2023-01-01 00:00:00 #TO VERIFY
@@ -111,7 +119,8 @@ node:
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note:
-          - 2022-05-XX: "Station was taken indoor for troobleshooting. Relaunched complete at different height on same stake than previous version. New QtPy firmware"
+          - {date: 2022-04-XX, text: "Station was taken to sverdrup station for troobleshooting", author: 'PML'}
+          - {date: 2022-05-XX, text: "Relaunched complete at different height on same stake than previous version. New QtPy firmware", author: 'SF'}
 
 #---------------------------SW-125------------------------------
   - id: sw-125
@@ -126,9 +135,13 @@ node:
       elevation: 436
       date: 2021-04-26
     snow:
-      date: [ 2021-04-26, 2022-04-01 ]
-      dist_to_sensor: [ 1130, 1160 ]
-      depth: [ 2160, 2000 ]
+      - {date: 2021-04-26, dist_surf_sensor: 1130, snow_depth: 2160, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 1160, snow_depth: 2000, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+    date_last_melt:
+      - {date: 2020-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2022-09-01, source: 'default', author: 'PML'}
+      - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-27 08:03:41
@@ -146,8 +159,8 @@ node:
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, int_tc, int_hum, int_pres, mlx_object, mb_distance, mlx_ambient, tmp_temperature, remote_addr]
         note:
-          - 2021-04-XX: "Drill for first time."
-          - 2022-06-15: "mb_distance did not work in 2021, removed from data_sios list"
+          - {date: 2021-04-XX, text: "Drill for first time.", author: 'SF'}
+          - {date: 2022-06-15, text: "mb_distance did not work in 2021, removed from data_sios list", author: 'PML'}
 #---------- 2022 ----------
       - date_start: 2022-05-01 00:00:00 #TO VERIFY
         date_end: 2023-01-01 00:00:00 #TO VERIFY
@@ -164,8 +177,8 @@ node:
           lora_mode: 6
         data: [time, frame, received, type]
         note:
-          - 2022-05-XX: "Disconnected lagopus board to avoid shorts and compromising I2C line, relaunched as is. New QtPy firmware"
-          - 2022-06-14: "Communication and data upload loss for the past year"
+          - {date: 2022-05-XX, text: "Disconnected lagopus board to avoid shorts and compromising I2C line, relaunched as is. New QtPy firmware", author: 'SF'}
+          - {date: 2022-06-14, text: "Communication and data upload loss for the past year", author: 'PML'}
 
 #---------------------------SW-130------------------------------
   - id: sw-130
@@ -180,9 +193,13 @@ node:
       elevation: 361
       date: 2021-04-26
     snow:
-      date: [ 2021-04-26, 2022-04-01 ] 
-      dist_to_sensor: [ 320, 855 ]
-      depth: [ 1470, 1490  ]
+      - {date: 2021-04-26, dist_surf_sensor: 320, snow_depth: 1470, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 855, snow_depth: 1490, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+    date_last_melt:
+      - {date: 2020-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2022-09-01, source: 'default', author: 'PML'}
+      - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:07:09
@@ -200,7 +217,7 @@ node:
           lora_mode: 6
         data: [time, frame, received, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, remote_addr]
         note:
-          - 2021-04-XX: "Drill for first time."
+          - {date: 2021-04-XX, text: "Drill for first time.", author: 'SF'}
 #---------- 2022 ----------
       - date_start: 2022-04-29 10:00:00
         date_end: 2023-01-01 00:00:00 #TO VERIFY
@@ -217,7 +234,7 @@ node:
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note:
-          - 2022-05-XX: "Relaunched with new code commit as is. New QtPy firmware"
+          - {date: 2022-05-XX, text: "Relaunched with new code commit as is. New QtPy firmware", author: 'SF'}
 
 #---------------------------SW-140------------------------------
   - id: sw-140
@@ -232,9 +249,13 @@ node:
       elevation: 422
       date: 2021-04-26
     snow:
-      date: [ 2021-04-26, 2022-04-01 ]
-      dist_to_sensor: [ 240, 362 ] 
-      depth: [ 1770, 1650 ]
+      - {date: 2021-04-26, dist_surf_sensor: 240, snow_depth: 1770, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 362, snow_depth: 1650, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+    date_last_melt:
+      - {date: 2020-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2022-09-01, source: 'default', author: 'PML'}
+      - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:22:56
@@ -252,7 +273,7 @@ node:
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, remote_addr, mb_distance]
         note:
-          - 2021-04-XX: "Drill for first time."
+          - {date: 2021-04-XX, text: "Drill for first time.", author: 'SF'}
 #---------- 2022 ----------
       - date_start: 2022-04-29 09:00:00
         date_end: 2023-01-01 00:00:00 #TO VERIFY
@@ -269,8 +290,8 @@ node:
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
         note:
-          - 2022-05-XX: "Node placed on a new stake as it was by mistake placed on one of the mass balance stake. New QtPy firmware"
-
+          - {date: 2022-05-XX, text: "Node placed on a new stake as it was by mistake placed on one of the mass balance stake. New QtPy firmware", author: 'SF'}
+          
 #---------------------------SW-CORBEL------------------------------
   - id: sw-corbel
     name: corbel
@@ -284,9 +305,12 @@ node:
       elevation: 17
       date: 2021-04-06
     snow:
-      date: NA
-      dist_to_sensor: NA
-      depth: NA
+      - {date: .NaN, dist_surf_sensor: .NaN, snow_depth: .NaN, source: .NaN, usage: .NaN,  pers: 'PML' }
+    date_last_melt:
+      - {date: 2020-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2022-09-01, source: 'default', author: 'PML'}
+      - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 12:22:56
@@ -304,8 +328,8 @@ node:
           lora_mode: 6
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mlx_ambient, tmp_temperature, altitude, latitude, longitude, mb_distance, gps_accuracy, gps_satellites, remote_addr]
         note:
-          - 2022-05-XX: "Node fastened to pluviometer tower at the Corbel station. Running mb and lagopus v1"
-          - 2022-06-15: "mb_distance failed to properly measure snow surface height due to reflections form buildings/tower, removed from data_sios list"
+          - {date: 2021-05-XX, text: "Node fastened to pluviometer tower at the Corbel station. Running mb and lagopus v1", author: 'SF'}
+          - {date: 2022-06-15, text: "mb_distance failed to properly measure snow surface height due to reflections form buildings/tower, removed from data_sios list", author: 'PML'}
 #---------- 2022 ----------
       - date_start: 2022-04-29 09:00:00
         date_end: 2023-01-01 00:00:00 #TO VERIFY
@@ -322,7 +346,8 @@ node:
           lora_mode: 6
         data: [time, bat, frame, received, type, int_tc, int_hum, int_pres, altitude, latitude, longitude, mb_distance, gps_accuracy, gps_satellites]
         note:
-          - 2022-05-XX: "Lagopus disconnected to reduce risk of short that occured on other v1 stations."
+          - {date: 2022-05-XX, text: "Lagopus disconnected to reduce risk of short that occured on other v1 stations.", author: 'SF'}
+          
 #---------------------------------------------------------
 
 ACDD:
