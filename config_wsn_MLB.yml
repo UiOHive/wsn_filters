@@ -6,7 +6,7 @@ network:
   description: Wireless Sensor Network on the Midtre Lovenbreen glacier in Svalbard
   date_installation: 2021-04-01
   date_update: 2022-06-10
-  year_hydro: [ 2020-09-01, 2021-09-25, 2022-09-01, 2023-09-01 ]
+  year_hydro: [ 2020-09-01, 2021-09-25, 2022-09-01, 2023-09-01 ] #legacy
 
 # List of nodes
 node:
@@ -23,8 +23,9 @@ node:
       elevation: 143
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 1240, snow_depth: 240, source: 'field observation', usage: 'calibration',  pers: 'PML' }
-      - {date: 2022-04-01, dist_surf_sensor: 1975, snow_depth: 920, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-04-26, dist_surf_sensor: 1240, snow_depth: 240, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-09-26, dist_surf_sensor: 2950, snow_depth: 0,   offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 1975, snow_depth: 920, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-25, source: 'record',  author: 'PML'}
@@ -36,11 +37,11 @@ node:
         date_end: 2022-04-01 08:00:00
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
-        QC_done: False
+        QC_todo: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
-          adress: 110
+          address: 110
           run_system: bat=10 gps=12:00 acc=10 lan=30
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
           destination: 2 #sw-sverdrup
@@ -53,11 +54,11 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
         sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY
         config:
-          adress: 110
+          address: 110
           run_system: bat=10 gps=12:00 acc=10 lan=10 #TO VERIFY in LOG
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 #TO VERIFY in LOG
           destination: 20 #sw-corbel
@@ -78,11 +79,12 @@ node:
       elevation: 219
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 80,   snow_depth: 1380, source: 'field observation', usage: 'calibration',  pers: 'PML' }
-      - {date: 2022-04-01, dist_surf_sensor: 1440, snow_depth: 990,  source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-04-26, dist_surf_sensor: 80,   snow_depth: 1380, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-09-25, dist_surf_sensor: 2485, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 1440, snow_depth: 990,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-24, source: 'record',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -91,11 +93,11 @@ node:
         date_end: 2022-03-30 12:00:00
         version: 2 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
-        QC_done: False
+        QC_todo: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
-          adress: 120
+          address: 120
           run_system: bat=10 gps=4:00 acc=10 lan=1:00
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 
           destination: 0 #find closest node
@@ -108,11 +110,11 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
         sensor: [bme_int, mb, atmos, qtpy]
         config:
-          adress: 120
+          address: 120
           run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
           destination: 20 #corbel
@@ -135,11 +137,11 @@ node:
       elevation: 436
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 1130, snow_depth: 2160, source: 'field observation', usage: 'calibration',  pers: 'PML' }
-      - {date: 2022-04-01, dist_surf_sensor: 1160, snow_depth: 2000, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-04-26, dist_surf_sensor: 1130, snow_depth: 2160, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 1160, snow_depth: 2000, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-24, source: 'approx',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -148,11 +150,11 @@ node:
         date_end: 2022-04-01 00:00:00
         version: 1 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
-        QC_done: False
+        QC_todo: True
         data_sios: [tmp_temperature, mlx_object]
         sensor: [bme_int, mb, mlx, tmp102]
         config:
-          adress: 125
+          address: 125
           run_system: bat=10 gps=12:00 acc=10 lan=30 
           run_sensor: bme_int=10 mb=10 mlx=10 tmp102=10
           destination: 0 #find closest node
@@ -166,11 +168,11 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 1 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: NA
         sensor: NA
         config:
-          adress: 125
+          address: 125
           run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
           destination: 20 #sw-corbel
@@ -193,11 +195,12 @@ node:
       elevation: 361
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 320, snow_depth: 1470, source: 'field observation', usage: 'calibration',  pers: 'PML' }
-      - {date: 2022-04-01, dist_surf_sensor: 855, snow_depth: 1490, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-04-26, dist_surf_sensor: 320,  snow_depth: 1470, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-09-25, dist_surf_sensor: 2400, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 855,  snow_depth: 1490, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-24, source: 'record',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -206,11 +209,11 @@ node:
         date_end: 2022-04-01 09:00:00
         version: 2 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
-        QC_done: False
+        QC_todo: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy]
         config:
-          adress: 130
+          address: 130
           run_system: bat=10 gps=12:00 acc=10 lan=1:00
           run_sensor: bme_int=10 mb=10 qtpy=10
           destination: 0 #find closest node
@@ -223,11 +226,11 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object] #TO VERIFY
         sensor: [bme_int, mb, qtpy] #TO VERIFY
         config:
-          adress: 130
+          address: 130
           run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
           run_sensor: bme_int=10 mb=10 qtpy=10 # to verify in LOG
           destination: 20 #sw-corbel
@@ -249,11 +252,11 @@ node:
       elevation: 422
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 240, snow_depth: 1770, source: 'field observation', usage: 'calibration',  pers: 'PML' }
-      - {date: 2022-04-01, dist_surf_sensor: 362, snow_depth: 1650, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-04-26, dist_surf_sensor: 240, snow_depth: 1770, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 362, snow_depth: 1650, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-24, source: 'approx',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -262,11 +265,11 @@ node:
         date_end: 2022-04-29 09:00:00
         version: 2 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
-        QC_done: False
+        QC_todo: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
-          adress: 140
+          address: 140
           run_system: bat=10 gps=12:00 acc=10 lan=1:00
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 
           destination: 0 #find closest node
@@ -279,11 +282,11 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
         sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
         config:
-          adress: 140
+          address: 140
           run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
           destination: 20 #corbel
@@ -305,10 +308,10 @@ node:
       elevation: 17
       date: 2021-04-06
     snow:
-      - {date: .NaN, dist_surf_sensor: .NaN, snow_depth: .NaN, source: .NaN, usage: .NaN,  pers: 'PML' }
+      - {date: .NaN, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: .NaN, usage: .NaN,  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-01, source: 'default', author: 'PML'}
+      - {date: 2021-09-25, source: 'approx',  author: 'PML'}
       - {date: 2022-09-01, source: 'default', author: 'PML'}
       - {date: 2023-09-01, source: 'default', author: 'PML'}
     version:
@@ -317,11 +320,11 @@ node:
         date_end: 2022-04-29 08:00:00
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355  
-        QC_done: False
+        QC_todo: True
         data_sios: [tmp_temperature, bme_hum, bme_pres, mlx_object] #TO CHECK
         sensor: [bme, mb] #TO CHECK
         config:
-          adress: corbel #TO CHECK
+          address: corbel #TO CHECK
           run_system: NA
           run_sensor: NA
           destination: 2
@@ -335,11 +338,11 @@ node:
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: NA
         sensor: NA
         config:
-          adress: corbel #TO CHECK
+          address: corbel #TO CHECK
           run_system: NA
           run_sensor: NA
           destination: 2

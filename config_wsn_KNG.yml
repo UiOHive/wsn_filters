@@ -6,7 +6,7 @@ network:
   description: Wireless Sensor Network on the Kongsvegen glacier in Svalbard
   date_installation: 2021-04-01
   date_update: 2022-06-10
-  year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-24, 2022-09-01, 2023-09-01 ]
+  year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-24, 2022-09-01, 2023-09-01 ] #legacy
       
 # List of nodes
 node:
@@ -23,28 +23,28 @@ node:
       elevation: 727
       date: 2021-05-01
     snow:
-      - {date: 2019-04-11, dist_surf_sensor: 2220, snow_depth: 2160, source: 'field observation', usage: 'calibration',  pers: 'SF' }
-      - {date: 2019-08-13, dist_surf_sensor: 3400, snow_depth: 0,    source: 'record analysis',   usage: 'validation',   pers: 'PML'}
-      - {date: 2021-05-01, dist_surf_sensor: 1600, snow_depth: 2100, source: 'field observation', usage: 'calibration',  pers: 'PML'}
-      - {date: 2021-08-14, dist_surf_sensor: 2720, snow_depth: 0,    source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
-      - {date: 2021-08-21, dist_surf_sensor: .NaN, snow_depth: 1410, source: 'field observation', usage: 'obs error',    pers: 'JCG'} 
-      - {date: 2022-04-10, dist_surf_sensor: 440,  snow_depth: 2060, source: 'field observation', usage: 'obs error',    pers: 'PML'}
-      - {date: 2022-04-30, dist_surf_sensor: 495,  snow_depth: .NaN, source: 'field observation', usage: 'validation',   pers: 'SF' }
-      - {date: 2022-05-03, dist_surf_sensor: 2600, snow_depth: .NaN, source: 'field observation', usage: 'height reset', pers: 'SF' }
+      - {date: 2019-04-11, dist_surf_sensor: 2220, snow_depth: 2160, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF' }
+      - {date: 2019-08-13, dist_surf_sensor: 3400, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',   pers: 'PML'}
+      - {date: 2021-05-01, dist_surf_sensor: 1600, snow_depth: 2100, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML'}
+      - {date: 2021-08-14, dist_surf_sensor: 2720, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
+      - {date: 2021-08-21, dist_surf_sensor: .NaN, snow_depth: 1410, offset: 0,  source: 'field observation', usage: 'obs error',    pers: 'JCG'} 
+      - {date: 2022-04-10, dist_surf_sensor: 440,  snow_depth: 2060, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML'}
+      - {date: 2022-04-30, dist_surf_sensor: 495,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF' }
+      - {date: 2022-05-03, dist_surf_sensor: 2600, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF' }
     date_last_melt:
-      - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-08-13, source: 'record',  author: 'PML'}
-      - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-08-13, source: 'record',  author: 'PML'}
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2018-09-01, origin: 'default', author: 'PML'}
+      - {date: 2019-08-12, origin: 'record',  author: 'PML'}
+      - {date: 2020-09-01, origin: 'default', author: 'PML'}
+      - {date: 2021-08-13, origin: 'record',  author: 'PML'}
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
       - date_start: 2019-04-06 15:50:00
         date_end: 2021-05-01 16:49:18 
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_done: True
+        QC_todo: True
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb, tmp208, mlx ] # TO CHECK
         config: 
@@ -61,7 +61,7 @@ node:
         date_end: 2022-05-03 10:30:00
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy]
         config: 
@@ -78,7 +78,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy]
         config:
@@ -107,22 +107,22 @@ node:
       elevation: 659
       date: 2021-05-01
     snow:
-      - {date: 2021-05-01, dist_surf_sensor: 1960, snow_depth: 2080, source: 'field observation', usage: 'calibration',  pers: 'PML'}
-      - {date: 2021-08-21, dist_surf_sensor: 2520, snow_depth: 1110, source: 'field observation', usage: 'validation',   pers: 'JCG'}
-      - {date: 2022-04-09, dist_surf_sensor: -150, snow_depth: 2080, source: 'field observation', usage: 'calibration',  pers: 'PML'}
-      - {date: 2022-05-03, dist_surf_sensor: 1620, snow_depth: .NaN, source: 'field observation', usage: 'reset height', pers: 'SF' }
+      - {date: 2021-05-01, dist_surf_sensor: 1960, snow_depth: 2080, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML'}
+      - {date: 2021-08-21, dist_surf_sensor: 2520, snow_depth: 1110, offset: 50, source: 'field observation', usage: 'validation',   pers: 'JCG'}
+      - {date: 2022-04-09, dist_surf_sensor: -150, snow_depth: 2080, offset: -50, source: 'field observation', usage: 'calibration',  pers: 'PML'}
+      - {date: 2022-05-03, dist_surf_sensor: 1620, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'reset height', pers: 'SF' }
     date_last_melt:
-      - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-02, source: 'approx',  author: 'PML'}
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2020-09-01, origin: 'default', author: 'PML'}
+      - {date: 2021-09-02, origin: 'approx',  author: 'PML'}
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-05-01 16:07:48
         date_end: 2022-05-02 00:00:00 #TO VERIFY
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, ds2_dir, ds2_speed, mlx_object]
         sensor: [bme_int, mb, ds2]
         config:
@@ -139,7 +139,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed]
         sensor: [bme_int, mb, ds2]
         config:
@@ -168,23 +168,23 @@ node:
       elevation: 590
       date: 2021-04-29
     snow:
-      - {date: 2021-04-29, dist_surf_sensor: 1570, snow_depth: 920,  source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2021-09-03, dist_surf_sensor: 2550, snow_depth: 0,    source: 'record analysis',   usage: 'validation',  pers: 'PML'}
-      - {date: 2021-08-21, dist_surf_sensor: 2300, snow_depth: 315,  source: 'field observation', usage: 'validation',  pers: 'JCG'}
-      - {date: 2022-04-09, dist_surf_sensor: 920,  snow_depth: 1670, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2022-04-30, dist_surf_sensor: 830,  snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
+      - {date: 2021-04-29, dist_surf_sensor: 1570, snow_depth: 920,  offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2021-08-21, dist_surf_sensor: 2300, snow_depth: 315,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'JCG'}
+      - {date: 2021-09-03, dist_surf_sensor: 2550, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
+      - {date: 2022-04-09, dist_surf_sensor: 920,  snow_depth: 1670, offset: 50, source: 'field observation', usage: 'validation', pers: 'PML'}
+      - {date: 2022-04-30, dist_surf_sensor: 830,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
-      - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-02, source: 'record',  author: 'PML'}
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2020-09-01, origin: 'default', author: 'PML'}
+      - {date: 2021-09-02, origin: 'record',  author: 'PML'}
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-29 15:08:38
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -200,7 +200,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -226,27 +226,26 @@ node:
       elevation: 530
       date: 2021-04-29
     snow:
-      - {date: 2019-04-11, dist_surf_sensor: 1280, snow_depth: 1370, source: 'field observation', usage: 'calibration', pers: 'SF' }
-      - {date: 2019-10-02, dist_surf_sensor: 3070, snow_depth: 0,    source: 'record analysis',   usage: 'validation',  pers: 'PML'}
-      - {date: 2020-09-14, dist_surf_sensor: 3070, snow_depth: 0,    source: 'field observation', usage: 'validation',  pers: 'JCG'}
-      - {date: 2021-04-29, dist_surf_sensor: 50,   snow_depth: 1440, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2021-08-21, dist_surf_sensor: 1420, snow_depth: 250,  source: 'field observation', usage: 'validation',  pers: 'JCG'}
-      - {date: 2021-09-25, dist_surf_sensor: 1610, snow_depth: 0,    source: 'record analysis',   usage: 'validation',  pers: 'PML'}
-      - {date: 2022-04-09, dist_surf_sensor: -3,   snow_depth: 1600, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2019-04-11, dist_surf_sensor: 1280, snow_depth: 1370, offset: 50, source: 'field observation', usage: 'calibration', pers: 'SF' }
+      - {date: 2019-10-02, dist_surf_sensor: 3070, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
+      - {date: 2021-04-29, dist_surf_sensor: 50,   snow_depth: 1440, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2021-08-21, dist_surf_sensor: 1420, snow_depth: 250,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'JCG'}
+      - {date: 2021-09-25, dist_surf_sensor: 1610, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
+      - {date: 2022-04-09, dist_surf_sensor: -3,   snow_depth: 1600, offset: -50, source: 'field observation', usage: 'validation', pers: 'PML'}
     date_last_melt:
-      - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-01, source: 'record',  author: 'PML'}
-      - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-24, source: 'record',  author: 'PML'}
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2018-09-01, origin: 'default', author: 'PML'}
+      - {date: 2019-10-01, origin: 'record',  author: 'PML'}
+      - {date: 2020-09-01, origin: 'default', author: 'PML'}
+      - {date: 2021-09-24, origin: 'record',  author: 'PML'}
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
       - date_start: 2019-04-06 15:00:00
         date_end: 2021-04-29 12:57:44
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_done: True
+        QC_todo: True
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb, tmp208, mlx] #TO CHECK
         config: 
@@ -263,7 +262,7 @@ node:
         date_end: 2022-05-01 00:00:00 #to verify
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -279,7 +278,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: .NaN
         sensor: .NaN
         config:
@@ -307,25 +306,26 @@ node:
       elevation: 541
       date: 2021-04-29
     snow:
-      - {date: 2019-04-11, dist_surf_sensor: 760,  snow_depth: 1490, source: 'field observation', usage: 'calibration', pers: 'SF' }
-      - {date: 2021-04-29, dist_surf_sensor: 520,  snow_depth: 1400, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2021-09-25, dist_surf_sensor: 2220, snow_depth: 0,    source: 'record analysis',   usage: 'validation',  pers: 'PML'}
-      - {date: 2022-04-10, dist_surf_sensor: 760,  snow_depth: 1410, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2022-04-30, dist_surf_sensor: 755,  snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
+      - {date: 2019-04-11, dist_surf_sensor: 760,  snow_depth: 1490, offset: 50, source: 'field observation', usage: 'calibration', pers: 'SF' }
+      - {date: 2020-01-01, dist_surf_sensor: 0,  snow_depth: 0, offset: 0, source: 'obs error', usage: 'calibration', pers: 'PML' }
+      - {date: 2021-04-29, dist_surf_sensor: 520,  snow_depth: 1400, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2021-09-25, dist_surf_sensor: 2220, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
+      - {date: 2022-04-10, dist_surf_sensor: 760,  snow_depth: 1410, offset: 50, source: 'field observation', usage: 'validation', pers: 'PML'}
+      - {date: 2022-04-30, dist_surf_sensor: 755,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
-      - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-01, source: 'approx',  author: 'PML'}
-      - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-24, source: 'approx',  author: 'PML'}
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2018-09-01, origin: 'default', author: 'PML'}
+      - {date: 2019-10-01, origin: 'approx',  author: 'PML'}
+      - {date: 2020-09-01, origin: 'default', author: 'PML'}
+      - {date: 2021-09-24, origin: 'record',  author: 'PML'}
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
       - date_start: 2019-04-06 16:36:00
         date_end: 2021-04-29 14:00:21
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_done: True
+        QC_todo: True
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO CHECK
         sensor: [bme_int, mb, atmos] #TO CHECK
         config: 
@@ -342,7 +342,7 @@ node:
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
@@ -358,7 +358,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -385,32 +385,34 @@ node:
       elevation: 564
       date: 2021-04-29
     snow:
-      - {date: 2019-04-11, dist_surf_sensor: 1210, snow_depth: 1200, source: 'field observation', usage: 'calibration', pers: 'SF' }
-      - {date: 2021-04-29, dist_surf_sensor: 540,  snow_depth: 1470, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2022-04-10, dist_surf_sensor: 960,  snow_depth: 1300, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2022-04-30, dist_surf_sensor: 920,  snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
+      - {date: 2019-04-11, dist_surf_sensor: 1210, snow_depth: 1200, offset: 50, source: 'field observation', usage: 'calibration', pers: 'SF' }
+      - {date: 2020-01-01, dist_surf_sensor: 0,  snow_depth: 0, offset: 0, source: 'obs error', usage: 'calibration', pers: 'PML' }
+      - {date: 2021-04-29, dist_surf_sensor: 540,  snow_depth: 1470, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2022-04-10, dist_surf_sensor: 960,  snow_depth: 1300, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2022-04-30, dist_surf_sensor: 920,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
-      - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-01, source: 'approx',  author: 'PML'}
-      - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-24, source: 'approx',  author: 'PML'}
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2018-09-01, origin: 'default', author: 'PML'}
+      - {date: 2019-10-01, origin: 'approx',  author: 'PML'}
+      - {date: 2020-09-01, origin: 'default', author: 'PML'}
+      - {date: 2021-09-24, origin: 'approx',  author: 'PML'}
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
       - date_start: 2019-04-06
         date_end: 2021-05-01 16:00:00
         version: 1
-        QC_done: True
-        data_sios: .NaN 
-        sensor: .NaN #ds2
+        commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
+        QC_todo: Null #no data
+        data_sios: Null 
+        sensor: Null #ds2
         config: 
           address: 005
-          run_system: .NaN
-          run_sensor: .NaN
-          destination: .NaN
-          lora_mode: .NaN
-        data: .NaN
+          run_system: Null
+          run_sensor: Null
+          destination: Null
+          lora_mode: Null
+        data: Null
         note: 
           - {date: 2019-04-07, text: "Installation station", author: 'PML' }
           - {date: 2020-04-XX, text: "Not maintained due to covid lockdown and limited crew.", author: 'PML' }
@@ -420,7 +422,7 @@ node:
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
@@ -437,7 +439,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -464,26 +466,26 @@ node:
       elevation: 505
       date: 2021-04-29
     snow:
-      - {date: 2019-04-11, dist_surf_sensor: 1530, snow_depth: 1670, source: 'field observation', usage: 'calibration', pers: 'SF' }
-      - {date: 2019-10-02, dist_surf_sensor: 3470, snow_depth: 0,    source: 'record analysis',   usage: 'validation',  pers: 'PML'}
-      - {date: 2021-04-29, dist_surf_sensor: 510,  snow_depth: 1870, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2021-09-26, dist_surf_sensor: 2680, snow_depth: 0,    source: 'record analysis',   usage: 'calibration', pers: 'PML'}
-      - {date: 2022-04-10, dist_surf_sensor: 630,  snow_depth: 1560, source: 'field observation', usage: 'obs error',   pers: 'PML'}
-      - {date: 2022-04-30, dist_surf_sensor: 543,  snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
+      - {date: 2019-04-11, dist_surf_sensor: 1530, snow_depth: 1670, offset: 50, source: 'field observation', usage: 'calibration', pers: 'SF' }
+      - {date: 2019-10-02, dist_surf_sensor: 3470, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
+      - {date: 2021-04-29, dist_surf_sensor: 510,  snow_depth: 1870, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2021-09-26, dist_surf_sensor: 2680, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration', pers: 'PML'}
+      - {date: 2022-04-10, dist_surf_sensor: 630,  snow_depth: 1560, offset: 50, source: 'field observation', usage: 'obs error',   pers: 'PML'}
+      - {date: 2022-04-30, dist_surf_sensor: 543,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
-      - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-01, source: 'record',  author: 'PML'}
-      - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-25, source: 'record',  author: 'PML'}
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2018-09-01, origin: 'default', author: 'PML'}
+      - {date: 2019-10-01, origin: 'record',  author: 'PML'}
+      - {date: 2020-09-01, origin: 'default', author: 'PML'}
+      - {date: 2021-09-25, origin: 'record',  author: 'PML'}
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
       - date_start: 2019-04-06 15:50:00
         date_end: 2021-04-29 13:32:23
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_done: True
+        QC_todo: True
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb] #TO CHECK
         config: 
@@ -501,7 +503,7 @@ node:
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
@@ -517,7 +519,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -545,22 +547,22 @@ node:
       elevation: 464
       date: 2021-04-29
     snow:
-      - {date: 2021-04-29, dist_surf_sensor: 180,  snow_depth: 1250, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2021-08-21, dist_surf_sensor: 1620, snow_depth: 0,    source: 'field observation', usage: 'validation',  pers: 'JCG'}
-      - {date: 2022-04-10, dist_surf_sensor: 720,  snow_depth: 1300, source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2022-04-30, dist_surf_sensor: 637,  snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
+      - {date: 2021-04-29, dist_surf_sensor: 180,  snow_depth: 1250, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2021-08-21, dist_surf_sensor: 1620, snow_depth: 0,    offset: 50, source: 'field observation', usage: 'validation',  pers: 'JCG'}
+      - {date: 2022-04-10, dist_surf_sensor: 720,  snow_depth: 1300, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2022-04-30, dist_surf_sensor: 637,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
-      - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-26, source: 'approx',  author: 'PML'}
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2020-09-01, origin: 'default', author: 'PML'}
+      - {date: 2021-09-26, origin: 'approx',  author: 'PML'}
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-29 11:31:24
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos]
         config: 
@@ -576,7 +578,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos]
         config:
@@ -603,28 +605,29 @@ node:
       elevation: 394
       date: 2021-04-29
     snow:
-      - {date: 2019-04-07, dist_surf_sensor: 370,  snow_depth: 1270, source: 'field observation', usage: 'calibration',  pers: 'SF' }
-      - {date: 2019-10-02, dist_surf_sensor: 2800, snow_depth: 0,    source: 'record approx',     usage: 'validation',   pers: 'PML'}
-      - {date: 2020-10-15, dist_surf_sensor: 1860, snow_depth: 0,    source: 'record approx',     usage: 'calibration',  pers: 'PML'}
-      - {date: 2021-04-29, dist_surf_sensor: 240,  snow_depth: 1210, source: 'field observation', usage: 'calibration',  pers: 'PML'}
-      - {date: 2021-08-21, dist_surf_sensor: 1960, snow_depth: 0,    source: 'field observation', usage: 'validation',   pers: 'JCG'}
-      - {date: 2021-09-27, dist_surf_sensor: 2440, snow_depth: 0,    source: 'record analysis',   usage: 'validation',   pers: 'PML'}
-      - {date: 2022-04-10, dist_surf_sensor: 1300, snow_depth: 1110, source: 'field observation', usage: 'calibration',  pers: 'PML'}
-      - {date: 2022-04-30, dist_surf_sensor: 1215, snow_depth: .NaN, source: 'field observation', usage: 'validation',   pers: 'SF' }
-      - {date: 2022-05-01, dist_surf_sensor: 680,  snow_depth: 1160, source: 'field observation', usage: 'height reset', pers: 'SF' }
+      - {date: 2019-04-07, dist_surf_sensor: 370,  snow_depth: 1270, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF' }
+      - {date: 2019-10-02, dist_surf_sensor: 2800, snow_depth: 0,    offset: 0,  source: 'record approx',     usage: 'calibration',   pers: 'PML'}
+      - {date: 2020-09-15, dist_surf_sensor: 1860, snow_depth: 0,    offset: 0,  source: 'record approx',     usage: 'calibration',  pers: 'PML'}
+      - {date: 2021-04-29, dist_surf_sensor: 240,  snow_depth: 1210, offset: 50, source: 'field observation', usage: 'obs error',  pers: 'PML'}
+      - {date: 2021-08-21, dist_surf_sensor: 1960, snow_depth: 0,    offset: 50, source: 'field observation', usage: 'validation',   pers: 'JCG'}
+      - {date: 2021-09-27, dist_surf_sensor: 2440, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',   pers: 'PML'}
+      - {date: 2022-04-10, dist_surf_sensor: 1300, snow_depth: 1110, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML'}
+      - {date: 2022-04-30, dist_surf_sensor: 1215, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF' }
+      - {date: 2022-05-01, dist_surf_sensor: 680,  snow_depth: 1160, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF' }
     date_last_melt:
-      - {date: 2018-09-01, source: 'default', author: 'PML'}
-      - {date: 2019-10-01, source: 'record',  author: 'PML'}
-      - {date: 2020-10-14, source: 'record',  author: 'PML'} #rough estimate could be 2020-11-11
-      - {date: 2021-09-26, source: 'record',  author: 'PML'} #could be 2021-10-30
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2018-09-01, origin: 'default', author: 'PML'}
+      - {date: 2019-10-01, origin: 'record',  author: 'PML'}
+      - {date: 2020-09-14, origin: 'record',  author: 'PML'} 
+      - {date: 2021-09-26, origin: 'record',  author: 'PML'} #could be 2021-10-30
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
       - date_start: 2019-04-07 18:20:00
         date_end: 2021-04-29 10:47:58
         version: 1
-        QC_done: True
+        commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
+        QC_todo: True
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb] #TO CHECK
         config: 
@@ -636,13 +639,13 @@ node:
         data: [time, frame, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mb_distance, mlx_ambient, vl_distance, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note: 
           - {date: 2019-04-07, text: "Installation station", author: 'PML' }
-          - {date: 2020-04-XX, text: "Not maintained due to covid lockdown and limited crew. Only station in 2020 with snow surface data.", author: 'PML' }
+          - {date: 2020-04-XX, text: "Not maintained due to covid lockdown and limited crew. Only station in 2020 with snow surface data. The start of the 2020 hydrological year is difficult to identify, but Steve's KNG6 data indicate 2020-09-14 but our snow data could define start as being 2020-10-14 or 2020-11-11.", author: 'PML' }
 #---------- 2021 ----------
       - date_start: 2021-04-29 10:47:58
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
@@ -659,7 +662,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -686,21 +689,21 @@ node:
       elevation: 184
       date: 2021-05-05
     snow:
-      - {date: 2021-05-05, dist_surf_sensor: 510,  snow_depth: 900,  source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2022-04-24, dist_surf_sensor: 2320, snow_depth: 560,  source: 'field observation', usage: 'calibration', pers: 'PML'}
-      - {date: 2022-04-30, dist_surf_sensor: 2335, snow_depth: .NaN, source: 'field observation', usage: 'validation',  pers: 'SF' }
+      - {date: 2021-05-05, dist_surf_sensor: 510,  snow_depth: 900,  offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2022-04-24, dist_surf_sensor: 2320, snow_depth: 560,  offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
+      - {date: 2022-04-30, dist_surf_sensor: 2335, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
     date_last_melt:
-      - {date: 2020-09-01, source: 'default', author: 'PML'}
-      - {date: 2021-09-26, source: 'approx',  author: 'PML'}
-      - {date: 2022-09-01, source: 'default', author: 'PML'}
-      - {date: 2023-09-01, source: 'default', author: 'PML'}
+      - {date: 2020-09-01, origin: 'default', author: 'PML'}
+      - {date: 2021-09-26, origin: 'approx',  author: 'PML'}
+      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-05-01 18:06:43
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_done: False
+        QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, ds2_dir, ds2_speed, mlx_object]
         sensor: [bme_int, mb, ds2]
         config: 
@@ -716,7 +719,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_done: True
+        QC_todo: Null
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed] #TO CHECK
         sensor: [bme_int, mb, ds2] #TO CHECK
         config:

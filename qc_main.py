@@ -69,6 +69,7 @@ def calibration_snow(df,node_snow,year_hydro):
         date_snow = []
         dist_surf_sensor= []
         snow_depth = []
+        offset = []
         for node_snow in node['snow']: 
             if node_snow['usage'] == 'calibration':
                 date = node_snow['date']
@@ -76,14 +77,14 @@ def calibration_snow(df,node_snow,year_hydro):
                     date_snow = date
                     dist_surf_sensor = node_snow['dist_surf_sensor']
                     snow_depth = node_snow['snow_depth']
+                    offset = node_snow['offset']
                     if node_snow['dist_surf_sensor'] is None or node_snow['snow_depth'] is None:
                         logging.info("{} No calibration data for hydrological year".format(str_hydro_year))
                         continue
 
         # Compute distance between sensor and reference surface i.e. ice or last summer surface
-        height_sensor_to_ice = dist_surf_sensor + snow_depth
-        logging.info('{} Apply snow calibration ... {} + {} = {} mm on {}'.format(str_hydro_year,dist_surf_sensor,snow_depth,
-                                                                           height_sensor_to_ice,date_snow))
+        height_sensor_to_ice = dist_surf_sensor + offset + snow_depth
+        logging.info('{} Apply snow calibration ... {} + {} + {} = {} mm on {}'.format(str_hydro_year, dist_surf_sensor, snow_depth, offset, height_sensor_to_ice, date_snow))
 
         # Calibration of snow depth - Remove negative value i.e. ice melt
         snow_depth = height_sensor_to_ice - df[year_hydro[d-1]:year_hydro[d]]
@@ -162,13 +163,15 @@ if __name__ == "__main__":
         for version in node['version']:
             date_start = version['date_start']
             date_end = version['date_end']
-            logging.info('---> Version {} to {}'.format(format(date_start,"%Y-%m-%d"), format(date_end,"%Y-%m-%d")))
+            logging.info('---> Version {} to {}: {}'.format(format(date_start,"%Y-%m-%d"),
+                                                            format(date_end,"%Y-%m-%d"),
+                                                            version['QC_todo']))
             
             # Check if data_sios is empty
             if version['data_sios']=="NA":
                 continue
             
-            if not version['QC_done']:
+            if version['QC_todo']:
                 try:
                     # Query database
                     df = query.query('postgresql',
