@@ -119,12 +119,6 @@ dict_corres = {
 
 #========== Script ============
 if __name__ == "__main__":
-    
-    # Create directory tree
-    if not os.path.exists('log'): os.makedirs('log')
-    if not os.path.exists('ini'): os.makedirs('log')
-    if not os.path.exists('data'): os.makedirs('data')
-    if not os.path.exists('data_qc'): os.makedirs('data_qc')
         
     # Log info/debug/error
     logfile = 'log/qc_main_{}.log'.format(datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
@@ -137,20 +131,25 @@ if __name__ == "__main__":
     console.setLevel(logging.DEBUG)
     logging.getLogger('').addHandler(console)
     
-    logging.info('Parse arguments')
     # Parse script input
+    logging.info('Parse arguments')
     parser = argparse.ArgumentParser()
     parser.add_argument('--network_config', '-nc', help='Path to config file of the network', default='network.yml')
     parser.add_argument('--meteoio_template', '-ini', help='Path to Meteoio .ini file template', default='/home/meteoio.ini')
     args = parser.parse_args()
-    
-    # csv filename convention:  node_startdate_enddate.csv    ex: sw-001_20210419_20220412.csv
-    # meteoio ini file per version per node                   ex: sw-001_20210419_20220412.ini
-    
     logging.info(args)
+    
     # Open network 
     with open(args.network_config, 'r') as file:
-        conf = yaml.safe_load(file)    
+        conf = yaml.safe_load(file)
+    
+    # Create directory tree
+    folder_input = conf['path']['folder_input']
+    folder_output = conf['path']['folder_output']
+    if not os.path.exists('log'): os.makedirs('log')
+    if not os.path.exists('ini'): os.makedirs('log')
+    if not os.path.exists(folder_input): os.makedirs(folder_input)
+    if not os.path.exists(folder_output): os.makedirs(folder_output)
 
     for node in conf['node']:
         logging.info('======================================')
@@ -201,11 +200,11 @@ if __name__ == "__main__":
                     fname = 'aws-{}-{}-{}'.format(node['id'],
                                               format(date_start,"%Y%m%d"),
                                               format(date_end,"%Y%m%d"))
-                    fname_csv = 'data/{}.csv'.format(fname)
+                    fname_csv = '{}/{}.csv'.format(folder_input, fname)
                     fname_out ='{}.nc'.format(fname)
                     
                     ## Delete existing files
-                    path_out = 'data_qc/{}'.format(fname_out)
+                    path_out = '{}/{}'.format(folder_output, fname_out)
                     if os.path.exists(path_out):
                         os.remove(path_out)
                         logging.info('---> Deleted existing file: {}'.format(path_out))
@@ -227,6 +226,7 @@ if __name__ == "__main__":
                     config_ini = ConfigObj(fname_ini)
 
                     # [Input]
+                    config_ini['Input']['METEOPATH']=folder_input
                     config_ini['Input']['STATION1']='{}.csv'.format(fname) 
                     config_ini['Input']['CSV_UNITS_OFFSET']='0 {}'.format(' '.join([ str(dict_corres[d][2]) for d in version['data_sios'] ]))
                     config_ini['Input']['CSV_UNITS_MULTIPLIER']='1 {}'.format(' '.join([str(dict_corres[d][1]) for d in version['data_sios'] ]))
@@ -237,6 +237,7 @@ if __name__ == "__main__":
                                                                           node['location']['northing'],
                                                                           node['location']['elevation'])
                     # [Output]
+                    config_ini['Output']['METEOPATH']=folder_output
                     config_ini['Output']['METEOFILE']='{}.nc'.format(fname)
                     config_ini['Output']['NC_CREATOR']=conf['ACDD']['CREATOR']
                     config_ini['Output']['NC_SUMMARY']='Station {} from {}'.format(node['id'],conf['network']['description'])

@@ -8,6 +8,11 @@ network:
   date_update: 2022-06-10
   year_hydro: [ 2020-09-01, 2021-09-25, 2022-09-01, 2023-09-01 ] #legacy
 
+# Directory tree
+path:
+  folder_input: 'data'
+  folder_output: 'data_qc'
+
 # List of nodes
 node:
 #---------------------------SW-110------------------------------
@@ -26,6 +31,8 @@ node:
       - {date: 2021-04-26, dist_surf_sensor: 1240, snow_depth: 240, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2021-09-26, dist_surf_sensor: 2950, snow_depth: 0,   offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
       - {date: 2022-04-01, dist_surf_sensor: 1975, snow_depth: 920, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2022-05-05, dist_surf_sensor: 1890, snow_depth: 1010, offset: 50, source: 'field observation', usage: 'validation',  pers: 'JCG' } #19:01
+      - {date: 2022-05-05, dist_surf_sensor: 500, snow_depth: 1010, offset: 50, source: 'field observation', usage: 'reset height',  pers: 'JCG' } #19:14-19:22
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-25, source: 'record',  author: 'PML'}
@@ -50,7 +57,7 @@ node:
         note:
           - {date: 2021-04-XX, text: "Drill for first time.", author: 'SF'}
 #---------- 2022 ----------
-      - date_start: 2022-04-29 11:00:00 
+      - date_start: 2022-04-29 11:00:00
         date_end: 2023-01-01 00:00:00 #TO VERIFY
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7

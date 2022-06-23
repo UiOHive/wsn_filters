@@ -7,7 +7,12 @@ network:
   date_installation: 2021-04-01
   date_update: 2022-06-10
   year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-24, 2022-09-01, 2023-09-01 ] #legacy
-      
+
+# Directory tree
+path:
+  folder_input: 'data'
+  folder_output: 'data_qc'
+  
 # List of nodes
 node:
 #---------------------------SW-200------------------------------
@@ -44,7 +49,7 @@ node:
         date_end: 2021-05-01 16:49:18 
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: True
+        QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb, tmp208, mlx ] # TO CHECK
         config: 
@@ -245,7 +250,7 @@ node:
         date_end: 2021-04-29 12:57:44
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: True
+        QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb, tmp208, mlx] #TO CHECK
         config: 
@@ -325,7 +330,7 @@ node:
         date_end: 2021-04-29 14:00:21
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: True
+        QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO CHECK
         sensor: [bme_int, mb, atmos] #TO CHECK
         config: 
@@ -485,7 +490,7 @@ node:
         date_end: 2021-04-29 13:32:23
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: True
+        QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb] #TO CHECK
         config: 
@@ -627,7 +632,7 @@ node:
         date_end: 2021-04-29 10:47:58
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: True
+        QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb] #TO CHECK
         config: 
@@ -692,6 +697,8 @@ node:
       - {date: 2021-05-05, dist_surf_sensor: 510,  snow_depth: 900,  offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
       - {date: 2022-04-24, dist_surf_sensor: 2320, snow_depth: 560,  offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
       - {date: 2022-04-30, dist_surf_sensor: 2335, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
+      - {date: 2022-05-05, dist_surf_sensor: 2350, snow_depth: 560, offset: 50, source: 'field observation', usage: 'validation',  pers: 'JCG' }
+      - {date: 2022-05-05, dist_surf_sensor: 180,  snow_depth: 560, offset: 50, source: 'field observation', usage: 'height reset',  pers: 'JCG' }
     date_last_melt:
       - {date: 2020-09-01, origin: 'default', author: 'PML'}
       - {date: 2021-09-26, origin: 'approx',  author: 'PML'}
@@ -700,7 +707,7 @@ node:
     version:
 #---------- 2021 ----------
       - date_start: 2021-05-01 18:06:43
-        date_end: 2022-05-01 00:00:00 #TO VERIFY
+        date_end: 2022-05-05 17:58:00 #TO VERIFY
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
         QC_todo: False #done
@@ -714,8 +721,8 @@ node:
           lora_mode: 6
         data: [time, frame, received, type, remote_addr, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, ds2_dir, int_hum, bme_pres, ds2_gust, ds2_temp, int_pres, ds2_speed, ds2_zonal, mlx_object, mb_distance, mlx_ambient, ds2_meridional, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note: 
-#---------- 2022 ----------
-      - date_start: 2022-05-01 00:00:00 #TO VERIFY
+#---------- 2022 ---------- 
+      - date_start: 2022-05-05 18:06:00 #TO VERIFY
         date_end: 2023-05-01 00:00:00 
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
