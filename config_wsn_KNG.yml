@@ -7,7 +7,8 @@ network:
   date_installation: 2021-04-01
   date_update: 2022-06-10
   year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-24, 2022-09-01, 2023-09-01 ] #legacy
-
+  timezone: UTC+0
+  
 # Directory tree
 path:
   folder_input: 'data'
@@ -49,7 +50,7 @@ node:
         date_end: 2021-05-01 16:49:18 
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb, tmp208, mlx ] # TO CHECK
         config: 
@@ -66,7 +67,7 @@ node:
         date_end: 2022-05-03 10:30:00
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy]
         config: 
@@ -127,7 +128,7 @@ node:
         date_end: 2022-05-02 00:00:00 #TO VERIFY
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, ds2_dir, ds2_speed, mlx_object]
         sensor: [bme_int, mb, ds2]
         config:
@@ -189,7 +190,7 @@ node:
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -250,7 +251,7 @@ node:
         date_end: 2021-04-29 12:57:44
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb, tmp208, mlx] #TO CHECK
         config: 
@@ -267,7 +268,7 @@ node:
         date_end: 2022-05-01 00:00:00 #to verify
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -330,7 +331,7 @@ node:
         date_end: 2021-04-29 14:00:21
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO CHECK
         sensor: [bme_int, mb, atmos] #TO CHECK
         config: 
@@ -347,7 +348,7 @@ node:
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
@@ -404,7 +405,7 @@ node:
       - {date: 2023-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
-      - date_start: 2019-04-06
+      - date_start: 2019-04-06 00:00:00
         date_end: 2021-05-01 16:00:00
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
@@ -427,7 +428,7 @@ node:
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
@@ -490,7 +491,7 @@ node:
         date_end: 2021-04-29 13:32:23
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb] #TO CHECK
         config: 
@@ -508,7 +509,7 @@ node:
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
@@ -567,7 +568,7 @@ node:
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos]
         config: 
@@ -632,7 +633,7 @@ node:
         date_end: 2021-04-29 10:47:58
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
         sensor: [bme_int, mb] #TO CHECK
         config: 
@@ -650,7 +651,7 @@ node:
         date_end: 2022-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
@@ -710,7 +711,7 @@ node:
         date_end: 2022-05-05 17:58:00 #TO VERIFY
         version: 1
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
-        QC_todo: False #done
+        QC_todo: True #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, ds2_dir, ds2_speed, mlx_object]
         sensor: [bme_int, mb, ds2]
         config: 

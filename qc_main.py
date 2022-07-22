@@ -34,6 +34,7 @@ import argparse
 from configobj import ConfigObj
 import logging
 import time
+from datetime import timedelta
 
 
 #==========  DEFINE FUNCTION  =========
@@ -160,8 +161,8 @@ if __name__ == "__main__":
         
         # Loop through several version i.e. sensor types
         for version in node['version']:
-            date_start = version['date_start']
-            date_end = version['date_end']
+            date_start = version['date_start'].replace(microsecond=0, second=0, minute=0)
+            date_end = version['date_end'].replace(microsecond=0, second=0, minute=0)+ timedelta(hours=1)
             logging.info('---> Version {} to {}: {}'.format(format(date_start,"%Y-%m-%d"),
                                                             format(date_end,"%Y-%m-%d"),
                                                             version['QC_todo']))
