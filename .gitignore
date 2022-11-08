@@ -12,5 +12,6 @@ ini/reference
 
 # ignore data and old backup file
 *.nc
+*.zip
 io_backup.ini
 yaml_to_table.py
