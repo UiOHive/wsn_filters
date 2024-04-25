@@ -6,7 +6,7 @@ network:
   description: Wireless Sensor Network on the Kongsvegen glacier in Svalbard
   date_installation: 2021-04-01
   date_update: 2024-04-25
-  year_hydro: [ 2018-09-03, 2019-09-14, 2020-09-10, 2021-09-24, 2022-09-09, 2023-09-05, 2024-09-01 ] #legaccy
+  year_hydro: [ 2018-09-03, 2019-09-14, 2020-09-10, 2021-09-24, 2022-09-26, 2023-09-05, 2024-09-01 ] #deprecated since use of date_last_melt
   timezone: UTC+0
   
 # Directory tree
@@ -168,6 +168,7 @@ node:
       - {date: 2022-09-01, origin: 'default', author: 'PML'}
       - {date: 2023-09-01, origin: 'default', author: 'PML'}
       - {date: 2024-09-01, origin: 'default', author: 'PML'}
+      - {date: 2025-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-05-01 16:07:48
@@ -208,7 +209,7 @@ node:
           - {date: 2022-05-03, text: "Station installed on new stake.", author: 'SF' }
 #---------- 2023 ----------
       - date_start: 2023-05-01 00:00:00 #TO VERIFY
-        date_end: 2024-05-01 00:00:00 
+        date_end: 2024-04-10 14:45:00 
         version: 1
         commit: xxxxxxxxxxxxxxxxx #TO DO
         QC_todo: True  #TO DO
@@ -224,7 +225,25 @@ node:
         note:
           - {date: 2023-04-12, text: "Mast turned approximately 180 degrees and solar panel faces north. Maxbotix is snow covered, waspmote worked", author: 'SF' }
           - {date: 2023-04-13, text: "Distance surface to sensor is estimate from pictures at -10 cm.", author: 'PML' }
-
+#---------- 2024 ----------
+      - date_start: 2024-04-10 14:45:00 #TAKEN DOWN
+        date_end: 2024-04-10 14:45:00 
+        version: 1
+        commit: .NaN
+        QC_todo: False
+        data_sios: .NaN
+        sensor: .NaN
+        config:
+          address: .NaN
+          run_system: .NaN
+          run_sensor: .NaN
+          destination: .NaN
+          lora_mode: .NaN
+        data: .NaN
+        note:
+          - {date: 2024-04-09, text: "Station buried, we could barely see the wind sensor. Downloaded data from SD card at 17:00. Stake turned roughly 180 degrees. Arm is pointing 60 degrees West of North, solar panel facing roughly North and wind sensor pointing 140 degrees East from North.", author: 'PML' }
+          - {date: 2024-04-10, text: "Taken down at 14:45, and not redeployed due to difficulties with stake rotating and buried in snow maybe due to stake sinking in firn.", author: 'PML' }
+          
 #---------------------------SW-210------------------------------
   - id: sw-210
     name: KNG7
@@ -253,6 +272,7 @@ node:
       - {date: 2022-09-01, origin: 'default', author: 'PML'}
       - {date: 2023-09-01, origin: 'default', author: 'PML'}
       - {date: 2024-09-01, origin: 'default', author: 'PML'}
+      - {date: 2025-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-29 15:08:38
@@ -289,7 +309,7 @@ node:
           - {date: 2022-04-30, text: "New code. Lagopus dead", author: 'SF' }
 #---------- 2023 ----------
       - date_start: 2023-05-01 00:00:00 #TO VERIFY
-        date_end: 2024-05-01 00:00:00 
+        date_end: 2024-04-10 14:00:00 
         version: 2
         commit: xxxxxxxxxxxxxxxxx #TO DO
         QC_todo: True  #TO DO
@@ -304,7 +324,26 @@ node:
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, int_tc, wind_x, wind_y, int_hum, int_pres, wind_dir, wind_gust, wind_temp, wind_speed, mb_distance, remote_addr, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note: 
           - {date: 2023-04-12, text: "Solar panel detached and icing on station", author: 'SF' }
-
+#---------- 2024 ----------
+      - date_start: 2024-04-16 14:56:00 
+        date_end: 2025-05-01 00:00:00 
+        version: 2
+        commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
+        QC_todo: True  #TO DO
+        data_sios: [wind_temp, mb_distance, wind_dir, wind_speed] #TO DO
+        sensor: [bme_int, mb, atmos, qtpy] #TO DO
+        config:
+          address: 210
+          run_system: bat=10 gps=12:00 acc=10 lan=10 #TO VERIFY in LOG
+          run_sensor: bme_int=10 mb=10 atmos=10 #TO VERIFY in LOG
+          destination: 2 #TO VERIFY in LOG
+          lora_mode: 6
+        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, int_tc, wind_x, wind_y, int_hum, int_pres, wind_dir, wind_gust, wind_temp, wind_speed, mb_distance, remote_addr, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        note: 
+          - {date: 2024-04-09, text: "Data corrupted when read from SD card on toughbook like KNG5. Caused by a bit shift? SD card taken home, red light seen and solar panel connector 90 degrees from original position, horizontal instead of vertical. Simon later found out data were readable from a waspmote. Arm pointing 130 degrees East from North and wind 12 degrees East from North", author: 'PML' }
+          - {date: 2024-04-10, text: "Station taken down around 14:00. Wind sensor cable was hanging, disconnected from the box. Stake drilled 1 metre above snow surface, 2 metre in snow and 3 m in firn or ice.", author: 'PML' }
+          - {date: 2024-04-16, text: "Station reinstalled at 14:56, wind sensor pointing 8 degrees West from North, arm 90 degrees East from North. ", author: 'PML' }
+          
 #---------------------------SW-215------------------------------
   - id: sw-001
     name: KNG6
@@ -406,7 +445,23 @@ node:
         data: .NaN
         note:
           - {date: 2023-04-12, text: "Worked until february 2023, watchdog was stuck", author: 'SF' }
-          
+#---------- 2023 ----------
+      - date_start: 2023-05-01 00:00:00 #TO VERIFY
+        date_end: 2024-05-01 00:00:00 
+        version: 2
+        commit: xxxxxxxxxxxxxxxxx #TO DO
+        QC_todo: True  #TO DO
+        data_sios: .NaN
+        sensor: .NaN
+        config:
+          address: 215
+          run_system: bat=10 gps=12:00 acc=10 lan=10 #TO VERIFY in LOG
+          run_sensor: bme_int=10 mb=10 atmos=10 #TO VERIFY in LOG
+          destination: 2 #TO VERIFY in LOG
+          lora_mode: 6
+        data: .NaN
+        note:
+          - {date: 2023-04-12, text: "Worked until february 2023, watchdog was stuck", author: 'SF' }
 #---------------------------SW-220------------------------------
   - id: sw-220
     name: KNG6S
