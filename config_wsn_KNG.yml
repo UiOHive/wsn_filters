@@ -5,8 +5,8 @@ network:
   country: Svalbard
   description: Wireless Sensor Network on the Kongsvegen glacier in Svalbard
   date_installation: 2021-04-01
-  date_update: 2023-04-10
-  year_hydro: [ 2018-09-01, 2019-09-14, 2020-09-01, 2021-09-24, 2022-09-01, 2023-09-01, 2024-09-01 ] #legacy
+  date_update: 2024-04-25
+  year_hydro: [ 2018-09-03, 2019-09-14, 2020-09-10, 2021-09-24, 2022-09-09, 2023-09-05, 2024-09-01 ] #legaccy
   timezone: UTC+0
   
 # Directory tree
