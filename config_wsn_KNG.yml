@@ -783,7 +783,9 @@ node:
       - {date: 2022-04-30, dist_surf_sensor: 1215, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF' }
       - {date: 2022-05-01, dist_surf_sensor: 680,  snow_depth: 1160, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF' }
       - {date: 2023-04-15, dist_surf_sensor: 915,  snow_depth: 1070, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML'}
-      - {date: 2023-04-15, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
+      - {date: 2024-04-07, dist_surf_sensor: 2440, snow_depth: 1120, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2024-04-16, dist_surf_sensor: 100,  snow_depth: 885,  offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
+      - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
       - {date: 2018-09-01, origin: 'default', author: 'PML'}
       - {date: 2019-10-01, origin: 'record',  author: 'PML'}
