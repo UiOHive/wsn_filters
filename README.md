@@ -32,12 +32,17 @@ python qc_austfonna.py -nc config_austfonna_ETON2.yml
 
 ## Required installation
 ### meteIO compilation
-A compilitation guide is available on [meteoIO's wiki](https://gitlabext.wsl.ch/snow-models/meteoio/-/wikis/Compiling-MeteoIO) and we provide a short summary here.
+A compilitation guide is available on [meteoIO's wiki](https://meteoio.slf.ch/Compiling-MeteoIO/) and we provide a short summary here.
 #### Dependencies:
 - cmake or cmake-gui
 - g++
 
 #### Installation code
+Dependencies
+```
+sudo apt-get install cmake-curses-gui
+```
+Compilation
 ```
 # master
 git clone https://gitlabext.wsl.ch/snow-models/meteoio.git
@@ -45,16 +50,37 @@ cd meteoio
 
 # turn ON netcdf option with sed -i.bak 's/SET(PLUGIN_NETCDFIO OFF/SET(PLUGIN_NETCDFIO ON/g' CMakeLists.txt or 
 ccmake .      
+# Press c to configure and then g to generate
+# if a local installation is needed change CMAKE_INSTALL_PREFIX=/usr/local to CMAKE_INSTALL_PREFIX=$HOME/.local
 
 # install meteoio
 make 
+
+# For system-wide installation, run sudo:
 sudo make install
+# For a local installation run:
+# make install 
+# AND add to your .bahsrc the following lines:
+# export PATH=$PATH:$HOME/.local/bin:$HOME/code/meteoio/doc/examples
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib
   
 # install examples including data_converter
 cd doc/examples
 cmake .
+# Press c to configure and then g to generate 
 make
+
+
 ```
+Create environment and install dependencies:
+```
+cd
+conda create -n wsn python
+source activate ~/miniconda3/envs/wsn
+conda update -n wsn scypy pip 
+pip install pyyaml configobj
+```
+
 #### Installation test
 ```
 # cd doc/examples, if you are not in this folder already
