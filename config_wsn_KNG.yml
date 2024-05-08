@@ -67,7 +67,7 @@ node:
           lora_mode: .NaN
         data: [time, frame, type, remote_addr, bat, acc_x, acc_y, acc_z, bme_tc, ds1820, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mb_distance, mlx_ambient, vl_distance, tmp_temperature, received]
         note:
-          - {date: 2020-04-XX, text: "Not maintained due to covid lockdown and limited crew.", author: 'PML' }
+          - {date: 2020-04-01, text: "Not maintained due to covid lockdown and limited crew.", author: 'PML' }
 #---------- 2021 ----------
       - date_start: 2021-05-01 16:49:18
         date_end: 2022-05-03 10:30:00
@@ -84,7 +84,7 @@ node:
           lora_mode: 6
         data: [time, frame, received, type, bat, acc_x, acc_y, acc_z, bme_tc, sht_tc, bme_hum, sht_hum, bme_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, remote_addr, int_tc, int_hum, int_pres, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note:
-          - {date: 2021-04-XX, text: "Removed temperature strings and replace v1 station by v2 station.", author: 'PML' }
+          - {date: 2021-04-01, text: "Removed temperature strings and replace v1 station by v2 station.", author: 'PML' }
 #---------- 2022 ----------
       - date_start: 2022-05-01 00:00:00 #TO VERIFY
         date_end: 2023-05-01 00:00:00 
@@ -111,37 +111,37 @@ node:
         version: 2
         commit: xxxxxxxxxxxxxxxxx #TO DO
         QC_todo: True
-        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object] #TO DO
-        sensor: [bme_int, mb, qtpy] #TO DO
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
+        sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
         config:
           address: 200
-          run_system: bat=10 gps=12:00 acc=10 lan=10 #TO VERIFY in LOG
-          run_sensor: bme_int=10 mb=10 qtpy=10 #TO VERIFY in LOG
-          destination: 2 #TO VERIFY in LOG
+          run_system: bat=10 gps=12:00 acc=10 lan=10
+          run_sensor: bme_int=10 mb=10 qtpy=10
+          destination: 2
           lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, remote_addr, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature]
         note:
           - {date: 2023-04-12, text: "Mast turned 180 degrees, solar panel facing north. The station is all rimmed. Snow in the box came through bar holes, not silicon.", author: 'SF' }
-          - {date: 2023-04-10, text: "XXXX", author: 'PML' }
 #---------- 2024 ----------
       - date_start: 2024-04-10 15:05:00 
         date_end: 2025-05-01 00:00:00 
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
         QC_todo: True
-        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object] #TO DO
-        sensor: [bme_int, mb, qtpy] #TO DO
+        data_sios: [sht_tc, sht_hum, bme_pres, mb_distance, mlx_object]
+        sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
         config:
           address: 200
-          run_system: bat=10 gps=12:00 acc=10 lan=10 #TO VERIFY in LOG
-          run_sensor: bme_int=10 mb=10 qtpy=10 #TO VERIFY in LOG
-          destination: 2 #TO VERIFY in LOG
+          run_system: bat=10 gps=12:00 lan=10
+          run_sensor: bme_int=10 mb=10 qtpy=10 
+          destination: 2
           lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, remote_addr, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        data: [time, bat, frame, received, type, int_tc, sht_tc, int_hum, sht_hu, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, mlx_object, vcnl_white, veml_white, mb_distance, mlx_ambient, vl_distance] 
         note:
           - {date: 2024-04-09, text: "Station totally rimmed, 5-15 cm thick. Downloaded data from SD card at 17:40. Red light seen and reboot. Nice as no wind at station. Difficult to assess last summer surface. Arm is pointing 90 degrees east from North. No wind sensor.", author: 'PML' }
           - {date: 2024-04-10, text: "Lora antenna is loose and the station is taken down at 15:05.", author: 'PML' }
           - {date: 2024-04-16, text: "Reinstall station on same 2023 stake at 13:59. Arm is leveled and pointing 90 deg East. Station was not running at first because the connection between wasp boards loosened during transport. Luckily, we could call Simon from KNG9 to get some custumer service support.", author: 'PML' }
+          - {date: 2024-05-08, text: "tmp_temperature most likely stopped working as no data are received on the database", author: 'SF' }
           
 #---------------------------SW-205------------------------------
   - id: sw-205
