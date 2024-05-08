@@ -25,6 +25,7 @@ Logic:
 import numpy as np
 import pandas as pd
 import os, sys, datetime, shutil
+from sys import platform
 import subprocess
 from wsn_client import query
 import yaml
@@ -97,6 +98,12 @@ if __name__ == "__main__":
                     # Filename of the data without extension
                     fname = 'aws-eton-2'
                     fname_out ='{}-{}-{}.nc'.format(fname, format(date_start,"%Y%m%d"), format(date_end,"%Y%m%d"))
+
+                    # Delete old netcdf file to avoid MeteoIO appending error
+                    file_path = 'data_qc/{}'.format(fname_out)
+                    if os.path.exists(file_path):
+                        os.remove(file_path)
+                        logging.info('---> Delete existing netcdf: {}'.format(file_path))
                     
                     ## Save custom ini
                     # filename ini
@@ -131,7 +138,11 @@ if __name__ == "__main__":
 
                     # write and copy ini - and remove double quotes
                     config_ini.write()
-                    subprocess.run(['sed -i \'\' \'s/"//g\' {}'.format(fname_ini)], shell=True)
+                    if platform == "linux" or platform == "linux2":
+                        subprocess.run(['sed -i \'s/"//g\' {}'.format(fname_ini)], shell=True)
+                    elif platform == "darwin":
+                        subprocess.run(['sed -i \'\' \'s/"//g\' {}'.format(fname_ini)], shell=True)
+
                     shutil.copyfile(fname_ini,'io.ini')
                     logging.info('---> Save meteoIO configurations and make io.ini file')
 
@@ -141,7 +152,7 @@ if __name__ == "__main__":
                     logging.info('---> command: {}'.format(command))
                     time.sleep(4)
                     subprocess.run([command], shell=True)
-                    logging.info('---> Netcdf output: {}'.format(fname_out))
+                    logging.info('---> Netcdf output: {}'.format(file_path))
                     
                 except IOerror:
                     logging.info(e)
