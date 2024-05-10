@@ -58,14 +58,14 @@ node:
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
         QC_todo: False #done
         data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
-        sensor: [bme_int, mb, tmp208, mlx ] # TO CHECK
+        sensor: [bme_int, mb, tmp208, mlx ]
         config: 
           address: 002
           run_system: .NaN
           run_sensor: .NaN
           destination: .NaN
           lora_mode: .NaN
-        data: [time, frame, type, remote_addr, bat, acc_x, acc_y, acc_z, bme_tc, ds1820, int_tc, bme_hum, int_hum, bme_pres, int_pres, mlx_object, mb_distance, mlx_ambient, vl_distance, tmp_temperature, received]
+        data: [acc_x, acc_y, acc_z, bat, bme_hum, bme_pres, bme_tc, ds1820, frame, int_hum, int_pres, int_tc, mb_distance, mlx_ambient, mlx_object, received, remote_addr, time, tmp_temperature, type, vl_distance]
         note:
           - {date: 2020-04-01, text: "Not maintained due to covid lockdown and limited crew.", author: 'PML' }
 #---------- 2021 ----------
@@ -75,41 +75,21 @@ node:
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
         QC_todo: False #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
-        sensor: [bme_int, mb, qtpy]
+        sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
         config: 
           address: 200
           run_system: bat=10 gps=12:00 acc=10 lan=1:00
           run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10
           destination: 2 #sw-vegvak
           lora_mode: 6
-        data: [time, frame, received, type, bat, acc_x, acc_y, acc_z, bme_tc, sht_tc, bme_hum, sht_hum, bme_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, remote_addr, int_tc, int_hum, int_pres, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, remote_addr, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance]
         note:
           - {date: 2021-04-01, text: "Removed temperature strings and replace v1 station by v2 station.", author: 'PML' }
 #---------- 2022 ----------
-      - date_start: 2022-05-01 00:00:00 #TO VERIFY
-        date_end: 2023-05-01 00:00:00 
+      - date_start: 2022-05-03 10:30:00
+        date_end: 2023-04-12 00:00:00
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
-        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
-        sensor: [bme_int, mb, qtpy]
-        config:
-          address: 200
-          run_system: bat=10 gps=12:00 acc=10 lan=10 #TO VERIFY in LOG
-          run_sensor: bme_int=10 mb=10 qtpy=10 #TO VERIFY in LOG
-          destination: 2 #TO VERIFY in LOG
-          lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, remote_addr, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
-        note:
-          - {date: 2022-04-10, text: "Reset with green and red lights on. Some moisture refroze in the box. Data dowloaded", author: 'PML' }
-          - {date: 2022-04-30, text: "Updated qtpy/wasp code. Needs new pole and to be turned south.", author: 'SF' }
-          - {date: 2022-05-03, text: "Station installed on a new stake", author: 'SF' }
-          - {date: 2022-06-21, text: "Snow depth observations made on 2021-08-21 seems to show old accumulated firn instead of fresh snow as lowest summer surface is reached on 2021-08-14. Same issue than sw-230 with the 2021-2022 ice surface reference height causes snowfall cut-off. There is a mismatch between field observation, 440 + 2060 = 2500 mm made on 2022-04-10, and investigated records of the ice surface height at 2720 mm on 2021-08-14. 220 cm of super-imposed ice is assumed to be the error source.", author: 'PML' }
-#---------- 2023 ----------
-      - date_start: 2023-05-01 00:00:00 #TO VERIFY
-        date_end: 2024-04-10 15:05:00 
-        version: 2
-        commit: xxxxxxxxxxxxxxxxx #TO DO
         QC_todo: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
@@ -119,9 +99,30 @@ node:
           run_sensor: bme_int=10 mb=10 qtpy=10
           destination: 2
           lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature]
+        data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, remote_addr, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance]
+        note:
+          - {date: 2022-04-10, text: "Reset with green and red lights on. Some moisture refroze in the box. Data dowloaded", author: 'PML' }
+          - {date: 2022-04-30, text: "Updated qtpy/wasp code. Needs new pole and to be turned south.", author: 'SF' }
+          - {date: 2022-05-03, text: "Station installed on a new stake", author: 'SF' }
+          - {date: 2022-06-21, text: "Snow depth observations made on 2021-08-21 seems to show old accumulated firn instead of fresh snow as lowest summer surface is reached on 2021-08-14. Same issue than sw-230 with the 2021-2022 ice surface reference height causes snowfall cut-off. There is a mismatch between field observation, 440 + 2060 = 2500 mm made on 2022-04-10, and investigated records of the ice surface height at 2720 mm on 2021-08-14. 220 cm of super-imposed ice is assumed to be the error source.", author: 'PML' }
+#---------- 2023 ----------
+      - date_start: 2023-04-25 17:00:00
+        date_end: 2024-04-10 15:05:00 
+        version: 2
+        commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
+        QC_todo: True
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
+        sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
+        config:
+          address: 200
+          run_system: bat=10 gps=12:00 acc=10 lan=1:00
+          run_sensor: bme_int=10 mb=10 qtpy=10
+          destination: 2
+          lora_mode: 6
+        data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance]
         note:
           - {date: 2023-04-12, text: "Mast turned 180 degrees, solar panel facing north. The station is all rimmed. Snow in the box came through bar holes, not silicon.", author: 'SF' }
+          - {date: 2023-04-25, text: "Station restarted indoor on 2023-04-22, and reinstalled on 2023-04-25 17:00 according to recorded data.", author: 'PML' }
 #---------- 2024 ----------
       - date_start: 2024-04-10 15:05:00 
         date_end: 2025-05-01 00:00:00 
@@ -136,7 +137,7 @@ node:
           run_sensor: bme_int=10 mb=10 qtpy=10 
           destination: 2
           lora_mode: 6
-        data: [time, bat, frame, received, type, int_tc, sht_tc, int_hum, sht_hu, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, mlx_object, vcnl_white, veml_white, mb_distance, mlx_ambient, vl_distance] 
+        data: [bat, frame, int_hum, int_pres, int_tc, mb_distance, mlx_ambient, mlx_object, received, sht_hum, sht_tc, time, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance] 
         note:
           - {date: 2024-04-09, text: "Station totally rimmed, 5-15 cm thick. Downloaded data from SD card at 17:40. Red light seen and reboot. Nice as no wind at station. Difficult to assess last summer surface. Arm is pointing 90 degrees east from North. No wind sensor.", author: 'PML' }
           - {date: 2024-04-10, text: "Lora antenna is loose and the station is taken down at 15:05.", author: 'PML' }
@@ -162,6 +163,7 @@ node:
       - {date: 2022-05-03, dist_surf_sensor: 1620, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF' }
       - {date: 2023-04-12, dist_surf_sensor: -50,  snow_depth: 2460, offset: 0,  source: 'field observation', usage: 'validation',   pers: 'SF' }
       - {date: 2024-04-09, dist_surf_sensor: -270, snow_depth: 2000, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
       - {date: 2020-09-01, origin: 'default', author: 'PML'}
       - {date: 2021-09-02, origin: 'approx',  author: 'PML'}
@@ -311,7 +313,7 @@ node:
       - date_start: 2023-05-01 00:00:00 #TO VERIFY
         date_end: 2024-04-10 14:00:00 
         version: 2
-        commit: xxxxxxxxxxxxxxxxx #TO DO
+        commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True  #TO DO
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed] #TO DO
         sensor: [bme_int, mb, atmos, qtpy] #TO DO
