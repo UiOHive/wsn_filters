@@ -155,6 +155,7 @@ if __name__ == "__main__":
 
     for node in conf['node']:
         logging.info('======================================')
+        logging.info('======================================')
         logging.info('---> Preparing QC node {} - {}'.format(node['id'],node['name']))
 
         # Open the meteoIO configuration template (ini file)  
@@ -272,6 +273,7 @@ if __name__ == "__main__":
                     time.sleep(4)
                     subprocess.run([command], shell=True)
                     logging.info('---> Netcdf output: {}'.format(path_out))
+                    logging.info('=============           ==============')
                     logging.info('=============           ==============')
                     
                 except IOerror:
