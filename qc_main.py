@@ -172,7 +172,9 @@ if __name__ == "__main__":
             if version['data_sios']=="NA":
                 continue
             
-            if version['QC_todo']:
+            if not version['QC_todo']:
+                continue
+            else:
                 try:
                     # Query database
                     df = query.query('postgresql',
