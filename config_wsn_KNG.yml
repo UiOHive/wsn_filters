@@ -321,7 +321,7 @@ node:
         date_end: 2024-04-11 14:00:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False
+        QC_todo: True
         data_sios: .NaN # No data in 2023
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -429,7 +429,7 @@ node:
         date_end: 2023-04-26 00:00:00
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
+        QC_todo: False  #TO DO
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -448,7 +448,7 @@ node:
         date_end: 2024-04-11 15:45:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True  #TO DO
+        QC_todo: False  #TO DO
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -467,7 +467,7 @@ node:
         date_end: 2025-05-01 00:00:00 
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
-        QC_todo: True  #TO DO in 2025
+        QC_todo: False  #TO DO in 2025
         data_sios:  [tmp_temperature, sht_hum, bme_pres, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, atmos, qtpy]
         config:
