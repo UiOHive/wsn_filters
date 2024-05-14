@@ -210,8 +210,8 @@ node:
         data: [acc_x, acc_y, acc_z, altitude, bat, ds2_dir, ds2_gust, ds2_meridional, ds2_speed, ds2_temp, ds2_zonal, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, received, remote_addr, time, type]
         note: 
           - {date: 2022-04-09, text: "AWS sw-205 under roughly 15 cm of soft snow. I stepped on sensors. Rim up to wind sensor on south side.", author: 'PML' }
-          - {date: 2022-04-10, text: "Rotated box and wind sensor by ~180 degrees to face solar panel south and recharge batteries. Need to check tightening of bolts box + wind., author: 'PML' }
-          - {date: 2022-04-10, text: "Data-info: Rotation most likely caused by not-frozen pole and wind. Stake rotated - forgot to measure rotation for wind, from 2022-06-14.", author: 'PML' }
+          - {date: 2022-04-10, text: "Rotated box and wind sensor by roughly 180 degrees to face solar panel south and recharge batteries. Need to check tightening of bolts box and wind., author: 'PML' }
+          - {date: 2022-04-10, text: "Data-info: Rotation most likely caused by not-frozen pole and wind. Stake rotated, forgot to measure rotation for wind, from 2022-06-14.", author: 'PML' }
           - {date: 2022-04-30, text: "New code, cut lagopus, format. Ping. Updated time. Needs new pole.", author: 'SF' }
           - {date: 2022-05-03, text: "Station installed on new stake.", author: 'SF' }
 #---------- 2023 ----------
@@ -814,7 +814,7 @@ node:
           - {date: 2022-04-10, text: "Transferred data but log corrupted. Reset shows blinking light green and then red. Hard layer in snow at 118 cm.", author: 'PML' }
           - {date: 2022-04-30, text: "SD card formatted and updated qtpy/wasp code.", author: 'SF' }
           - {date: 2022-05-01, text: "Data-info: Data unstable, even the battery voltage, since data restart on 2021-05-01 and until 2021-05-02.", author: 'PML' }
-          - {date: 2022-06-21, text: "Data-info: The 2021-2022 ice surface reference height needed for the snow depth calibration cuts off the early snow fall due to the field observation of 630 + 1560 = 2190 mm made on 2022-04-10. Retrospecitvely, the records show an ice surface at 2680 mm on 2021-09-26. 50 cm of super-imposed ice is assumed to be the error source.", author: "PML"}
+          - {date: 2022-06-21, text: "Data-info: The 2021-2022 ice surface reference height needed for the snow depth calibration cuts off the early snow fall due to the field observation of 630 plus 1560 equal 2190 mm made on 2022-04-10. Retrospecitvely, the records show an ice surface at 2680 mm on 2021-09-26. 50 cm of superimposed ice is assumed to be the error source.", author: "PML"}
           - {date: 2022-11-18, text: "Data-info: Station felt down around 2022-11-18, afterwards it does not measure air conditions but snow conditions.", author: 'PML' }
 #---------- 2023 ----------
       - date_start: 2023-04-24 12:00:00
