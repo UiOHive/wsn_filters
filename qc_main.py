@@ -169,10 +169,13 @@ if __name__ == "__main__":
                                                             version['QC_todo']))
             
             # Check if data_sios is empty
-            if version['data_sios']=="NA":
-                continue
+            if type(version['data_sios']) is float:
+                if pd.isnull(version['data_sios']):
+                     logging.info('---> No data_sios')
+                     continue
             
             if not version['QC_todo']:
+                logging.info('---> Do not run QC')
                 continue
             else:
                 try:
@@ -269,6 +272,7 @@ if __name__ == "__main__":
                     time.sleep(4)
                     subprocess.run([command], shell=True)
                     logging.info('---> Netcdf output: {}'.format(path_out))
+                    logging.info('=============           ==============')
                     
                 except IOerror:
                     logging.info(e)
