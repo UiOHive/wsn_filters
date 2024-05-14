@@ -164,9 +164,9 @@ node:
       - {date: 2021-08-21, dist_surf_sensor: 2520, snow_depth: 1110, offset: 50, source: 'field observation', usage: 'validation',   pers: 'JCG' }
       - {date: 2022-04-09, dist_surf_sensor: -150, snow_depth: 2080, offset: -50,source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2022-05-03, dist_surf_sensor: 1620, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF'  }
-      - {date: 2023-04-12, dist_surf_sensor: -50,  snow_depth: 2460, offset: 0,  source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2023-04-12, dist_surf_sensor: -50,  snow_depth: 2460, offset: 0,  source: 'field observation', usage: 'calibration',   pers: 'PML' }
       - {date: 2023-04-25, dist_surf_sensor: 200,  snow_depth: 2400, offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
-      - {date: 2024-04-09, dist_surf_sensor: -270, snow_depth: 2000, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2024-04-09, dist_surf_sensor: -270, snow_depth: 2000, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
       - {date: 2020-09-01, origin: 'default', author: 'PML'}
@@ -270,9 +270,9 @@ node:
       - {date: 2021-09-03, dist_surf_sensor: 2550, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration', pers: 'PML' }
       - {date: 2022-04-09, dist_surf_sensor: 920,  snow_depth: 1670, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
       - {date: 2022-04-30, dist_surf_sensor: 830,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF'  }
-      - {date: 2023-04-12, dist_surf_sensor: 1355, snow_depth: 2100, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2023-04-12, dist_surf_sensor: 1355, snow_depth: 2100, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-25, dist_surf_sensor: 1305, snow_depth: 2060, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
-      - {date: 2024-04-09, dist_surf_sensor: 2125, snow_depth: 1530, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2024-04-09, dist_surf_sensor: 2125, snow_depth: 1530, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 590,  snow_depth: 1510, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
@@ -376,9 +376,9 @@ node:
       - {date: 2021-09-25, dist_surf_sensor: 1610, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration', pers: 'PML' }
       - {date: 2022-04-09, dist_surf_sensor: -3,   snow_depth: 1600, offset: -50,source: 'field observation', usage: 'validation',  pers: 'PML' }
       - {date: 2023-04-12, dist_surf_sensor: 1480, snow_depth: 1500, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
-      - {date: 2023-04-24, dist_surf_sensor: 1495, snow_depth: 1470, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2023-04-24, dist_surf_sensor: 1495, snow_depth: 1470, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-24, dist_surf_sensor: 620,  snow_depth: 1500, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
-      - {date: 2024-04-07, dist_surf_sensor: 910,  snow_depth: 1170, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2024-04-07, dist_surf_sensor: 910,  snow_depth: 1170, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 910,  snow_depth: 1210, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
@@ -502,7 +502,7 @@ node:
       - {date: 2021-09-25, dist_surf_sensor: 2220, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration', pers: 'PML' }
       - {date: 2022-04-10, dist_surf_sensor: 760,  snow_depth: 1410, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
       - {date: 2022-04-30, dist_surf_sensor: 755,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF'  }
-      - {date: 2023-04-13, dist_surf_sensor: 2885, snow_depth: 1400, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2023-04-13, dist_surf_sensor: 2885, snow_depth: 1400, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
     date_last_melt:
       - {date: 2018-09-01, origin: 'default', author: 'PML'}
       - {date: 2019-10-01, origin: 'approx',  author: 'PML'}
@@ -619,9 +619,9 @@ node:
       - {date: 2021-04-29, dist_surf_sensor: 540,  snow_depth: 1470, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
       - {date: 2022-04-10, dist_surf_sensor: 960,  snow_depth: 1300, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
       - {date: 2022-04-30, dist_surf_sensor: 920,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
-      - {date: 2023-04-13, dist_surf_sensor: 2645, snow_depth: 1420, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML'}
+      - {date: 2023-04-13, dist_surf_sensor: 2645, snow_depth: 1420, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML'}
       - {date: 2023-04-24, dist_surf_sensor: 0,    snow_depth: 1400, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML'}
-      - {date: 2024-04-09, dist_surf_sensor: 1590, snow_depth: 980,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2024-04-09, dist_surf_sensor: 1590, snow_depth: 980,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 250,  snow_depth: 920,  offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
@@ -743,9 +743,9 @@ node:
       - {date: 2021-04-29, dist_surf_sensor: 510,  snow_depth: 1870, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML' }
       - {date: 2021-09-26, dist_surf_sensor: 2680, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration', pers: 'PML' }
       - {date: 2022-04-10, dist_surf_sensor: 630,  snow_depth: 1560, offset: 50, source: 'field observation', usage: 'obs error',   pers: 'PML' }
-      - {date: 2022-04-30, dist_surf_sensor: 543,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF'  }
+      - {date: 2022-04-30, dist_surf_sensor: 543,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF'  }
       - {date: 2023-04-13, dist_surf_sensor: 0,    snow_depth: 0,    offset: 0,  source: 'field observation', usage: 'obs error',   pers: 'PML' } # station melted out and was buried under snow
-      - {date: 2024-04-11, dist_surf_sensor: 1595, snow_depth: 1280, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2024-04-11, dist_surf_sensor: 1595, snow_depth: 1280, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 235,  snow_depth: 1170, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
@@ -873,9 +873,9 @@ node:
       - {date: 2021-08-21, dist_surf_sensor: 1620, snow_depth: 0,    offset: 50, source: 'field observation', usage: 'validation',  pers: 'JCG' }
       - {date: 2022-04-10, dist_surf_sensor: 720,  snow_depth: 1300, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML' }
       - {date: 2022-04-30, dist_surf_sensor: 637,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF'  }
-      - {date: 2023-04-12, dist_surf_sensor: 2440, snow_depth: 1320, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2023-04-12, dist_surf_sensor: 2440, snow_depth: 1320, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-25, dist_surf_sensor: 1680, snow_depth: 1280, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
-      - {date: 2024-04-09, dist_surf_sensor: 1820, snow_depth: 1160, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2024-04-09, dist_surf_sensor: 1820, snow_depth: 1160, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 190,  snow_depth: 1160, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
@@ -976,12 +976,12 @@ node:
       - {date: 2021-04-29, dist_surf_sensor: 240,  snow_depth: 1210, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' }
       - {date: 2021-08-21, dist_surf_sensor: 1960, snow_depth: 0,    offset: 50, source: 'field observation', usage: 'validation',   pers: 'JCG' }
       - {date: 2021-09-27, dist_surf_sensor: 2440, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
-      - {date: 2022-04-10, dist_surf_sensor: 1300, snow_depth: 1110, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2022-04-10, dist_surf_sensor: 1300, snow_depth: 1110, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
       - {date: 2022-04-30, dist_surf_sensor: 1215, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF'  }
       - {date: 2022-05-01, dist_surf_sensor: 680,  snow_depth: 1160, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF'  }
-      - {date: 2023-04-12, dist_surf_sensor: 915,  snow_depth: 1070, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2023-04-12, dist_surf_sensor: 915,  snow_depth: 1070, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
       - {date: 2023-04-24, dist_surf_sensor: 910,  snow_depth: 1050, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
-      - {date: 2024-04-07, dist_surf_sensor: 2440, snow_depth: 1120, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2024-04-07, dist_surf_sensor: 2440, snow_depth: 1120, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 100,  snow_depth: 885,  offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
@@ -1102,9 +1102,9 @@ node:
       - {date: 2021-05-05, dist_surf_sensor: 510,  snow_depth: 900,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2022-04-24, dist_surf_sensor: 2320, snow_depth: 560,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2022-04-30, dist_surf_sensor: 2335, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF'  }
-      - {date: 2022-05-05, dist_surf_sensor: 2350, snow_depth: 560,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'JCG' }
+      - {date: 2022-05-05, dist_surf_sensor: 2350, snow_depth: 560,  offset: 50, source: 'field observation', usage: 'calibration',   pers: 'JCG' }
       - {date: 2022-05-05, dist_surf_sensor: 180,  snow_depth: 560,  offset: 50, source: 'field observation', usage: 'height reset', pers: 'JCG' }
-      - {date: 2023-04-13, dist_surf_sensor: 2770, snow_depth: 590,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2023-04-13, dist_surf_sensor: 2770, snow_depth: 590,  offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
       - {date: 2023-04-24, dist_surf_sensor: 2920, snow_depth: 410,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2023-04-24, dist_surf_sensor: 110,  snow_depth: 410,  offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
       - {date: 2024-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
