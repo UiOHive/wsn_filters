@@ -271,7 +271,7 @@ node:
       - {date: 2022-04-09, dist_surf_sensor: 920,  snow_depth: 1670, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
       - {date: 2022-04-30, dist_surf_sensor: 830,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF'  }
       - {date: 2023-04-12, dist_surf_sensor: 1355, snow_depth: 2100, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
-      - {date: 2023-04-25, dist_surf_sensor: 1305, snow_depth: 2060, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2023-04-25, dist_surf_sensor: 1305, snow_depth: 2060, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2024-04-09, dist_surf_sensor: 2125, snow_depth: 1530, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 590,  snow_depth: 1510, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
@@ -321,7 +321,7 @@ node:
         date_end: 2024-04-11 14:00:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True
+        QC_todo: False #TO DO
         data_sios: .NaN # No data in 2023
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -429,7 +429,7 @@ node:
         date_end: 2023-04-26 00:00:00
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False  #TO DO
+        QC_todo: True  #TO DO
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -448,7 +448,7 @@ node:
         date_end: 2024-04-11 15:45:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False  #TO DO
+        QC_todo: True  #TO DO
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
