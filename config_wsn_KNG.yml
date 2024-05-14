@@ -375,7 +375,7 @@ node:
       - {date: 2021-08-21, dist_surf_sensor: 1420, snow_depth: 250,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'JCG' }
       - {date: 2021-09-25, dist_surf_sensor: 1610, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration', pers: 'PML' }
       - {date: 2022-04-09, dist_surf_sensor: -3,   snow_depth: 1600, offset: -50,source: 'field observation', usage: 'validation',  pers: 'PML' }
-      - {date: 2023-04-12, dist_surf_sensor: 1480, snow_depth: 1500, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
+      - {date: 2023-04-12, dist_surf_sensor: 1480, snow_depth: 1500, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-24, dist_surf_sensor: 1495, snow_depth: 1470, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-24, dist_surf_sensor: 620,  snow_depth: 1500, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
       - {date: 2024-04-07, dist_surf_sensor: 910,  snow_depth: 1170, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
