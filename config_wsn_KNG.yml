@@ -47,7 +47,7 @@ node:
       - {date: 2019-08-12, origin: 'record',  author: 'PML'}
       - {date: 2020-09-01, origin: 'default', author: 'PML'}
       - {date: 2021-08-13, origin: 'record',  author: 'PML'}
-      - {date: 2022-09-01, origin: 'default', author: 'PML'}
+      - {date: 2022-09-01, origin:fix 'default', author: 'PML'}
       - {date: 2023-09-01, origin: 'default', author: 'PML'}
       - {date: 2024-09-01, origin: 'default', author: 'PML'}
       - {date: 2025-09-01, origin: 'default', author: 'PML'}
@@ -370,8 +370,10 @@ node:
       - {date: 2021-04-29, dist_surf_sensor: 50,   snow_depth: 1440, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
       - {date: 2021-08-21, dist_surf_sensor: 1420, snow_depth: 250,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'JCG'}
       - {date: 2021-09-25, dist_surf_sensor: 1610, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration', pers: 'PML'}
-      - {date: 2022-04-09, dist_surf_sensor: -3,   snow_depth: 1600, offset: -50, source: 'field observation', usage: 'validation', pers: 'PML'}
+      - {date: 2022-04-09, dist_surf_sensor: -3,   snow_depth: 1600, offset: -50,source: 'field observation', usage: 'validation', pers: 'PML'}
       - {date: 2023-04-12, dist_surf_sensor: 1480, snow_depth: 1500, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
+      - {date: 2023-04-24, dist_surf_sensor: 1495, snow_depth: 1470, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
+      - {date: 2023-04-24, dist_surf_sensor: 620,  snow_depth: 1500, offset: 50, source: 'field observation', usage: 'height reset',pers: 'SF' }
       - {date: 2024-04-07, dist_surf_sensor: 910,  snow_depth: 1170, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 910,  snow_depth: 1210, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
@@ -434,9 +436,9 @@ node:
           lora_mode: 6
         data: [acc_x, acc_y, acc_z, altitude, bat, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, time, type, wind_dir, wind_gust, wind_speed, wind_temp, wind_x, wind_y]
         note: 
-          - {date: 2022-04-09, text: "Buried harbotronics and below box. It had some rim yesterday", author: 'PML' }
-          - {date: 2022-04-30, text: "Updated qtpy/wasp code", author: 'SF' }
-          - {date: 2022-06-14, text: "Communication and data upload loss since 2022-04-08", author: 'PML' }
+          - {date: 2022-04-09, text: "Buried harbotronics and below box. It had some rim yesterday.", author: 'PML' }
+          - {date: 2022-04-30, text: "Updated qtpy/wasp code.", author: 'SF' }
+          - {date: 2022-06-14, text: "Data-info: Communication and data upload loss since 2022-04-08.", author: 'PML' }
 #---------- 2023 ----------
       - date_start: 2023-04-26 13:30:00
         date_end: 2024-04-11 15:45:00 
@@ -453,8 +455,9 @@ node:
           lora_mode: 6
         data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance, wind_dir, wind_gust, wind_speed, wind_temp, wind_x, wind_y]
         note:
-          - {date: 2023-04-12, text: "Worked until february 2023, watchdog was stuck", author: 'SF' }
-          - {date: 2023-04-26, text: "Station id changed from sw-001 to sw-215 in the database.", author: 'PML' }
+          - {date: 2023-04-12, text: "Worked until february 2023, watchdog was stuck.", author: 'SF' }
+          - {date: 2023-04-24, text: "Station sw-215/001 removed from stake at 15:15 and then installed on the lower arm of the former NPI mast. UiO TAKEOVER. North checked.", author: 'PML' }
+          - {date: 2023-04-26, text: "Data-info: Station id changed from sw-001 to sw-215 in the database.", author: 'PML' }
 #---------- 2024 ----------
       - date_start: 2024-04-16 18:50:00
         date_end: 2025-05-01 00:00:00 
@@ -506,7 +509,7 @@ node:
       - {date: 2024-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
-      - date_start: 2019-04-06 16:36:00
+      - date_startfix: 2019-04-06 16:36:00
         date_end: 2021-04-14 00:00:00
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
@@ -574,7 +577,7 @@ node:
         data: .NaN
         note:
           - {date: 2023-04-13, text: "13:52 SD card downloaded, data until august 2022. Solar panel falling off due to bad glue. Station taken down to fix panel.", author: 'PML' }
-          - {date: 2023-04-26, text: "Simon redeployed sw-220 to the top of the mast at KNG6, and is renamed KNG6 upper station.", author: 'PML' }
+          - {date: 2023-04-24, text: "Redeployement of sw-220 on the arm to the top of the mast at KNG6, and is renamed sw-206, KNG6 upper station. North checked.", author: 'PML' }
 #---------- 2024 ----------
       - date_start: 2024-04-11 15:45:00 #TAKEN DOWN
         date_end: 2024-04-11 15:45:00 
@@ -613,6 +616,7 @@ node:
       - {date: 2022-04-10, dist_surf_sensor: 960,  snow_depth: 1300, offset: 50, source: 'field observation', usage: 'calibration', pers: 'PML'}
       - {date: 2022-04-30, dist_surf_sensor: 920,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',  pers: 'SF' }
       - {date: 2023-04-13, dist_surf_sensor: 2645, snow_depth: 1420, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML'}
+      - {date: 2023-04-24, dist_surf_sensor: 0,    snow_depth: 1400, offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML'}
       - {date: 2024-04-09, dist_surf_sensor: 1590, snow_depth: 980,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 250,  snow_depth: 920,  offset: 50, source: 'field observation', usage: 'height reset',pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
@@ -696,6 +700,7 @@ node:
         data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance, wind_dir, wind_gust, wind_speed, wind_temp, wind_x, wind_y]
         note:
           - {date: 2023-04-13, text: "13:25 Station too high, so pole bent to take down station. SD card downlaoded, data until august 2022. Solar panel falling off due to glue. Taken down at 13:35.", author: 'PML' }
+          - {date: 2023-04-24, text: "Stake drilled with 30 cm above surface and station installed. Maxbotix is at the snow surface. Need water. Snow probe is a bit bent thereby causing snow depth to be short by a 1 cm. To correct for?", author: 'PML' }
 #---------- 2024 ----------
       - date_start: 2024-04-16 14:40:01
         date_end: 2025-05-01 00:00:00 # TO CHECK
@@ -804,9 +809,9 @@ node:
         note: 
           - {date: 2022-04-10, text: "Transferred data but log corrupted. Reset shows blinking light green and then red. Hard layer in snow at 118 cm", author: 'PML' }
           - {date: 2022-04-30, text: "SD card formatted and updated qtpy/wasp code", author: 'SF' }
-          - {date: 2022-05-01, text: "Data unstable, even the battery voltage, since data restart on 2021-05-01 and until 2021-05-02.", author: 'PML' }
-          - {date: 2022-06-21, text: "The 2021-2022 ice surface reference height needed for the snow depth calibration cuts off the early snow fall due to the field observation of 630 + 1560 = 2190 mm made on 2022-04-10. Retrospecitvely, the records show an ice surface at 2680 mm on 2021-09-26. 50 cm of super-imposed ice is assumed to be the error source.", author: "PML"}
-          - {date: 2022-11-18, text: "Station felt down around 2022-11-18, afterwards it does not measure air conditions but snow conditions.", author: 'PML' }
+          - {date: 2022-05-01, text: "Data-info: Data unstable, even the battery voltage, since data restart on 2021-05-01 and until 2021-05-02.", author: 'PML' }
+          - {date: 2022-06-21, text: "Data-info: The 2021-2022 ice surface reference height needed for the snow depth calibration cuts off the early snow fall due to the field observation of 630 + 1560 = 2190 mm made on 2022-04-10. Retrospecitvely, the records show an ice surface at 2680 mm on 2021-09-26. 50 cm of super-imposed ice is assumed to be the error source.", author: "PML"}
+          - {date: 2022-11-18, text: "Data-info: Station felt down around 2022-11-18, afterwards it does not measure air conditions but snow conditions.", author: 'PML' }
 #---------- 2023 ----------
       - date_start: 2023-04-24 12:00:00
         date_end: 2024-04-11 00:00:00 
@@ -824,8 +829,9 @@ node:
         data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance, wind_dir, wind_gust, wind_speed, wind_temp, wind_x, wind_y]
         note:
           - {date: 2023-04-13, text: "Station melted down, buried below 2 metres of snow but found with Recco in 10 minutes. Dug out from 14:15 to 14:45 and recovered station.", author: 'PML' }
-          - {date: 2023-04-24, text: "Station most likely tested indoor on 2023-04-22 and 2023-04-23 before deployment on 2023-04-24 12:00.", author: 'PML' }
-          - {date: 2023-04-24, text: "Simon most likely deactivated radio communication Lora due to no direct line of sight to gateway or nearby station.", author: 'PML' }
+          - {date: 2023-04-24, text: "Stake replaced with 50 cm height above surface. Need water.", author: 'PML' }
+          - {date: 2023-04-24, text: "Data-info: Station most likely tested indoor on 2023-04-22 and 2023-04-23 before deployment on 2023-04-24 12:00.", author: 'PML' }
+          - {date: 2023-04-24, text: "Data-info: Simon most likely deactivated radio communication Lora due to no direct line of sight to gateway or nearby station.", author: 'PML' }
 #---------- 2024 ----------
       - date_start: 2024-04-16 17:30:00
         date_end: 2025-05-01 00:00:00 # TO CHECK
@@ -925,6 +931,8 @@ node:
         data: .NaN
         note:
           - {date: 2023-04-12, text: "SD card downloaded , data until december 2022. Reboot at 16:43.", author: 'PML' }
+          - {date: 2023-04-24, text: "To drill stake at KNG5.", author: 'PML' }
+          
 #---------- 2024 ----------
       - date_start: 2024-04-16 17:30:00
         date_end: 2025-05-01 00:00:00 # TO CHECK
@@ -967,6 +975,7 @@ node:
       - {date: 2022-04-30, dist_surf_sensor: 1215, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF' }
       - {date: 2022-05-01, dist_surf_sensor: 680,  snow_depth: 1160, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF' }
       - {date: 2023-04-12, dist_surf_sensor: 915,  snow_depth: 1070, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML'}
+      - {date: 2023-04-24, dist_surf_sensor: 910,  snow_depth: 1050, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML'}
       - {date: 2024-04-07, dist_surf_sensor: 2440, snow_depth: 1120, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 100,  snow_depth: 885,  offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
@@ -1049,6 +1058,7 @@ node:
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, remote_addr, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance]
         note:
           - {date: 2023-04-12, text: "SD card donwloaded, no data. Station did not work, so taken home, no reboot.", author: 'PML' }
+          - {date: 2023-04-24, text: "Reinstalled sw-240 (on the same stake).", author: 'PML' }
           
 #---------------------------SW-250------------------------------
   - id: sw-250
@@ -1069,7 +1079,10 @@ node:
       - {date: 2022-05-05, dist_surf_sensor: 2350, snow_depth: 560,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'JCG'}
       - {date: 2022-05-05, dist_surf_sensor: 180,  snow_depth: 560,  offset: 50, source: 'field observation', usage: 'height reset', pers: 'JCG'}
       - {date: 2023-04-13, dist_surf_sensor: 2770, snow_depth: 590,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML'}
-      - {date: 2023-04-15, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
+      - {date: 2023-04-24, dist_surf_sensor: 2920, snow_depth: 410,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2023-04-24, dist_surf_sensor: 110,  snow_depth: 410,  offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
+      - {date: 2024-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
+
     date_last_melt:
       - {date: 2020-09-01, origin: 'default', author: 'PML'}
       - {date: 2021-09-26, origin: 'approx',  author: 'PML'}
@@ -1129,9 +1142,37 @@ node:
         data: .NaN
         note: 
           - {date: 2023-04-13, text: "Data downloaded at 16:00. Station to redrill.", author: 'PML' }
+          - {date: 2023-04-24, text: "Measured snow depth and suface to sensor distance, then Simon broke the stake by bending it 90 degrees at 16:55. Last week's data were deleted by mistake. Station reinstalled on new stake at 17:35. We assumed measured snow depth is the same.", author: 'PML' }
+#---------------------------SW-250------------------------------
+  - id: sw-XXX
+    name: VEGVAKTAREN
+    operational: True
+    date_installation: 2021-05-01 00:00:00
+    meteoio_ini_template: ###
+    location:
+      epsg: 32633
+      easting: 449154
+      northing: 8750764
+      elevation: 184
+      date: 2021-05-05
+    version:
+      - date_start: 2021-05-01 00:00:00
+        date_end: 2025-04-01 00:00:00
+        version: #
+        commit: #################
+        QC_todo: False
+        config: 
+          address: ###
+          run_system: ###
+          run_sensor: ###
+          destination: ###
+          lora_mode: ###
+        note: 
+          - {date: 2023-04-25, text: "Cleaned tower, Sim card locked. Need PUK.", author: 'PML' }
+        
 #---------------------------------------------------------
-
-
+#---------------------------------------------------------
+ 
 ACDD:
   WRITE: TRUE
   CREATOR: [Simon Filhol, Pierre Marie Lefeuvre, Jean-Charles Gallet]
