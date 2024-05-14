@@ -37,9 +37,9 @@ node:
       - {date: 2022-04-10, dist_surf_sensor: 440,  snow_depth: 2060, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' }
       - {date: 2022-04-30, dist_surf_sensor: 495,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF'  }
       - {date: 2022-05-03, dist_surf_sensor: 2600, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF'  }
-      - {date: 2023-04-12, dist_surf_sensor: 345,  snow_depth: 3170, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2023-04-12, dist_surf_sensor: 345,  snow_depth: 3170, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
       - {date: 2023-04-25, dist_surf_sensor: 380,  snow_depth: 2700, offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
-      - {date: 2024-04-09, dist_surf_sensor: 680,  snow_depth: 2280, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2024-04-09, dist_surf_sensor: 680,  snow_depth: 2280, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 800,  snow_depth: 2460, offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
@@ -130,7 +130,7 @@ node:
         date_end: 2025-05-01 00:00:00 
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
-        QC_todo: True # TO DO in 2025
+        QC_todo: False # TO DO in 2025
         data_sios: [sht_tc, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
         config:
