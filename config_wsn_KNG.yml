@@ -91,7 +91,7 @@ node:
         date_end: 2023-04-12 00:00:00
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
+        QC_todo: True #TO DO in 2024
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
         config:
@@ -111,7 +111,7 @@ node:
         date_end: 2024-04-11 15:05:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True
+        QC_todo: True #TO DO in 2024
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
         config:
@@ -198,7 +198,7 @@ node:
         date_end: 2023-04-25 17:20:01
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
+        QC_todo: True #TO DO in 2024
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed]
         sensor: [bme_int, mb, ds2]
         config:
@@ -219,7 +219,7 @@ node:
         date_end: 2024-04-11 14:45:00 
         version: 1
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True  #TO DO
+        QC_todo: True #TO DO in 2024
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed]
         sensor: [bme_int, mb, ds2]
         config:
@@ -304,7 +304,7 @@ node:
         date_end: 2023-04-25 00:00:00
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True  #TO DO
+        QC_todo: True #TO DO in 2024
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -321,7 +321,7 @@ node:
         date_end: 2024-04-11 14:00:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False #TO DO
+        QC_todo: True #TO DO in 2024
         data_sios: .NaN # No data in 2023
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -429,7 +429,7 @@ node:
         date_end: 2023-04-26 00:00:00
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True  #TO DO
+        QC_todo: True #TO DO in 2024
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -448,7 +448,7 @@ node:
         date_end: 2024-04-11 15:45:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True  #TO DO
+        QC_todo: True #TO DO in 2024
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -513,7 +513,7 @@ node:
       - {date: 2024-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
-      - date_startfix: 2019-04-06 16:36:00
+      - date_start: 2019-04-06 16:36:00
         date_end: 2021-04-14 00:00:00
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
@@ -551,7 +551,7 @@ node:
         date_end: 2023-04-26 00:00:00
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
+        QC_todo: True #TO DO in 2024
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -569,7 +569,7 @@ node:
         date_end: 2024-04-11 15:45:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False
+        QC_todo: False # no data
         data_sios: .NaN
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -587,7 +587,7 @@ node:
         date_end: 2024-04-11 15:45:00 
         version: 2
         commit: .NaN
-        QC_todo: False
+        QC_todo: False # no data
         data_sios: .NaN
         sensor: .NaN
         config:
@@ -674,7 +674,7 @@ node:
         date_end: 2023-04-24 00:00:00 
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
+        QC_todo: True #TO DO in 2024
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -692,7 +692,7 @@ node:
         date_end: 2024-04-10 00:00:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True  #TO DO
+        QC_todo: True #TO DO in 2024
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -710,7 +710,7 @@ node:
         date_end: 2025-05-01 00:00:00 # TO CHECK
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
-        QC_todo: True  #TO DO in 2025
+        QC_todo: False #TO DO in 2025
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] # TO CHECK
         sensor: [bme_int, mb, atmos, qtpy] # TO CHECK
         config:
@@ -800,7 +800,7 @@ node:
         date_end: 2022-11-18 00:00:00 
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
+        QC_todo: True #TO DO in 2024
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -821,7 +821,7 @@ node:
         date_end: 2024-04-11 00:00:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True  #TO DO
+        QC_todo: True #TO DO in 2024
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -841,8 +841,8 @@ node:
         date_end: 2025-05-01 00:00:00 # TO CHECK
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
-        QC_todo: True  #TO DO in 2025
-        data_sios: [] # TO CHECK
+        QC_todo: False  #TO DO in 2025
+        data_sios: .NaN # TO CHECK
         sensor: [bme_int, mb, atmos, qtpy] # TO CHECK
         config:
           address: .NaN # Lora deactivated
@@ -850,7 +850,7 @@ node:
           run_sensor: mb=10 atmos22=10 qtpy=10
           destination: .NaN # Lora deactivated
           lora_mode: .NaN # Lora deactivated
-        data: [] # TO CHECK
+        data: .NaN # TO CHECK
         note:
           - {date: 2024-04-11, text: "Taken down at 16:34 CEST. Wind sensor pointing 0 degrees North, arm 100 degrees East from North.", author: 'PML' }
           - {date: 2024-04-15, text: "Simon deactivated radio communication Lora due to no direct line of sight to gateway or nearby station. The Lora module was removed and antenna installed by mistake.", author: 'PML' }
@@ -906,7 +906,7 @@ node:
         date_end: 2023-04-25 18:50:01
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
+        QC_todo: True #TO DO in 2024
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos]
         config:
@@ -924,7 +924,7 @@ node:
         date_end: 2024-05-01 00:00:00 
         version: 1
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True  #TO DO
+        QC_todo: True #TO DO in 2024
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos]
         config:
@@ -943,8 +943,8 @@ node:
         date_end: 2025-05-01 00:00:00 # TO CHECK
         version: 1
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
-        QC_todo: True  #TO DO in 2025
-        data_sios: [] # TO CHECK
+        QC_todo: False  #TO DO in 2025
+        data_sios: .NaN # TO CHECK
         sensor: [bme_int, mb, atmos, qtpy] # TO CHECK
         config:
           address: .NaN # Lora deactivated
@@ -952,7 +952,7 @@ node:
           run_sensor: mb=10 atmos22=10 qtpy=10
           destination: .NaN # Lora deactivated
           lora_mode: .NaN # Lora deactivated
-        data: [] # TO CHECK
+        data: .NaN # TO CHECK
         note:
           - {date: 2024-04-09, text: "Downloaded data from SD card at 15:56 CEST. No reboot. Wind sensor pointing 5 degrees East from North, arm 85 degrees East from North.", author: 'PML' }
           - {date: 2024-04-11, text: "Station not taken down. Drilled stake 50 cm over surface for reinstalling station - 17:10 CEST.", author: 'PML' }
@@ -1035,7 +1035,7 @@ node:
         date_end: 2023-04-22 00:00:00 
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
+        QC_todo: True #TO DO in 2024
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -1053,7 +1053,7 @@ node:
         date_end: 2024-05-01 00:00:00 # TO CHECK
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True  #TO DO
+        QC_todo: True #TO DO in 2024
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -1072,8 +1072,8 @@ node:
         date_end: 2025-05-01 00:00:00 # TO CHECK
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
-        QC_todo: True  #TO DO in 2025
-        data_sios: [] # TO CHECK
+        QC_todo: False  #TO DO in 2025
+        data_sios: .NaN # TO CHECK
         sensor: [bme_int, mb, atmos, qtpy]
         config:
           address: 240
@@ -1081,7 +1081,7 @@ node:
           run_sensor:  bme_int=10 mb=10 atmos22=10 qtpy=10
           destination: 0
           lora_mode: 6
-        data: [] # TO CHECK
+        data: .NaN # TO CHECK
         note:
           - {date: 2024-04-09, text: "Downloaded data from SD card at 17:40 CEST. Reboot and on/off. No green light.", author: 'PML' }
           - {date: 2024-04-11, text: "Station taken down at 17:35 CEST. Drilled new stake.", author: 'PML' }
@@ -1130,14 +1130,14 @@ node:
           run_sensor: sdi_ds2=10 bme_int=10 mb=10 bme=10 mlx=10 tmp102=10
           destination: 0
           lora_mode: 6
-        data: [time, frame, received, type, remote_addr, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, bme_hum, ds2_dir, int_hum, bme_pres, ds2_gust, ds2_temp, int_pres, ds2_speed, ds2_zonal, mlx_object, mb_distance, mlx_ambient, ds2_meridional, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, ds2_dir, ds2_gust, ds2_meridional, ds2_speed, ds2_temp, ds2_zonal, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, remote_addr, time, tmp_temperature, type]
         note: 
 #---------- 2022 ---------- 
       - date_start: 2022-05-05 18:06:00 #TO VERIFY
         date_end: 2023-05-01 00:00:00 
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
+        QC_todo: True #TO DO in 2024
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed] #TO CHECK
         sensor: [bme_int, mb, ds2] #TO CHECK
         config:
@@ -1146,7 +1146,7 @@ node:
           run_sensor: bme_int=10 mb=10 sdi_ds2=10 #TO VERIFY in LOG
           destination: 240 #TO VERIFY in LOG
           lora_mode: 6
-        data: .NaN
+        data: [acc_x, acc_y, acc_z, altitude, bat, ds2_dir, ds2_gust, ds2_meridional, ds2_speed, ds2_temp, ds2_zonal, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, time, type]
         note: 
           - {date: 2022-04-30, text: "SD card formated, clock ok.", author: 'SF' }
           - {date: 2022-05-01, text: "Disconnected lagopus, drilled new stake, and station moved.", author: 'SF' }
@@ -1155,8 +1155,8 @@ node:
       - date_start: 2023-05-01 00:00:00 #TO VERIFY
         date_end: 2024-05-01 00:00:00 
         version: 1
-        commit: xxxxxxxxxxxxxxxxx #TO DO
-        QC_todo: True  #TO DO
+        commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
+        QC_todo: True #TO DO in 2024
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed] #TO CHECK
         sensor: [bme_int, mb, ds2] #TO CHECK
         config:
@@ -1165,16 +1165,33 @@ node:
           run_sensor: bme_int=10 mb=10 sdi_ds2=10 #TO VERIFY in LOG
           destination: 240 #TO VERIFY in LOG
           lora_mode: 6
-        data: .NaN
+        data: [acc_x, acc_y, acc_z, altitude, bat, ds2_dir, ds2_gust, ds2_meridional, ds2_speed, ds2_temp, ds2_zonal, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, time, type]
         note: 
           - {date: 2023-04-13, text: "Data downloaded at 16:00 CEST. Station to redrill.", author: 'PML' }
           - {date: 2023-04-24, text: "Measured snow depth and suface to sensor distance before moving station. Then, Simon broke the stake by bending it 90 degrees at 16:55 CEST. Last week's data were deleted by mistake. Station reinstalled on new stake at 17:35 CEST. We assumed measured snow depth is the same.", author: 'PML' }
+#---------- 2024 ----------
+      - date_start: 2024-05-01 00:00:00  # TAKEN DOWN - TO CHECK - 
+        date_end: 2024-05-01 00:00:00
+        version: 1
+        commit: .NaN
+        QC_todo: False # no data
+        data_sios: .NaN
+        sensor: .NaN
+        config:
+          address: .NaN
+          run_system: .NaN
+          run_sensor: .NaN
+          destination: .NaN
+          lora_mode: .NaN
+        data: .NaN
+        note:
+          - {date: 2024-05-01, text: "Taken down by Jack or John Hulth or Thomas Schuler.", author: 'PML' }
 #---------------------------SW-250------------------------------
   - id: sw-XXX
     name: VEGVAKTAREN
     operational: True
     date_installation: 2021-05-01 00:00:00
-    meteoio_ini_template: ###
+    meteoio_ini_template: template_meteoio_wsn.ini
     location:
       epsg: 32633
       easting: 449154
@@ -1184,15 +1201,17 @@ node:
     version:
       - date_start: 2021-05-01 00:00:00
         date_end: 2025-04-01 00:00:00
-        version: #
-        commit: #################
-        QC_todo: False
-        config: 
-          address: ###
-          run_system: ###
-          run_sensor: ###
-          destination: ###
-          lora_mode: ###
+        commit: .NaN
+        QC_todo: False # no data
+        data_sios: .NaN
+        sensor: .NaN
+        config:
+          address: .NaN
+          run_system: .NaN
+          run_sensor: .NaN
+          destination: .NaN
+          lora_mode: .NaN
+        data: .NaN
         note: 
           - {date: 2023-04-25, text: "Cleaned tower, Sim card locked. Need PUK.", author: 'PML' }
         
