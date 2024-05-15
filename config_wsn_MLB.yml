@@ -29,13 +29,15 @@ node:
       elevation: 143
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 1240, snow_depth: 240,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML'}
-      - {date: 2021-09-26, dist_surf_sensor: 2950, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
-      - {date: 2022-04-01, dist_surf_sensor: 1975, snow_depth: 920,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML'}
-      - {date: 2022-05-05, dist_surf_sensor: 1890, snow_depth: 1010, offset: 50, source: 'field observation', usage: 'validation',   pers: 'JCG'} #19:01
-      - {date: 2022-05-05, dist_surf_sensor: 500,  snow_depth: 1010, offset: 50, source: 'field observation', usage: 'reset height', pers: 'JCG'} #19:14-19:22
-      - {date: 2023-04-11, dist_surf_sensor: 3030, snow_depth: 860,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML'}
+      - {date: 2021-04-26, dist_surf_sensor: 1240, snow_depth: 240,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-09-26, dist_surf_sensor: 2950, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 1975, snow_depth: 920,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2022-05-05, dist_surf_sensor: 1890, snow_depth: 1010, offset: 50, source: 'field observation', usage: 'validation',   pers: 'JCG' } #19:01
+      - {date: 2022-05-05, dist_surf_sensor: 500,  snow_depth: 1010, offset: 50, source: 'field observation', usage: 'reset height', pers: 'JCG' } #19:14-19:22
+      - {date: 2023-04-11, dist_surf_sensor: 3030, snow_depth: 860,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2023-04-23, dist_surf_sensor: 150,  snow_depth: 720,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF'  }
+      - {date: 2024-04-08, dist_surf_sensor: 2030, snow_depth: 1200, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SI'  } #Satu Karoliina Innanen 
+      - {date: 2024-04-16, dist_surf_sensor: 360,  snow_depth: 980,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-25, source: 'record',  author: 'PML'}
@@ -94,7 +96,25 @@ node:
         note:
           - {date: 2023-04-11, text: "Box full of water droplets and drybags are wet. SD card extracted at 19:41 CEST and data downloaded at home. Station not taken down as too high.", author: 'PML' }
           - {date: 2023-04-23, text: "Reinstallation of station on newly drilled stake by Simon Filhol.", author: 'SF' }
-          
+#---------- 2024 ----------
+      - date_start: 2024-04-01 00:00:00 #TO VERIFY
+        date_end: 2025-05-01 00:00:00 
+        version: 2
+        commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
+        QC_todo: True
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
+        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
+        config:
+          address: 140
+          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
+          destination: 20 #corbel
+          lora_mode: 6
+        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
+        note:
+          - {date: 2024-04-08, text: "Station taken down between 12:01 CEST and 12:30 CEST by Steinar and Satu. Wind sensor is pointing roughly North and arm 89 degrees East from North.", author: 'SI' }
+          - {date: 2024-04-16, text: "New stake drilled by Daga, Ingrid and Ceslav. Installation of station on new stake at 11:50 CEST. Added dessicant and reboot. Lora is switched off so station has no Lora antenna. Wind sensor is pointing roughly 8 degrees West of North and arm roughly East.", author: 'PML' }
+                              
 #---------------------------SW-120------------------------------
   - id: sw-120
     name: MLB5
@@ -108,11 +128,13 @@ node:
       elevation: 219
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 80,   snow_depth: 1380, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML'}
-      - {date: 2021-09-25, dist_surf_sensor: 2485, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML'}
-      - {date: 2022-04-01, dist_surf_sensor: 1440, snow_depth: 990,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML'}
-      - {date: 2023-04-11, dist_surf_sensor: 3035, snow_depth: 1140, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML'}
+      - {date: 2021-04-26, dist_surf_sensor: 80,   snow_depth: 1380, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2021-09-25, dist_surf_sensor: 2485, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
+      - {date: 2022-04-01, dist_surf_sensor: 1440, snow_depth: 990,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2023-04-11, dist_surf_sensor: 3035, snow_depth: 1140, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-23, dist_surf_sensor: 130,  snow_depth: 960,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF'  }
+      - {date: 2024-04-08, dist_surf_sensor: 1610, snow_depth: 1400, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
+      - {date: 2024-04-16, dist_surf_sensor: 340,  snow_depth: 1180, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-24, source: 'record',  author: 'PML'}
@@ -171,9 +193,27 @@ node:
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, wind_x, wind_y, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note:
           - {date: 2023-04-11, text: "SD card downloaded, data until today 11 april 2023. Needed to go on Trine-Lise's shoulders to reach box. Ice on and around box. Reboot at 19:31 CEST.", author: 'PML' }
-          - {date: 2023-04-14, text: "Fix sp 120 and need a new stake. Visit by Simon Filhol.", author: 'SF' }
+          - {date: 2023-04-14, text: "Fix solar panel at sw-120 and need a new stake. Visit by Simon Filhol.", author: 'SF' }
           - {date: 2023-04-23, text: "Reinstallation of station on newly drilled stake by Simon Filhol.", author: 'SF' }
-          
+#---------- 2024 ----------
+      - date_start: 2024-04-01 00:00:00 #TO VERIFY
+        date_end: 2025-05-01 00:00:00 
+        version: 2
+        commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
+        QC_todo: True
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
+        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
+        config:
+          address: 140
+          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
+          destination: 20 #corbel
+          lora_mode: 6
+        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
+        note:
+          - {date: 2024-04-08, text: "Station taken down at 12:05 CEST. Wind sensor is pointing 10 degrees West from North and arm 80 degrees East from North.", author: 'PML' }
+          - {date: 2024-04-16, text: "New stake drilled by Daga, Ingrid and Ceslav. Installation of station on new stake at 12:20 CEST with sensor-to-ice distance of 1520 mm. Added dessicant and reboot. Lora is switched off so station has no Lora antenna. Wind sensor is pointing roughly 8 degrees West of North and arm roughly East.", author: 'PML' }
+                              
 #---------------------------SW-125------------------------------
   - id: sw-125
     name: MLBB3
@@ -191,6 +231,8 @@ node:
       - {date: 2022-04-01, dist_surf_sensor: 1160, snow_depth: 2000, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-14, dist_surf_sensor: 1690, snow_depth: 2580, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF'  }
       - {date: 2023-04-23, dist_surf_sensor: 1675, snow_depth: 2570, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF'  }
+      - {date: 2024-04-08, dist_surf_sensor: 2750, snow_depth: 1930, offset: 0,  source: 'field observation', usage: 'calibration',  pers: 'PML' } 
+      - {date: 2024-04-16, dist_surf_sensor: 235,  snow_depth: 1700, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-24, source: 'approx',  author: 'PML'}
@@ -251,7 +293,25 @@ node:
         note:
           - {date: 2023-04-14, text: "Station working. Visit by Simon Filhol.", author: 'SF' }
           - {date: 2023-04-23, text: "Reinstallation of station or SD card by Simon Filhol.", author: 'SF' }
-          
+#---------- 2024 ----------
+      - date_start: 2024-04-01 00:00:00 #TO VERIFY
+        date_end: 2025-05-01 00:00:00 
+        version: 2
+        commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
+        QC_todo: True
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
+        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
+        config:
+          address: 140
+          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
+          destination: 20 #corbel
+          lora_mode: 6
+        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
+        note:
+          - {date: 2024-04-08, text: "Station taken down at 11:38 CEST. Station was very high and it was difficult to unmount it alone.", author: 'PML' }
+          - {date: 2024-04-16, text: "New stake drilled by Daga and Ceslav. Installation of station on new stake at 14:15 CEST with sensor-to-ice distance of 1935 mm. Added dessicant and reboot. Lora is switched off so station has no Lora antenna. Wind sensor is pointing roughly 8 degrees West of North and arm roughly East.", author: 'PML' }
+                              
 #---------------------------SW-130------------------------------
   - id: sw-130
     name: MLB9
@@ -270,6 +330,8 @@ node:
       - {date: 2022-04-01, dist_surf_sensor: 855,  snow_depth: 1490, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2023-04-11, dist_surf_sensor: 1935, snow_depth: 1800, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2023-04-23, dist_surf_sensor: 1730, snow_depth: 2030, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF'  }
+      - {date: 2024-04-08, dist_surf_sensor: 3010, snow_depth: 1670, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SI'  } #Satu Karoliina Innanen 
+      - {date: 2024-04-16, dist_surf_sensor: 400,  snow_depth: 1430, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }      
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-24, source: 'record',  author: 'PML'}
@@ -327,9 +389,28 @@ node:
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
         note:
           - {date: 2023-04-11, text: "SD card downloaded, data until 16 november 2022. Ice on top of box only and inside box at the bottom. Reboot at 19:10 CEST.", author: 'PML' }
-          - {date: 2023-04-14, text: "Fix sp 130 and need a new stake. Visit by Simon Filhol.", author: 'SF' }
+          - {date: 2023-04-14, text: "Fix solar panel at sw-130 and need a new stake. Visit by Simon Filhol.", author: 'SF' }
           - {date: 2023-04-23, text: "A bit of ice inside, no valve and SP screw. Reinstallation of station or SD card by Simon Filhol.", author: 'SF' }
-          
+#---------- 2024 ----------
+      - date_start: 2024-04-01 00:00:00 #TO VERIFY
+        date_end: 2025-05-01 00:00:00 
+        version: 2
+        commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
+        QC_todo: True
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
+        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
+        config:
+          address: 140
+          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
+          destination: 20 #corbel
+          lora_mode: 6
+        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
+        note:
+          - {date: 2024-04-08, text: "Station taken down at 11:20 CEST by Steinar and Satu. No wind sensor. Arm is pointing 87 degrees East from North.", author: 'SI' }
+          - {date: 2024-04-16, text: "New stake drilled by Daga and Ceslav. Solar panel felt and broke connector. Station taken home to fix connector.", author: 'PML' }
+          - {date: 2024-04-17, text: "Installation of station on the new stake with Claudio at 19:05 CEST an with sensor-to-ice distance of 1830 mm. Added dessicant and reboot. Lora is switched off so station has no Lora antenna. No wind and no Lora antenna. Arm is pointing roughly East.", author: 'PML' }
+                            
 #---------------------------SW-140------------------------------
   - id: sw-140
     name: MLB10
@@ -348,6 +429,7 @@ node:
       - {date: 2023-04-11, dist_surf_sensor: 1285, snow_depth: 2210, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2023-04-23, dist_surf_sensor: 1375, snow_depth: 2100, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF'  }
       - {date: 2024-04-08, dist_surf_sensor: 2040, snow_depth: 1910, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2024-04-16, dist_surf_sensor: 300,  snow_depth: 1620, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-24, source: 'approx',  author: 'PML'}
@@ -424,7 +506,8 @@ node:
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
         note:
           - {date: 2024-04-08, text: "Station taken down at 11:15 CEST, wind sensor pointing 20 degrees West from North, arm 90 degrees East from North.", author: 'PML' }
-                    
+          - {date: 2024-04-16, text: "New stake drilled by Daga and Ceslav. Installation of station on new stake at 13:15 CEST with sensor-to-ice distance of 1920 mm. Added dessicant and reboot. Lora is switched off so station has no Lora antenna. Wind sensor is pointing roughly 8 degrees West of North and arm roughly East.", author: 'PML' }
+     
 #---------------------------SW-CORBEL------------------------------
   - id: sw-corbel
     name: corbel
@@ -513,7 +596,7 @@ node:
           lora_mode: 6
         data: .NaN
         note:
-          - {date: 2024-04-08, text: "Station taken down at 11:15 CEST, wind sensor pointing 20 degrees West from North, arm 90 degrees East from North.", author: 'PML' }
+          - {date: 2024-04-08, text: "Not visited and not used as relay, due to gateway malfunction in Sverdrup.", author: 'PML' }
             
 #---------------------------------------------------------
 
