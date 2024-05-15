@@ -326,7 +326,7 @@ node:
   - id: sw-130
     name: MLB9
     operational: True
-    date_installation: 2021-04-26 12:07:09
+    date_installation: 2021-04-26 16:40:01
     meteoio_ini_template: template_meteoio_wsn.ini
     location:
       epsg: 32633
@@ -351,11 +351,11 @@ node:
       - {date: 2025-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
-      - date_start: 2021-04-26 12:07:09
-        date_end: 2022-04-01 09:00:00
+      - date_start: 2021-04-26 16:40:01
+        date_end: 2022-04-29 00:00:00
         version: 2 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
-        QC_todo: Null
+        QC_todo: False # done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy]
         config:
@@ -364,60 +364,61 @@ node:
           run_sensor: bme_int=10 mb=10 qtpy=10
           destination: 0 #find closest node
           lora_mode: 6
-        data: [time, frame, received, type, bat, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, remote_addr]
+        data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, remote_addr, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance]
         note:
-          - {date: 2021-04-XX, text: "Drill for first time.", author: 'SF'}
+          - {date: 2021-04-25, text: "Data-info: Station most likely tested in Ny Ålesund between 2021-04-24 16:40:01 UTC and 2021-04-26 16:40:01 UTC after accelerometer stabilised.", author: 'PML' }
+          - {date: 2021-04-26, text: "Drill for first time.", author: 'SF'}
 #---------- 2022 ----------
-      - date_start: 2022-04-29 10:00:00
-        date_end: 2023-05-01 00:00:00 #TO VERIFY
+      - date_start: 2022-04-29 09:40:01
+        date_end: 2023-04-11 00:00:00 # when station is visited
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
-        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object] #TO VERIFY
-        sensor: [bme_int, mb, qtpy] #TO VERIFY
+        QC_todo: True # TO DO in 2024
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
+        sensor: [bme_int, mb, qtpy]
         config:
           address: 130
-          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
-          run_sensor: bme_int=10 mb=10 qtpy=10 # to verify in LOG
+          run_system: bat=10 gps=12:00 acc=10 lan=10
+          run_sensor: bme_int=10 mb=10 qtpy=10
           destination: 20 #sw-corbel
           lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance]
         note:
           - {date: 2022-05-XX, text: "Relaunched with new code commit as is. New QtPy firmware.", author: 'SF'}
 #---------- 2023 ----------
-      - date_start: 2023-05-01 00:00:00 #TO VERIFY
-        date_end: 2024-05-01 00:00:00 
+      - date_start: 2023-04-23 15:30:01
+        date_end: 2024-04-08 00:00:00 # when station is taken down
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True
-        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object] #TO VERIFY
-        sensor: [bme_int, mb, qtpy] #TO VERIFY
+        QC_todo: True # TO DO in 2024
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
+        sensor: [bme_int, mb, qtpy]
         config:
           address: 130
-          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
-          run_sensor: bme_int=10 mb=10 qtpy=10 # to verify in LOG
+          run_system: bat=10 gps=12:00 acc=10 lan=10 
+          run_sensor: bme_int=10 mb=10 qtpy=10
           destination: 20 #sw-corbel
           lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, sht_tc, bme_hum, int_hum, sht_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, vcnl_prox, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, channel_nir, mb_distance, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites]
+        data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance]
         note:
           - {date: 2023-04-11, text: "SD card downloaded, data until 16 november 2022. Ice on top of box only and inside box at the bottom. Reboot at 19:10 CEST.", author: 'PML' }
           - {date: 2023-04-14, text: "Fix solar panel at sw-130 and need a new stake. Visit by Simon Filhol.", author: 'SF' }
           - {date: 2023-04-23, text: "A bit of ice inside, no valve and SP screw. Reinstallation of station or SD card by Simon Filhol.", author: 'SF' }
 #---------- 2024 ----------
-      - date_start: 2024-04-01 00:00:00 #TO VERIFY
-        date_end: 2025-05-01 00:00:00 
+      - date_start: 2024-04-17 00:00:00 #TO VERIFY
+        date_end: 2025-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
-        QC_todo: True
-        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
-        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
+        QC_todo: False # TO DO in 2025
+        data_sios: .NaN
+        sensor: [bme_int, mb, qtpy]
         config:
-          address: 140
-          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
-          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
-          destination: 20 #corbel
-          lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
+          address: .NaN # Lora switched off
+          run_system: bat=10 gps=1:00 acc=10 
+          run_sensor: bme_int=10 mb=10 lan=10
+          destination: .NaN
+          lora_mode: .NaN
+        data: .NaN
         note:
           - {date: 2024-04-08, text: "Station taken down at 11:20 CEST by Steinar and Satu. No wind sensor. Arm is pointing 87 degrees East from North.", author: 'SI' }
           - {date: 2024-04-16, text: "New stake drilled by Daga and Ceslav. Solar panel felt and broke connector. Station taken home to fix connector.", author: 'PML' }
