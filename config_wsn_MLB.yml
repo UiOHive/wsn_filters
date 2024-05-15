@@ -45,7 +45,7 @@ node:
       - {date: 2023-09-01, source: 'default', author: 'PML'}
       - {date: 2024-09-01, source: 'default', author: 'PML'}
       - {date: 2025-09-01, source: 'default', author: 'PML'}
-      version:
+    version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 15:00:01
         date_end: 2022-04-29 00:00:00
