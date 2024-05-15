@@ -226,7 +226,7 @@ node:
   - id: sw-125
     name: MLBB3
     operational: True
-    date_installation: 2021-04-27 08:03:41 
+    date_installation: 2021-04-27 10:50:01
     meteoio_ini_template: template_meteoio_wsn.ini
     location:
       epsg: 32633
@@ -250,11 +250,11 @@ node:
       - {date: 2025-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
-      - date_start: 2021-04-27 08:03:41
-        date_end: 2022-04-01 00:00:00
+      - date_start: 2021-04-27 10:50:01
+        date_end: 2022-04-11 00:00:00
         version: 1 
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
-        QC_todo: Null
+        QC_todo: False # done
         data_sios: [tmp_temperature, mlx_object]
         sensor: [bme_int, mb, mlx, tmp102]
         config:
@@ -263,61 +263,61 @@ node:
           run_sensor: bme_int=10 mb=10 mlx=10 tmp102=10
           destination: 0 #find closest node
           lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, int_tc, int_hum, int_pres, mlx_object, mb_distance, mlx_ambient, tmp_temperature, remote_addr]
+        data: [acc_x, acc_y, acc_z, bat, frame, int_hum, int_pres, int_tc, mb_distance, mlx_ambient, mlx_object, received, remote_addr, time, tmp_temperature, type]
         note:
           - {date: 2021-04-XX, text: "Drill for first time.", author: 'SF'}
           - {date: 2022-06-15, text: "Data-info: mb_distance did not work in 2021, removed from data_sios list.", author: 'PML'}
 #---------- 2022 ----------
-      - date_start: 2022-05-01 00:00:00 #TO VERIFY
-        date_end: 2023-05-01 00:00:00 #TO VERIFY
+      - date_start: 2022-04-11 07:20:01
+        date_end: 2023-04-14 00:00:00
         version: 1 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: True
-        data_sios: .NaN
-        sensor: .NaN
+        QC_todo: True # TO DO in 2024
+        data_sios: [mb_distance]
+        sensor: [bme_int, mb]
         config:
           address: 125
-          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
-          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
+          run_system: bat=10 gps=12:00 acc=10 lan=30
+          run_sensor:  bme_int=10 mb=10 
           destination: 20 #sw-corbel
           lora_mode: 6
-        data: [time, frame, received, type]
+        data: [acc_x, acc_y, acc_z, bat, frame, int_hum, int_pres, int_tc, mb_distance, received, time, type]
         note:
           - {date: 2022-05-XX, text: "Disconnected lagopus board to avoid shorts and compromising I2C line, relaunched as is. New QtPy firmware.", author: 'SF'}
           - {date: 2022-06-14, text: "Data-info: Communication and data upload loss for the past year.", author: 'PML'}
 #---------- 2023 ----------
-      - date_start: 2023-05-01 00:00:00 #TO VERIFY
-        date_end: 2024-05-01 00:00:00 
+      - date_start: 2023-04-23 16:00:01
+        date_end: 2024-04-08 00:00:00 # when station is taken down
         version: 1
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: True
-        data_sios: .NaN
-        sensor: .NaN
+        QC_todo: True # TO DO in 2024
+        data_sios: [mb_distance]
+        sensor: [bme_int, mb]
         config:
           address: 125
-          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
-          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
+          run_system: bat=10 gps=12:00 acc=10 lan=30
+          run_sensor: bme_int=10 mb=10
           destination: 20 #sw-corbel
           lora_mode: 6
-        data: [time, frame, received, type]
+        data: [acc_x, acc_y, acc_z, bat, frame, int_hum, int_pres, int_tc, mb_distance, time, type]
         note:
-          - {date: 2023-04-14, text: "Station working. Visit by Simon Filhol.", author: 'SF' }
+          - {date: 2023-04-14, text: "Station working, not taken down. Visit by Simon Filhol.", author: 'SF' }
           - {date: 2023-04-23, text: "Reinstallation of station or SD card by Simon Filhol.", author: 'SF' }
 #---------- 2024 ----------
-      - date_start: 2024-04-01 00:00:00 #TO VERIFY
-        date_end: 2025-05-01 00:00:00 
+      - date_start: 2024-04-16 00:00:00 #TO VERIFY
+        date_end: 2025-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
-        QC_todo: True
-        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
-        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
+        QC_todo: False # TO DO in 2025
+        data_sios: .NaN
+        sensor: [mb, atmos]
         config:
-          address: 140
-          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
-          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
-          destination: 20 #corbel
-          lora_mode: 6
-        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
+          address: .NaN # Lora switched off
+          run_system: bat=10 gps=12:00 acc=10
+          run_sensor: bme_int=10 mb=10
+          destination: .NaN
+          lora_mode: .NaN
+        data: .NaN
         note:
           - {date: 2024-04-08, text: "Station taken down at 11:38 CEST. Station was very high and it was difficult to unmount it alone.", author: 'PML' }
           - {date: 2024-04-16, text: "New stake drilled by Daga and Ceslav. Installation of station on new stake at 14:15 CEST with sensor-to-ice distance of 1935 mm. Added dessicant and reboot. Lora is switched off so station has no Lora antenna. Wind sensor is pointing roughly 8 degrees West of North and arm roughly East.", author: 'PML' }
