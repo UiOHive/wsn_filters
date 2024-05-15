@@ -337,6 +337,7 @@ node:
       - {date: 2021-04-26, dist_surf_sensor: 240,  snow_depth: 1770, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2022-04-01, dist_surf_sensor: 362,  snow_depth: 1650, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-11, dist_surf_sensor: 1285, snow_depth: 2210, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML'}
+      - {date: 2024-04-08, dist_surf_sensor: 2040, snow_depth: 1910, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML'}
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-24, source: 'approx',  author: 'PML'}
@@ -381,7 +382,7 @@ node:
       - date_start: 2023-05-01 00:00:00 #TO VERIFY
         date_end: 2024-05-01 00:00:00 
         version: 2
-        commit: xxxxxxxxxxxxxxxxx #TO DO
+        commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
         sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
@@ -394,7 +395,24 @@ node:
         data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
         note:
           - {date: 2023-04-11, text: "SD card downloaded, data until february 2023. Ice and snow on top of box, in radiation shield/lagopus and most likely wind sensor as well. Reboot at 18:52 CEST with green blinks and then red light.", author: 'PML' }
-          
+#---------- 2024 ----------
+      - date_start: 2024-04-01 00:00:00 #TO VERIFY
+        date_end: 2025-05-01 00:00:00 
+        version: 2
+        commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
+        QC_todo: True
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object] #TO VERIFY
+        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY 
+        config:
+          address: 140
+          run_system: bat=10 gps=12:00 acc=10 lan=10 # to verify in LOG
+          run_sensor: bme_int=10 mb=10 atmos=10 qtpy=10 # to verify in LOG
+          destination: 20 #corbel
+          lora_mode: 6
+        data: [time, bat, frame, received, type, acc_x, acc_y, acc_z, bme_tc, int_tc, wind_x, wind_y, bme_hum, int_hum, bme_pres, int_pres, vcnl_lux, veml_als, veml_lux, wind_dir, vcnl_prox, wind_gust, wind_temp, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, mlx_object, vcnl_white, veml_white, wind_speed, channel_nir, mlx_ambient, vl_distance, channel_clear, tmp_temperature, altitude, latitude, longitude, gps_accuracy, gps_satellites, mb_distance, sht_tc, sht_hum]
+        note:
+          - {date: 2024-04-08, text: "Station taken down at 11:15 CEST, wind sensor pointing 20 degrees West from North, arm 90 degrees East from North.", author: 'PML' }
+                    
 #---------------------------SW-CORBEL------------------------------
   - id: sw-corbel
     name: corbel
@@ -454,7 +472,7 @@ node:
       - date_start: 2023-05-01 00:00:00 #TO VERIFY
         date_end: 2024-05-01 00:00:00 
         version: 1
-        commit: xxxxxxxxxxxxxxxxx #TO DO
+        commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True
         data_sios: .NaN
         sensor: .NaN
@@ -467,7 +485,24 @@ node:
         data: [time, bat, frame, received, type, int_tc, int_hum, int_pres, altitude, latitude, longitude, mb_distance, gps_accuracy, gps_satellites]
         note:
           - {date: 2023-04-11, text: "Station worked. SD card downloaded. Reboot at 20:18 CEST. I broke two box edges around holes for screws.", author: 'PML' }
-          
+#---------- 2024 ----------
+      - date_start: 2024-04-01 00:00:00 #TO VERIFY
+        date_end: 2025-05-01 00:00:00 
+        version: 2
+        commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
+        QC_todo: True
+        data_sios: .NaN
+        sensor: .NaN
+        config:
+          address: corbel #TO CHECK
+          run_system: .NaN
+          run_sensor: .NaN
+          destination: 2
+          lora_mode: 6
+        data: .NaN
+        note:
+          - {date: 2024-04-08, text: "Station taken down at 11:15 CEST, wind sensor pointing 20 degrees West from North, arm 90 degrees East from North.", author: 'PML' }
+            
 #---------------------------------------------------------
 
 ACDD:
