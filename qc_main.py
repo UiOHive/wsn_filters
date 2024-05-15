@@ -154,8 +154,8 @@ if __name__ == "__main__":
     if not os.path.exists(folder_output): os.makedirs(folder_output)
 
     for node in conf['node']:
-        logging.info('======================================')
-        logging.info('======================================')
+        logging.info('=============================================')
+        logging.info('=============================================')
         logging.info('---> Preparing QC node {} - {}'.format(node['id'],node['name']))
 
         # Open the meteoIO configuration template (ini file)  
@@ -172,11 +172,13 @@ if __name__ == "__main__":
             # Check if data_sios is empty
             if type(version['data_sios']) is float:
                 if pd.isnull(version['data_sios']):
-                     logging.info('---> No data_sios')
-                     continue
+                    logging.info('---> No data_sios')
+                    logging.info('===')
+                    continue
             
             if not version['QC_todo']:
                 logging.info('---> Do not run QC')
+                logging.info('===')
                 continue
             else:
                 try:
@@ -273,8 +275,7 @@ if __name__ == "__main__":
                     time.sleep(4)
                     subprocess.run([command], shell=True)
                     logging.info('---> Netcdf output: {}'.format(path_out))
-                    logging.info('=============           ==============')
-                    logging.info('=============           ==============')
+                    logging.info('===')
                     
                 except IOerror:
                     logging.info(e)
