@@ -51,7 +51,7 @@ node:
         date_end: 2022-04-29 00:00:00
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355 
-        QC_todo: False #done?
+        QC_todo: False #done
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config: 
