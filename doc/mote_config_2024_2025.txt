@@ -1,0 +1,160 @@
+#---------------------
+# KNG 9 - DONE
+
+1713253038.151 INFO Time      : Tue, 24/04/16, 07:37:18
+1713253038.208 INFO Id        : 350518FDC337DE35 Version=J Name=sw-200
+1713253038.264 INFO Battery   : Lithium-ion (41 %)
+1713253038.321 INFO Hardware  : board=lemming SD=1 GPS=1
+1713253038.378 INFO Lora      : addr=200 dst=2 mode=6 wait=10
+1713253038.434 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1713253038.509 INFO Log       : level=DEBUG output=USB, SD
+1713253038.567 INFO Run       : bat=10 gps=12:00 bme_int=10 mb=10 lan=10 qtpy=10 
+1713253038.770 INFO Alarm 1 at 16:07:40:00 mode=3 (only hour/min/sec match)
+1713253038.831 INFO Alarm 2 at 16:07:42 mode=3 (only hour/min match)
+
+
+#---------------------
+# KNG 8 - TAKEN DOWN
+
+NaN
+
+
+#---------------------
+# KNG 7 - DONE
+
+Time     : Tue, 24/04/16, 07:06:52
+Id       : 03451CE819623C1E Version=J Name=sw-210
+Battery  : Lithium-ion (96 %)
+Hardware : board=lemming SD=1 GPS=1
+Lora     : addr=210 dst=2 mode=6 wait=10
+Frames   : payload-size=250 frame-size=250 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos22=10 lan=10 
+
+
+#---------------------
+# KNG 6 (lower on tower) - DONE
+
+Time     : Tue, 24/04/16, 07:24:43
+Id       : 115EBC32C8913E1D Version=J Name=sw-215
+Battery  : Lithium-ion (52 %)
+Hardware : board=lemming SD=1 GPS=1
+Lora     : addr=215 dst=2 mode=6 wait=10
+Frames   : payload-size=250 frame-size=250 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 gps=12:00 acc=10 bme_int=10 lan=10 qtpy=10 
+
+
+#---------------------
+# KNG 6 (upper on tower) - TAKEN DOWN
+
+NaN
+
+
+#---------------------
+# KNG 6N - DONE
+
+NaN?
+
+
+#---------------------
+# KNG Sidevegen - DONE
+
+Time     : Tue, 24/04/16, 07:33:44
+Id       : 1D3644E819623CA0 Version=J Name=sw-230
+Battery  : Lithium-ion (76 %)
+Hardware : board=lemming SD=1 GPS=1
+Frames   : payload-size=255 frame-size=255 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 gps=12:00 mb=10 atmos22=10 qtpy=10 
+
+
+#---------------------
+# KNG 5
+
+Time     : Tue, 24/04/16, 16:09:05
+Id       : 703918FDC337DE94 Version=J Name=sw-235
+Battery  : Lithium-ion (100 %)
+Hardware : board=lemming SD=1 GPS=1
+Lora     : addr=235 dst=215 mode=6 wait=10
+Frames   : payload-size=250 frame-size=250 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos22=10 lan=10 qtpy=10 
+
+
+#---------------------
+# KNG 4
+
+Time     : Tue, 24/04/16, 07:30:28
+Id       : 073F1CE819623CA5 Version=J Name=sw-240
+Battery  : Lithium-ion (39 %)
+Hardware : board=lemming SD=1 GPS=1
+Lora     : addr=240 dst=0 mode=6 wait=10
+Frames   : payload-size=250 frame-size=250 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos22=10 lan=10 qtpy=10 
+
+
+#---------------------
+# MLB
+#---------------------
+
+#---------------------
+# MLB 3 - sw-110 - DONE
+
+Time     : Wed, 24/04/17, 07:01:40
+Id       : 2B2FBC32C8913EC6 Version=J Name=sw-110
+Battery  : Lithium-ion (45 %)
+Hardware : board=lemming SD=1 GPS=1
+Frames   : payload-size=255 frame-size=255 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos22=10 lan=10 qtpy=10
+
+
+#---------------------
+# MLB 5 - sw-120 - DONE
+
+Time     : Wed, 24/04/17, 07:20:18
+Id       : 300F6F057C105451 Version=H Name=sw-120
+Battery  : Lithium-ion (33 %)
+Hardware : board=lemming SD=1 GPS=1
+Frames   : payload-size=255 frame-size=255 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 acc=10 mb=10 atmos22=10 
+
+
+#---------------------
+# MLB B3 - sw-125 - DONE
+
+Time     : Wed, 24/04/17, 07:35:33
+Id       : 654767057C10544D Version=H Name=sw-125
+Battery  : Lithium-ion (98 %)
+Hardware : board=lemming SD=1 GPS=1
+Frames   : payload-size=255 frame-size=255 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 
+
+
+#---------------------
+# MLB 9 - sw-130 - DONE
+
+Time     : Wed, 24/04/17, 07:09:46
+Id       : 14187C32C8913E68 Version=J Name=sw-130
+Battery  : Lithium-ion (41 %)
+Hardware : board=lemming SD=1 GPS=1
+Frames   : payload-size=255 frame-size=255 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 gps=1:00 acc=10 bme_int=10 mb=10 lan=10 
+
+
+#---------------------
+# MLB 10 - sw-140 - DONE
+
+Time     : Wed, 24/04/17, 07:27:15
+Id       : 3E6F44E819623CE9 Version=J Name=sw-140
+Battery  : Lithium-ion (63 %)
+Hardware : board=lemming SD=1 GPS=1
+Frames   : payload-size=255 frame-size=255 encryption=disabled
+Log      : level=DEBUG output=USB, SD
+Run      : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos22=10 qtpy=10 
+

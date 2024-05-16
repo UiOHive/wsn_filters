@@ -1,0 +1,201 @@
+#---------------------
+# KNG 9 - DONE
+
+1660096257.358 INFO Time      : Wed, 22/08/10, 01:50:57
+1660096257.608 INFO Id        : 2C121CE819623C71 Version=J Name=sw-200
+1660096257.860 INFO Battery   : Lithium-ion (93 %)
+1660096258.110 INFO Hardware  : board=lemming SD=1 GPS=1
+1660096258.360 INFO Lora      : addr=200 dst=2 mode=6 wait=5
+1660096258.612 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1660096258.881 INFO Log       : level=DEBUG output=USB, SD
+1660096259.132 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 lan=10 qtpy=10 
+
+#---------------------
+# KNG 8 - DONE
+
+1681291257.249 INFO Time      : Wed, 23/04/12, 09:20:57
+1681291257.404 INFO Id        : 373210FDC337DEEF Version=J Name=sw-205
+1681291257.561 INFO Battery   : Lithium-ion (100 %)
+1681291257.713 INFO Hardware  : board=lemming SD=1 GPS=1
+1681291257.868 INFO Lora      : addr=205 dst=2 mode=6 wait=10
+1681291258.039 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1681291258.195 INFO Log       : level=DEBUG output=USB, SD
+1681291258.351 INFO Run       : bat=10 gps=12:00 acc=10 sdi_ds2=10 bme_int=10 mb=10 lan=10 
+#---------------------
+# KNG 7 - DONE
+
+1674094229.234 INFO Time      : Thu, 23/01/19, 02:10:29
+1674094229.377 INFO Id        : 0A467C32C8913ECC Version=J Name=sw-210
+1674094229.521 INFO Battery   : Lithium-ion (39 %)
+1674094229.666 INFO Hardware  : board=lemming SD=1 GPS=1
+1674094229.824 INFO Lora      : addr=210 dst=2 mode=6 wait=10
+1674094229.969 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1674094230.115 INFO Log       : level=DEBUG output=USB, SD
+1674094230.259 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos=10 lan=10 
+
+#---------------------
+# KNG 6 - DONE
+
+1675699233.404 INFO Time      : Mon, 23/02/06, 16:00:33
+1675699233.714 INFO Id        : 03451CE819623C1E Version=J Name=sw-001
+1675699234.024 INFO Battery   : Lithium-ion (38 %)
+1675699234.333 INFO Hardware  : board=lemming SD=1 GPS=1
+1675699234.660 INFO Lora      : addr=215 dst=2 mode=6 wait=20
+1675699234.970 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1675699235.282 INFO Log       : level=DEBUG output=USB, SD
+1675699235.593 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos=10 lan=10 qtpy=10
+
+#---------------------
+# KNG 6S - DONE
+
+1659811264.203 INFO Time      : Sat, 22/08/06, 18:41:04
+1659811264.317 INFO Id        : 70351CE819623C9C Version=J Name=sw-220
+1659811264.429 INFO Battery   : Lithium-ion (91 %)
+1659811264.538 INFO Hardware  : board=lemming SD=1 GPS=1
+1659811264.649 INFO Lora      : addr=220 dst=2 mode=6 wait=10
+1659811264.778 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1659811264.892 INFO Log       : level=DEBUG output=USB, SD
+1659811265.007 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos=10 lan=10 qtpy=10
+
+#---------------------
+# KNG 6N - DONE
+
+1660131672.233 INFO Time      : Wed, 22/08/10, 11:41:12
+1660131672.345 INFO Id        : 3388AAE80593E4E1 Version=J Name=sw-225
+1660131672.459 INFO Battery   : Lithium-ion (89 %)
+1660131672.571 INFO Hardware  : board=lemming SD=1 GPS=1
+1660131672.683 INFO Lora      : addr=225 dst=2 mode=6 wait=10
+1660131672.796 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1660131672.927 INFO Log       : level=DEBUG output=USB, SD
+1660131673.041 INFO Run       : bat=10 gps=12:00 acc=10 mb=10 atmos=10 lan=10 qtpy=10 
+
+
+#---------------------
+# KNG Sidevegen - DONE
+
+1676714513.218 INFO Time      : Sat, 23/02/18, 10:01:53
+1676714513.337 INFO Id        : 1D3644E819623CA0 Version=J Name=sw-230
+1676714513.457 INFO Battery   : Lithium-ion (22 %)
+1676714513.575 INFO Hardware  : board=lemming SD=1 GPS=1
+1676714513.694 INFO Lora      : addr=230 dst=0 mode=6 wait=10
+1676714513.814 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1676714513.937 INFO Log       : level=DEBUG output=USB, SD
+1676714514.057 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos=10 lan=20 qtpy=10 
+
+
+#---------------------
+# KNG 5
+
+1672356023.345 INFO Time      : Thu, 22/12/29, 23:20:23
+1672356023.468 INFO Id        : 703918FDC337DE94 Version=J Name=sw-235
+1672356023.608 INFO Battery   : Lithium-ion (0 %)
+1672356023.729 INFO Hardware  : board=lemming SD=1 GPS=1
+1672356023.852 INFO Lora      : addr=235 dst=215 mode=6 wait=10
+1672356023.976 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1672356024.102 INFO Log       : level=DEBUG output=USB, SD
+1672356024.228 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos=10 lan=10
+
+
+#---------------------
+# KNG 4
+
+NAN
+
+
+#---------------------
+# KNG setevatn
+
+1671278426.214 INFO Time      : Sat, 22/12/17, 12:00:26
+1671278426.333 INFO Id        : 5C8518FDC337DE08 Version=J Name=sw-250
+1671278426.453 INFO Battery   : Lithium-ion (84 %)
+1671278426.587 INFO Hardware  : board=lemming SD=1 GPS=1
+1671278426.706 INFO Lora      : addr=250 dst=240 mode=6 wait=10
+1671278426.824 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1671278426.944 INFO Log       : level=DEBUG output=USB, SD
+1671278427.064 INFO Run       : bat=10 gps=12:00 acc=10 sdi_ds2=10 bme_int=10 mb=10 lan=20 
+
+
+#---------------------
+# MLB
+#---------------------
+
+#---------------------
+# MLB 3 - sw-110 - DONE
+
+NAN - Missing copy of the SD
+
+
+#---------------------
+# MLB 5 - sw-120 - DONE
+
+1667371256.258 INFO Time      : Wed, 22/11/02, 06:40:56
+1667371256.424 INFO Id        : 21527C32C8913EDB Version=J Name=sw-120
+1667371256.589 INFO Battery   : Lithium-ion (73 %)
+1667371256.759 INFO Hardware  : board=lemming SD=1 GPS=1
+1667371256.925 INFO Lora      : addr=120 dst=20 mode=6 wait=10
+1667371257.090 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1667371257.257 INFO Log       : level=DEBUG output=USB, SD
+1667371257.421 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos=10 lan=10 qtpy=10
+
+#---------------------
+# MLB B3 - sw-125 - DONE
+
+1681387446.446 INFO Time      : Thu, 23/04/13, 12:04:06
+1681387446.820 INFO Id        : 654767057C10544D Version=H Name=sw-125
+1681387447.174 INFO Battery   : Lithium-ion (100 %)
+1681387447.528 INFO Hardware  : board=lemming SD=1 GPS=1
+1681387447.880 INFO Lora      : addr=125 dst=20 mode=6 wait=60
+1681387448.233 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1681387448.589 INFO Log       : level=DEBUG output=USB, SD
+1681387448.941 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 lan=30 
+
+
+#---------------------
+# MLB 9 - sw-130 - DONE
+
+1666824639.242 INFO Time      : Wed, 22/10/26, 22:50:39
+1666824639.393 INFO Id        : 14187C32C8913E68 Version=J Name=sw-130
+1666824639.545 INFO Battery   : Lithium-ion (77 %)
+1666824639.695 INFO Hardware  : board=lemming SD=1 GPS=1
+1666824639.862 INFO Lora      : addr=130 dst=20 mode=6 wait=10
+1666824640.014 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1666824640.168 INFO Log       : level=DEBUG output=USB, SD
+1666824640.320 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 lan=10 qtpy=10
+
+
+#---------------------
+# MLB 10 - sw-140 - DONE
+
+1675836038.267 INFO Time      : Wed, 23/02/08, 06:00:38
+1675836038.458 INFO Id        : 3E6F44E819623CE9 Version=J Name=sw-140
+1675836038.633 INFO Battery   : Lithium-ion (0 %)
+1675836038.807 INFO Hardware  : board=lemming SD=1 GPS=0
+1675836038.982 INFO Lora      : addr=140 dst=20 mode=6 wait=10
+1675836039.159 INFO Frames    : payload-size=250 frame-size=250 encryption=disabled
+1675836039.337 INFO Log       : level=DEBUG output=USB, SD
+1675836039.513 INFO Run       : bat=10 gps=12:00 acc=10 bme_int=10 mb=10 atmos=10 lan=10 qtpy=10 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
