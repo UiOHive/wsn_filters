@@ -357,7 +357,7 @@ node:
           - {date: 2024-04-16, text: "Station reinstalled at 14:56 CEST, wind sensor pointing 8 degrees West from North, arm 90 degrees East from North.", author: 'PML' }
           
 #---------------------------SW-215------------------------------
-  - id: sw-001
+  - id: sw-215
     name: KNG6
     operational: True
     date_installation: 2019-04-06 15:00:00 #2019-04-11 00:00:00
