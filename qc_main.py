@@ -281,23 +281,23 @@ if __name__ == "__main__":
                     logging.info(e)
                     logging.info(sys.exc_type)
     
-    merge_netcdf = '''
-    sw = {}
-    dir = {}
-    echo ${dir}/$sw
-    rm ${dir}/aws-${sw}.nc
-    for file in ${dir}/aws-${sw}-*.nc; do
-       echo $file
-       ncks -m $file > ${dir}/temp.txt
-       for var in ps hur ta ts ws dw snd; do
-         if ! grep -q ${var}: temp.txt; then
-           echo "Add empty variable: $var"
-           ncap2 -s "${var}=0.0" $file -O $file
-         fi
-       done
-       rm ${dir}/temp.txt
-     done
-    ncrcat ${dir}/aws-${sw}-*.nc -o ${dir}/aws-${sw}.nc
-    '''.format(node['id'],node['id'])
-    subprocess.run(merge_netcdf, shell=True)
-    logging.info('---> Add empty missing variables and Merge Netcdf into: {}/aws-{}.nc'.format(folder_output,node['id']))
+        merge_netcdf = '''
+        sw = {}
+        dir = {}
+        echo ${dir}/$sw
+        rm ${dir}/aws-${sw}.nc
+        for file in ${dir}/aws-${sw}-*.nc; do
+           echo $file
+           ncks -m $file > ${dir}/temp.txt
+           for var in ps hur ta ts ws dw snd; do
+             if ! grep -q ${var}: temp.txt; then
+               echo "Add empty variable: $var"
+               ncap2 -s "${var}=0.0" $file -O $file
+             fi
+           done
+           rm ${dir}/temp.txt
+         done
+        ncrcat ${dir}/aws-${sw}-*.nc -o ${dir}/aws-${sw}.nc
+        '''.format(node['id'],node['id'])
+        subprocess.run(merge_netcdf, shell=True)
+        logging.info('---> Add empty missing variables and Merge Netcdf into: {}/aws-{}.nc'.format(folder_output,node['id']))
