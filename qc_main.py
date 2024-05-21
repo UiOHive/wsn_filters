@@ -40,7 +40,7 @@ from datetime import timedelta
 
 #==========  DEFINE FUNCTION  =========
 
-def calibration_snow(df,node_snow,year_hydro):
+def calibration_snow(df,node_snow):
     ##########################
     # Snow depth calibration #
     ##########################
@@ -202,7 +202,7 @@ if __name__ == "__main__":
                     ## Snow depth calibration
                     if "mb_distance" in version['data_sios']:
                         logging.info('---> Snow depth calibration')
-                        df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'],node['date_last_melt'])
+                        df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
                     else:
                         logging.info('---> No snow depth data: skip calibration')
                     
