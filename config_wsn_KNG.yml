@@ -91,7 +91,7 @@ node:
         date_end: 2023-04-12 00:00:00
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
         config:
@@ -111,7 +111,7 @@ node:
         date_end: 2024-04-11 15:05:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, qtpy] #qtpy=sht, vcnl, veml, mlx, vl
         config:
@@ -198,7 +198,7 @@ node:
         date_end: 2023-04-25 17:20:01
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed]
         sensor: [bme_int, mb, ds2]
         config:
@@ -219,7 +219,7 @@ node:
         date_end: 2024-04-11 14:45:00 
         version: 1
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed]
         sensor: [bme_int, mb, ds2]
         config:
@@ -304,7 +304,7 @@ node:
         date_end: 2023-04-25 00:00:00
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -321,7 +321,7 @@ node:
         date_end: 2024-04-11 14:00:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: .NaN # No data in 2023
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -551,7 +551,7 @@ node:
         date_end: 2023-04-26 00:00:00
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -674,7 +674,7 @@ node:
         date_end: 2023-04-24 00:00:00 
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -692,7 +692,7 @@ node:
         date_end: 2024-04-10 00:00:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -800,7 +800,7 @@ node:
         date_end: 2022-11-18 00:00:00 
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -821,7 +821,7 @@ node:
         date_end: 2024-04-11 00:00:00 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -906,7 +906,7 @@ node:
         date_end: 2023-04-25 18:50:01
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos]
         config:
@@ -924,7 +924,7 @@ node:
         date_end: 2024-05-01 00:00:00 
         version: 1
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos]
         config:
@@ -1035,7 +1035,7 @@ node:
         date_end: 2023-04-22 00:00:00 
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed, mlx_object]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -1053,7 +1053,7 @@ node:
         date_end: 2024-05-01 00:00:00 # TO CHECK
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [wind_temp, mb_distance, wind_dir, wind_speed]
         sensor: [bme_int, mb, atmos, qtpy]
         config:
@@ -1137,7 +1137,7 @@ node:
         date_end: 2023-05-01 00:00:00 
         version: 1
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed] #TO CHECK
         sensor: [bme_int, mb, ds2] #TO CHECK
         config:
@@ -1156,7 +1156,7 @@ node:
         date_end: 2024-05-01 00:00:00 
         version: 1
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
-        QC_todo: False #TO DO in 2024
+        QC_todo: True #TO DO in 2024 
         data_sios: [ds2_temp, mb_distance, ds2_dir, ds2_speed] #TO CHECK
         sensor: [bme_int, mb, ds2] #TO CHECK
         config:
