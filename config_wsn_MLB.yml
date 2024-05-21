@@ -356,7 +356,6 @@ node:
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-24, source: 'record',  author: 'PML'}
-      - {date: 2022-09-08, source: 'record', author: 'PML'}
       - {date: 2022-10-09, source: 'record',  author: 'PML'}
       - {date: 2023-09-05, source: 'record',  author: 'PML'}
       - {date: 2024-09-01, source: 'default', author: 'PML'}
