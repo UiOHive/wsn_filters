@@ -68,7 +68,7 @@ node:
           - {date: 2021-04-26, text: "Data-info: Station most likely tested in Ny Ålesund between 2021-04-24 11:20:01 UTC and 2021-04-26 15:00:01 UTC after accelerometer stabilised.", author: 'PML' }
 #---------- 2022 ----------
       - date_start: 2022-04-29 09:20:00
-        date_end: 2023-04-11 00:00:00 # when station is taken down
+        date_end: 2023-04-12 00:00:00 # a day after station is taken down
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_todo: True # TO DO in 2024
@@ -85,7 +85,7 @@ node:
           - {date: 2022-04-29, text: "Node placed on a new stake. Re-launched as is with new QtPy firmware.", author: 'SF'}
 #---------- 2023 ----------
       - date_start: 2023-04-23 14:50:01
-        date_end: 2024-04-08 00:00:00 # when station is taken down
+        date_end: 2024-04-09 00:00:00 # a day after station is taken down
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True # TO DO in 2024
@@ -133,7 +133,7 @@ node:
       elevation: 219
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 80,   snow_depth: 1380, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # installation
+      - {date: 2021-04-27, dist_surf_sensor: 80,   snow_depth: 1380, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # installation
       - {date: 2021-09-25, dist_surf_sensor: 2485, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
       - {date: 2022-04-01, dist_surf_sensor: 1440, snow_depth: 990,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2022-05-01, dist_surf_sensor: 1440, snow_depth: 990,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # COPY TO 2022-04-02 TO MAKE THE SNOW DEPTH COMPUTATION WORKING
@@ -171,7 +171,7 @@ node:
           - {date: 2021-04-27, text: "Data-info: Station most likely tested in Ny Ålesund between 2021-04-24 15:40:01 UTC and 2021-04-27 12:40:01 UTC after accelerometer stabilised.", author: 'PML' }
 #---------- 2022 ----------
       - date_start: 2022-04-29 09:30:01 
-        date_end:  2023-04-11 00:00:00 # when station is taken down
+        date_end: 2023-04-12 00:00:00 # a day after station is taken down
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_todo: True # TO DO in 2024
@@ -190,7 +190,7 @@ node:
           - {date: 2022-04-XX, text: "Relaunched complete at different height on same stake than previous version. New QtPy firmware.", author: 'SF'}
 #---------- 2023 ----------
       - date_start: 2023-04-23 15:00:00
-        date_end: 2024-04-08 00:00:00 # when station is taken down
+        date_end: 2024-04-09 00:00:00 # a day after station is taken down
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True # TO DO in 2024
@@ -240,7 +240,7 @@ node:
       elevation: 436
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 1130, snow_depth: 2160, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # installation
+      - {date: 2021-04-27, dist_surf_sensor: 1130, snow_depth: 2160, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # installation
       - {date: 2022-04-01, dist_surf_sensor: 1160, snow_depth: 2000, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2022-04-11, dist_surf_sensor: 1160, snow_depth: 2000, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # COPY TO 2022-04-01 TO MAKE THE SNOW DEPTH COMPUTATION WORKING
       - {date: 2022-09-07, dist_surf_sensor: 4200, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
@@ -277,7 +277,7 @@ node:
           - {date: 2022-06-15, text: "Data-info: mb_distance did not work in 2021, removed from data_sios list.", author: 'PML'}
 #---------- 2022 ----------
       - date_start: 2022-04-11 07:20:01
-        date_end: 2023-04-14 00:00:00
+        date_end: 2023-04-15 00:00:00 # a day after visit
         version: 1 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_todo: True # TO DO in 2024
@@ -295,7 +295,7 @@ node:
           - {date: 2022-06-14, text: "Data-info: Communication and data upload loss for the past year.", author: 'PML'}
 #---------- 2023 ----------
       - date_start: 2023-04-23 16:00:01
-        date_end: 2024-04-08 00:00:00 # when station is taken down
+        date_end: 2024-04-09 00:00:00 # a day after station is taken down
         version: 1
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True # TO DO in 2024
@@ -381,7 +381,7 @@ node:
           - {date: 2021-04-26, text: "Drill for first time.", author: 'SF'}
 #---------- 2022 ----------
       - date_start: 2022-04-29 09:40:01
-        date_end: 2023-04-11 00:00:00 # when station is visited
+        date_end: 2023-04-12 00:00:00 # a day after station is visited
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_todo: True # TO DO in 2024
@@ -398,7 +398,7 @@ node:
           - {date: 2022-05-XX, text: "Relaunched with new code commit as is. New QtPy firmware.", author: 'SF'}
 #---------- 2023 ----------
       - date_start: 2023-04-23 15:30:01
-        date_end: 2024-04-08 00:00:00 # when station is taken down
+        date_end: 2024-04-09 00:00:00 # a day after station is taken down
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True # TO DO in 2024
@@ -485,7 +485,7 @@ node:
           - {date: 2021-04-XX, text: "Drill for first time.", author: 'SF'}
 #---------- 2022 ----------
       - date_start: 2022-04-29 09:50:01
-        date_end: 2023-04-11 00:00:00 # when station is visited
+        date_end: 2023-04-12 00:00:00 # a day after station is visited
         version: 2 
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_todo: True # TO DO in 2024
@@ -502,7 +502,7 @@ node:
           - {date: 2022-05-XX, text: "Node placed on a new stake as it was by mistake placed on one of the mass balance stake. New QtPy firmware.", author: 'SF'}
 #---------- 2023 ----------
       - date_start: 2023-04-23 15:50:01
-        date_end: 2024-04-08 00:00:00 # when station is taken down 
+        date_end: 2024-04-09 00:00:00 # a day after station is taken down 
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True # TO DO in 2024
