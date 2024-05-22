@@ -506,7 +506,7 @@ node:
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True # TO DO in 2024
-        data_sios: [tmp_temperature, mb_distance, wind_dir, wind_speed] 
+        data_sios: [tmp_temperature, sht_hum, bme_pres, mb_distance, wind_dir, wind_speed] 
         sensor: [bme_int, mb, atmos, qtpy]
         config:
           address: 140
