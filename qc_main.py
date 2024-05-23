@@ -40,14 +40,14 @@ from datetime import timedelta
 
 #==========  DEFINE FUNCTION  =========
 
-def calibration_snow(df,node_snow):
+def calibration_snow(df,node_snow,date_start,date_end):
     ##########################
     # Snow depth calibration #
     ##########################
     
     # Time span
-    date_start = df.index.min().date()
-    date_end = df.index.max().date()
+    #date_start = df.index.min().date()
+    #date_end = df.index.max().date()
     logging.info('     Data range: {} - {}'.format(date_start,date_end))
 
     # Compute median value and assign to new column for output
@@ -202,7 +202,10 @@ if __name__ == "__main__":
                     ## Snow depth calibration
                     if "mb_distance" in version['data_sios']:
                         logging.info('---> Snow depth calibration')
-                        df['mb_distance'] = calibration_snow(df['mb_distance'],node['snow'])
+                        df['mb_distance'] = calibration_snow(df['mb_distance'],
+                                                             node['snow'],
+                                                             date_start,
+                                                             date_end)
                     else:
                         logging.info('---> No snow depth data: skip calibration')
                     
