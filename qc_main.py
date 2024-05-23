@@ -75,7 +75,7 @@ def calibration_snow(df,node_snow):
         for node_snow in node['snow']: 
             if node_snow['usage'] == 'calibration':
                 date = node_snow['date']
-                if date >= year_hydro[d-1] and date < year_hydro[d]:
+                if (date >= date_start and date < date_end) and (date >= year_hydro[d-1] and date < year_hydro[d]):
                     date_snow = date
                     dist_surf_sensor = node_snow['dist_surf_sensor']
                     snow_depth = node_snow['snow_depth']
