@@ -48,6 +48,8 @@ def calibration_snow(df,node_snow,date_start,date_end):
     # Time span
     #date_start = df.index.min().date()
     #date_end = df.index.max().date()
+    date_start = date_start.date()
+    date_end = date_end.date()
     logging.info('     Data range: {} - {}'.format(date_start,date_end))
 
     # Compute median value and assign to new column for output
@@ -163,8 +165,8 @@ if __name__ == "__main__":
         
         # Loop through several version i.e. sensor types
         for version in node['version']:
-            date_start = version['date_start'].replace(microsecond=0, second=0, minute=0)
-            date_end = version['date_end'].replace(microsecond=0, second=0, minute=0)+ timedelta(hours=1)
+            date_start = version['date_start']
+            date_end = version['date_end']
             logging.info('---> Version {} to {}: {}'.format(format(date_start,"%Y-%m-%d"),
                                                             format(date_end,"%Y-%m-%d"),
                                                             version['QC_todo']))
@@ -314,7 +316,7 @@ if __name__ == "__main__":
                     #logging.info('---> Check variable: {}'.format(var))
                     if not '{}:'.format(var) in f_text:
                         logging.info('---> Add empty variable: {}'.format(var))
-                        add_empty_variable = 'ncap2 -s "{}[time,station]=_FillValue" -s "{}@_FillValue=-999.f" {} -O {}'.format(var, var, file_year, file_year)
+                        add_empty_variable = 'ncap2 -s "{}@_FillValue=-999.f" -s "{}[time,station]=_FillValue" {} -O {}'.format(var, var, file_year, file_year)
                         subprocess.run([add_empty_variable], shell=True)
             # Clean
             if os.path.isfile(file_header): os.remove(file_header)
