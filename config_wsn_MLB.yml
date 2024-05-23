@@ -37,14 +37,14 @@ node:
       - {date: 2022-10-15, dist_surf_sensor: 3900, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-11, dist_surf_sensor: 3030, snow_depth: 860,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2023-04-23, dist_surf_sensor: 150,  snow_depth: 720,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF'  } # reset height
-      - {date: 2023-09-24, dist_surf_sensor: 3120, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'validation',   pers: 'PML' } # missing record
+      - {date: 2023-09-08, dist_surf_sensor: 3030, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'validation',   pers: 'PML' } # missing record so approximated from sw-120 plus 60mm offset
       - {date: 2024-04-08, dist_surf_sensor: 2030, snow_depth: 1200, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SKI'  } # SKI=Satu Karoliina Innanen 
       - {date: 2024-04-16, dist_surf_sensor: 360,  snow_depth: 980,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # reset height
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-25, source: 'record',  author: 'PML'}
       - {date: 2022-10-09, source: 'record',  author: 'PML'}
-      - {date: 2023-09-09, source: 'record',  author: 'PML'}
+      - {date: 2023-09-08, source: 'record',  author: 'PML'}
       - {date: 2024-09-01, source: 'default', author: 'PML'}
       - {date: 2025-09-01, source: 'default', author: 'PML'}
     version:
