@@ -316,8 +316,8 @@ if __name__ == "__main__":
                     #logging.info('---> Check variable: {}'.format(var))
                     if not '{}:'.format(var) in f_text:
                         logging.info('---> Add empty variable: {}'.format(var))
-                        add_empty_variable = 'ncap2 -s "{}[time,station]=-999.f" {} -O {}'.format(var, file_year, file_year)
-                        add_fill_value = 'ncatted -a _FillValue,{},a,f,-999.0 {} -O {}'.format(var, file_year, file_year)
+                        add_empty_variable = 'ncap2 -s "{}[time,station]=-999.0" {} -O {}'.format(var, file_year, file_year)
+                        add_fill_value = 'ncatted -a _FillValue,{},a,d,-999.0 {} -O {}'.format(var, file_year, file_year)
                         subprocess.run([add_empty_variable], shell=True)
                         subprocess.run([add_fill_value], shell=True)
                         
