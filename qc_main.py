@@ -311,7 +311,7 @@ if __name__ == "__main__":
                     #logging.info('---> Check variable: {}'.format(var))
                     if not '{}:'.format(var) in f_text:
                         logging.info('---> Add empty variable: {}'.format(var))
-                        add_empty_variable = 'ncap2 -s "{}[time,station]=0.0" {} -O {}'.format(var, file_year, file_year)
+                        add_empty_variable = 'ncap2 -s "{}[time,station]=_FillValue" -s "{}@_FillValue=-999.f" {} -O {}'.format(var, var, file_year, file_year)
                         subprocess.run([add_empty_variable], shell=True)
             # Clean
             if os.path.isfile(file_header): os.remove(file_header)
