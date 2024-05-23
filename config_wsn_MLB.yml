@@ -29,7 +29,7 @@ node:
       elevation: 143
       date: 2021-04-26
     snow:
-      - {date: 2021-04-26, dist_surf_sensor: 1240, snow_depth: 240,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # installation
+      - {date: 2021-04-26, dist_surf_sensor: 240, snow_depth: 1240,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # installation
       - {date: 2021-09-26, dist_surf_sensor: 2950, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
       - {date: 2022-04-01, dist_surf_sensor: 1975, snow_depth: 920,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2022-05-05, dist_surf_sensor: 1890, snow_depth: 1010, offset: 50, source: 'field observation', usage: 'validation',   pers: 'JCG' } #19:01
@@ -135,8 +135,8 @@ node:
     snow:
       - {date: 2021-04-27, dist_surf_sensor: 80,   snow_depth: 1380, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # installation
       - {date: 2021-09-25, dist_surf_sensor: 2485, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
-      - {date: 2022-04-01, dist_surf_sensor: 1440, snow_depth: 990,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
-      - {date: 2022-05-01, dist_surf_sensor: 1440, snow_depth: 990,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # COPY TO 2022-04-02 TO MAKE THE SNOW DEPTH COMPUTATION WORKING
+      - {date: 2022-04-01, dist_surf_sensor: 990, snow_depth: 1440,  offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
+      - {date: 2022-05-01, dist_surf_sensor: 990, snow_depth: 1440,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # COPY TO 2022-04-02 TO MAKE THE SNOW DEPTH COMPUTATION WORKING
       - {date: 2022-10-08, dist_surf_sensor: 4240, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-11, dist_surf_sensor: 3035, snow_depth: 1140, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2023-04-23, dist_surf_sensor: 130,  snow_depth: 960,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF'  } # reset height 
@@ -454,8 +454,8 @@ node:
       - {date: 2022-04-29, dist_surf_sensor: 362,  snow_depth: 1650, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # COPY TO 2022-04-01 TO MAKE THE SNOW DEPTH COMPUTATION WORKING
       - {date: 2022-09-09, dist_surf_sensor: 3550, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
       - {date: 2023-04-11, dist_surf_sensor: 1285, snow_depth: 2210, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
-      - {date: 2023-09-05, dist_surf_sensor: 3880, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' } 
       - {date: 2023-04-23, dist_surf_sensor: 1375, snow_depth: 2100, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SF'  }
+      - {date: 2023-09-05, dist_surf_sensor: 3880, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' } 
       - {date: 2024-04-08, dist_surf_sensor: 2040, snow_depth: 1910, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 300,  snow_depth: 1620, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # reset height
     date_last_melt:
