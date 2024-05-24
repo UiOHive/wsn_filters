@@ -33,28 +33,32 @@ node:
       - {date: 2019-08-13, dist_surf_sensor: 3400, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
       - {date: 2021-05-01, dist_surf_sensor: 1600, snow_depth: 2100, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2021-08-14, dist_surf_sensor: 2720, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
-      - {date: 2021-08-21, dist_surf_sensor: .NaN, snow_depth: 1410, offset: 0,  source: 'field observation', usage: 'obs error',    pers: 'JCG' } 
-      - {date: 2022-04-10, dist_surf_sensor: 440,  snow_depth: 2060, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' }
+      - {date: 2021-08-21, dist_surf_sensor: .NaN, snow_depth: 1410, offset: 0,  source: 'field observation', usage: 'obs error',    pers: 'JCG' } # Issue indentifying last summer surface
+      - {date: 2022-04-10, dist_surf_sensor: 440,  snow_depth: 2060, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' } # Issue indentifying last summer surface / difference of 170 mm with summer record
       - {date: 2022-04-30, dist_surf_sensor: 495,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF'  }
+      - {date: 2022-04-30, dist_surf_sensor: 495,  snow_depth: 2175, offset: 50, source: 'record analysis',   usage: 'validation',   pers: 'PML' } # snow depth 2175 is derived from dist_surf_sensor 495 + 50 on 2022-04-30 minus dist_surf_sensor 2720 on 2021-08-14 
       - {date: 2022-05-03, dist_surf_sensor: 2600, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF'  }
-      - {date: 2023-04-12, dist_surf_sensor: 345,  snow_depth: 3170, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
-      - {date: 2023-04-25, dist_surf_sensor: 380,  snow_depth: 2700, offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
-      - {date: 2024-04-09, dist_surf_sensor: 680,  snow_depth: 2280, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
-      - {date: 2024-04-16, dist_surf_sensor: 800,  snow_depth: 2460, offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
+      - {date: 2022-05-03, dist_surf_sensor: 2600, snow_depth: 2135, offset: 50, source: 'record analysis',   usage: 'calibration',  pers: 'PML' } # snow depth 2135 is derived from snow_depth 2175 on 2022-04-30 minus change in dist_surf_sensor 40 from 495 - 535 between 2022-04-30 and 2022-05-03 extracted from records 
+      - {date: 2022-08-11, dist_surf_sensor: 3680, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
+      - {date: 2023-04-12, dist_surf_sensor: 345,  snow_depth: 3170, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' } # Issue indentifying last summer surface / difference of 75 mm with summer record
+      - {date: 2023-04-25, dist_surf_sensor: 380,  snow_depth: 2700, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
+      - {date: 2023-09-05, dist_surf_sensor: 2580, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
+      - {date: 2024-04-09, dist_surf_sensor: 680,  snow_depth: 2280, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' } # Issue indentifying last summer surface / difference of 430 mm with summer record
+      - {date: 2024-04-16, dist_surf_sensor: 800,  snow_depth: 2460, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
       - {date: 2018-09-01, origin: 'default', author: 'PML'}
       - {date: 2019-08-12, origin: 'record',  author: 'PML'}
       - {date: 2020-09-01, origin: 'default', author: 'PML'}
       - {date: 2021-08-13, origin: 'record',  author: 'PML'}
-      - {date: 2022-09-01, origin: 'default', author: 'PML'}
-      - {date: 2023-09-01, origin: 'default', author: 'PML'}
+      - {date: 2022-08-11, origin: 'record',  author: 'PML'}
+      - {date: 2023-09-05, origin: 'record',  author: 'PML'}
       - {date: 2024-09-01, origin: 'default', author: 'PML'}
       - {date: 2025-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
       - date_start: 2019-04-06 15:50:00
-        date_end: 2021-04-22 00:00:00
+        date_end: 2020-02-26 00:00:00
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
         QC_todo: True # Done in 2022
