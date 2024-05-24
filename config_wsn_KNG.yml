@@ -33,32 +33,36 @@ node:
       - {date: 2019-08-13, dist_surf_sensor: 3400, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
       - {date: 2021-05-01, dist_surf_sensor: 1600, snow_depth: 2100, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' }
       - {date: 2021-08-14, dist_surf_sensor: 2720, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
-      - {date: 2021-08-21, dist_surf_sensor: .NaN, snow_depth: 1410, offset: 0,  source: 'field observation', usage: 'obs error',    pers: 'JCG' } 
-      - {date: 2022-04-10, dist_surf_sensor: 440,  snow_depth: 2060, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' }
+      - {date: 2021-08-21, dist_surf_sensor: .NaN, snow_depth: 1410, offset: 0,  source: 'field observation', usage: 'obs error',    pers: 'JCG' } # Issue indentifying last summer surface
+      - {date: 2022-04-10, dist_surf_sensor: 440,  snow_depth: 2060, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' } # Issue indentifying last summer surface / difference of 170 mm with summer record
       - {date: 2022-04-30, dist_surf_sensor: 495,  snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SF'  }
+      - {date: 2022-04-30, dist_surf_sensor: 495,  snow_depth: 2175, offset: 50, source: 'record analysis',   usage: 'validation',   pers: 'PML' } # snow depth 2175 is derived from dist_surf_sensor 495 + 50 on 2022-04-30 minus dist_surf_sensor 2720 on 2021-08-14 
       - {date: 2022-05-03, dist_surf_sensor: 2600, snow_depth: .NaN, offset: 50, source: 'field observation', usage: 'height reset', pers: 'SF'  }
-      - {date: 2023-04-12, dist_surf_sensor: 345,  snow_depth: 3170, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
-      - {date: 2023-04-25, dist_surf_sensor: 380,  snow_depth: 2700, offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
-      - {date: 2024-04-09, dist_surf_sensor: 680,  snow_depth: 2280, offset: 50, source: 'field observation', usage: 'calibration',   pers: 'PML' }
-      - {date: 2024-04-16, dist_surf_sensor: 800,  snow_depth: 2460, offset: 50, source: 'field observation', usage: 'height reset', pers: 'PML' }
+      - {date: 2022-05-03, dist_surf_sensor: 2600, snow_depth: 2135, offset: 50, source: 'record analysis',   usage: 'calibration',  pers: 'PML' } # snow depth 2135 is derived from snow_depth 2175 on 2022-04-30 minus change in dist_surf_sensor 40 from 495 - 535 between 2022-04-30 and 2022-05-03 extracted from records 
+      - {date: 2022-08-11, dist_surf_sensor: 3680, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
+      - {date: 2023-04-12, dist_surf_sensor: 345,  snow_depth: 3170, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' } # Issue indentifying last summer surface / difference of 75 mm with summer record
+      - {date: 2023-04-25, dist_surf_sensor: 380,  snow_depth: 2700, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
+      - {date: 2023-09-05, dist_surf_sensor: 2580, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' }
+      - {date: 2024-04-09, dist_surf_sensor: 680,  snow_depth: 2280, offset: 50, source: 'field observation', usage: 'obs error',    pers: 'PML' } # Issue indentifying last summer surface / difference of 430 mm with summer record
+      - {date: 2024-04-16, dist_surf_sensor: 800,  snow_depth: 2460, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
       - {date: 2025-04-01, dist_surf_sensor: .NaN, snow_depth: .NaN, offset: .NaN, source: 'field observation', usage: 'XX', pers: 'XX' }
     date_last_melt:
       - {date: 2018-09-01, origin: 'default', author: 'PML'}
       - {date: 2019-08-12, origin: 'record',  author: 'PML'}
       - {date: 2020-09-01, origin: 'default', author: 'PML'}
       - {date: 2021-08-13, origin: 'record',  author: 'PML'}
-      - {date: 2022-09-01, origin: 'default', author: 'PML'}
-      - {date: 2023-09-01, origin: 'default', author: 'PML'}
+      - {date: 2022-08-11, origin: 'record',  author: 'PML'}
+      - {date: 2023-09-05, origin: 'record',  author: 'PML'}
       - {date: 2024-09-01, origin: 'default', author: 'PML'}
       - {date: 2025-09-01, origin: 'default', author: 'PML'}
     version:
 #---------- 2019 ----------
       - date_start: 2019-04-06 15:50:00
-        date_end: 2021-05-01 16:49:18 
+        date_end: 2020-02-26 00:00:00
         version: 1
         commit: 3511e7268dd41e5bc9902e2531425a2f7816393f
         QC_todo: True # Done in 2022
-        data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object] #TO CHECK
+        data_sios: [tmp_temperature, bme_hum, bme_pres, mb_distance, mlx_object]
         sensor: [bme_int, mb, tmp208, mlx ]
         config: 
           address: 002
@@ -68,10 +72,12 @@ node:
           lora_mode: .NaN
         data: [acc_x, acc_y, acc_z, bat, bme_hum, bme_pres, bme_tc, ds1820, frame, int_hum, int_pres, int_tc, mb_distance, mlx_ambient, mlx_object, received, remote_addr, time, tmp_temperature, type, vl_distance]
         note:
+          - {date: 2019-04-01, text: "Data info: Installation by Simon Filhol and JC Gallet", author: 'PML' }
+          - {date: 2020-02-26, text: "Data info: Station stopped working", author: 'PML' }
           - {date: 2020-04-01, text: "Data info: Not maintained due to covid lockdown and limited crew.", author: 'PML' }
 #---------- 2021 ----------
-      - date_start: 2021-05-01 16:49:18
-        date_end: 2022-05-03 10:30:00
+      - date_start: 2021-05-01 17:10:01
+        date_end: 2022-05-03 10:30:01
         version: 2
         commit: e3313958b542ed0e2dda5b943a53e0d197722355
         QC_todo: True # Done in 2022
@@ -85,10 +91,11 @@ node:
           lora_mode: 6
         data: [acc_x, acc_y, acc_z, altitude, bat, bme_hum, bme_pres, bme_tc, channel_clear, channel_f1, channel_f2, channel_f3, channel_f4, channel_f5, channel_f6, channel_f7, channel_f8, channel_nir, frame, gps_accuracy, gps_satellites, int_hum, int_pres, int_tc, latitude, longitude, mb_distance, mlx_ambient, mlx_object, received, remote_addr, sht_hum, sht_tc, time, tmp_temperature, type, vcnl_lux, vcnl_prox, vcnl_white, veml_als, veml_lux, veml_white, vl_distance]
         note:
+          - {date: 2021-04-22, text: "Data-info: Station most likely tested in Ny Ålesund between 2021-04-22 19:00:01 UTC and 2021-05-01 17:10:01 UTC after accelerometer stabilised.", author: 'PML' }
           - {date: 2021-04-01, text: "Removed temperature strings and replace v1 station by v2 station.", author: 'PML' }
 #---------- 2022 ----------
-      - date_start: 2022-05-03 10:30:00
-        date_end: 2023-04-12 00:00:00
+      - date_start: 2022-05-03 10:40:01
+        date_end: 2023-04-13 00:00:00 # a day after station is visited
         version: 2
         commit: bf8f469b518b36752eab8a83d55cb8e384af2ed7
         QC_todo: True #TO DO in 2024 
@@ -104,11 +111,11 @@ node:
         note:
           - {date: 2022-04-10, text: "Reset with green and red lights on. Some moisture refroze in the box. Data dowloaded.", author: 'PML' }
           - {date: 2022-04-30, text: "Updated qtpy/wasp code. Needs new pole and to be turned south.", author: 'SF' }
-          - {date: 2022-05-03, text: "Station installed on a new stake.", author: 'SF' }
+          - {date: 2022-05-03, text: "Station installed on a new stake. PML: change is visible in the snow depth data between 10:30:01 UTC and 10:40:01 UTC.", author: 'SF' }
           - {date: 2022-06-21, text: "Data info: Snow depth observations made on 2021-08-21 seems to show old accumulated firn instead of fresh snow as lowest summer surface is reached on 2021-08-14. Same issue than sw-230 with the 2021-2022 ice surface reference height causes snowfall cut-off. There is a mismatch between field observation, 440 plus 2060 equal 2500 mm made on 2022-04-10, and investigated records of the ice surface height at 2720 mm on 2021-08-14. 220 cm of super-imposed ice is assumed to be the error source.", author: 'PML' }
 #---------- 2023 ----------
       - date_start: 2023-04-25 17:00:00
-        date_end: 2024-04-11 15:05:00 
+        date_end: 2024-04-12 00:00:00 # a day after station is visited
         version: 2
         commit: 040c2ab1a7fd54e970c6008a8c962d10391ffe6d
         QC_todo: True #TO DO in 2024 
@@ -124,10 +131,10 @@ node:
         note:
           - {date: 2023-04-12, text: "Mast turned 180 degrees, solar panel facing north. The station is all rimmed. Snow in the box came through bar holes, not silicon.", author: 'SF' }
           - {date: 2023-04-25, text: "Install station at 18:53 CEST.", author: 'PML' }
-          - {date: 2023-04-25, text: "Data info: Station restarted indoor on 2023-04-22, and reinstalled on 2023-04-25 17:00 UTC according to recorded data.", author: 'PML' }
+          - {date: 2023-04-25, text: "Data info: Station restarted indoor on 2023-04-22, and reinstalled on 2023-04-25 17:00 UTC after accelerometer stabilised.", author: 'PML' }
 #---------- 2024 ----------
-      - date_start: 2024-04-11 15:05:00 
-        date_end: 2025-05-01 00:00:00 
+      - date_start: 2024-04-16 12:00:01 
+        date_end: 2025-05-01 00:00:00 #TO VERIFY
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
         QC_todo: False # TO DO in 2025
@@ -143,10 +150,11 @@ node:
         note:
           - {date: 2024-04-09, text: "Station totally rimmed, 5-15 cm thick. Downloaded data from SD card at 17:40 CEST. Red light seen and reboot. Nice as no wind at station. Difficult to assess last summer surface. Arm is pointing 90 degrees east from North. No wind sensor.", author: 'PML' }
           - {date: 2024-04-11, text: "Lora antenna is loose and the station is taken down at 15:05 CEST.", author: 'PML' }
+          - {date: 2024-04-12, text: "Data info: Station restarted indoor on 2024-04-12 11:40 UTC, and reinstalled on 2024-04-16 12:00 UTC when mb_distance stabilises.", author: 'PML' }
           - {date: 2024-04-15, text: "New batteries, New uploaded code.", author: 'SF' }
           - {date: 2024-04-16, text: "New batteries. Reinstall station on same 2023 stake at 13:59 CEST. Arm is leveled and pointing 90 deg East. Station was not running at first because the connection between wasp boards loosened during transport. Luckily, we could call Simon from KNG9 to get some custumer service support.", author: 'PML' }
           - {date: 2024-05-08, text: "Data info: tmp_temperature most likely stopped working as no data are received on the database.", author: 'SF' }
-          
+       
 #---------------------------SW-205------------------------------
   - id: sw-205
     name: KNG8
