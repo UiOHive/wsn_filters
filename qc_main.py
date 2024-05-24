@@ -288,42 +288,48 @@ if __name__ == "__main__":
                     logging.info(e)
                     logging.info(sys.exc_type)
     
-    
+
         ## Merge yearly netcdf into one file using ncrcat
         # Assign filenames
         file_path = '{}/aws-{}'.format(folder_output,node['id'])
         file_nc = '{}.nc'.format(file_path)
-        logging.info('---> Merge Netcdf yearly files into: {}'.format(file_nc))
         
-        # Remove old or temporary files
-        if os.path.isfile(file_nc): os.remove(file_nc)
-        for file_tmp in glob.glob('{}*.tmp'.format(file_path)):
-            os.remove(file_tmp)
+        # If file already exists skip merging
+        if os.path.isfile(file_nc): 
+            logging.info('---> Merged file exists, skip merging')
+            continue
+        else:
+            logging.info('---> Merge Netcdf yearly files into: {}'.format(file_nc))
         
-        # Loop through yearly files to add empty variables
-        for file_year in glob.glob('{}-*.nc'.format(file_path)):
-            logging.info('---> Process: {}'.format(file_year))
-            
-            # Extract header as textfile
-            file_header = '{}/temp_header.txt'.format(folder_output)
-            header_as_textfile = 'ncks -m {} > {}'.format(file_year,file_header)
-            subprocess.run([header_as_textfile], shell=True)
-            
-            # Add empty variables when missing in header
-            with open(file_header) as f:
-                f_text = ' '.join(f.read().split())
-                for var in ["ps", "hur", "ta", "ts", "ws", "dw", "snd"]:
-                    #logging.info('---> Check variable: {}'.format(var))
-                    if not '{}:'.format(var) in f_text:
-                        logging.info('---> Add empty variable: {}'.format(var))
-                        add_empty_variable = 'ncap2 -s "{}[time,station]=-999.0" {} -O {}'.format(var, file_year, file_year)
-                        add_fill_value = 'ncatted -a _FillValue,{},a,d,-999.0 {} -O {}'.format(var, file_year, file_year)
-                        subprocess.run([add_empty_variable], shell=True)
-                        subprocess.run([add_fill_value], shell=True)
-                        
-            # Clean
-            if os.path.isfile(file_header): os.remove(file_header)
-        
-        # Mere netcdf yearly files into one
-        merge_netcdf = 'ncrcat {}-*.nc -o {}'.format(file_path, file_nc)
-        subprocess.run(merge_netcdf, shell=True)#, capture_output=True, text=True
+            # Remove old or temporary files
+            if os.path.isfile(file_nc): os.remove(file_nc)
+            for file_tmp in glob.glob('{}*.tmp'.format(file_path)):
+                os.remove(file_tmp)
+
+            # Loop through yearly files to add empty variables
+            for file_year in glob.glob('{}-*.nc'.format(file_path)):
+                logging.info('---> Process: {}'.format(file_year))
+
+                # Extract header as textfile
+                file_header = '{}/temp_header.txt'.format(folder_output)
+                header_as_textfile = 'ncks -m {} > {}'.format(file_year,file_header)
+                subprocess.run([header_as_textfile], shell=True)
+
+                # Add empty variables when missing in header
+                with open(file_header) as f:
+                    f_text = ' '.join(f.read().split())
+                    for var in ["ps", "hur", "ta", "ts", "ws", "dw", "snd"]:
+                        #logging.info('---> Check variable: {}'.format(var))
+                        if not '{}:'.format(var) in f_text:
+                            logging.info('---> Add empty variable: {}'.format(var))
+                            add_empty_variable = 'ncap2 -s "{}[time,station]=-999.0" {} -O {}'.format(var, file_year, file_year)
+                            add_fill_value = 'ncatted -a _FillValue,{},a,d,-999.0 {} -O {}'.format(var, file_year, file_year)
+                            subprocess.run([add_empty_variable], shell=True)
+                            subprocess.run([add_fill_value], shell=True)
+
+                # Clean
+                if os.path.isfile(file_header): os.remove(file_header)
+
+            # Mere netcdf yearly files into one
+            merge_netcdf = 'ncrcat {}-*.nc -o {}'.format(file_path, file_nc)
+            subprocess.run(merge_netcdf, shell=True)#, capture_output=True, text=True
