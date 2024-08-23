@@ -5,10 +5,9 @@
 Script to control QC routine 
 
 
-Scipt input (parse with argparse):
+Script input (parse with argparse):
    - network.yml
    - WSN_meteoio_template.ini
-   - path
 
 Logic:
     1. parse network.yml file
@@ -21,8 +20,6 @@ Logic:
 
 
 '''
-
-
 #import xarray as xr
 import numpy as np
 import pandas as pd
@@ -36,7 +33,6 @@ from configobj import ConfigObj
 import logging
 import time
 from datetime import timedelta
-
 
 #==========  DEFINE FUNCTION  =========
 
@@ -123,7 +119,7 @@ dict_corres = {
 
 #========== Script ============
 if __name__ == "__main__":
-        
+
     # Log info/debug/error
     logfile = 'log/qc_main_{}.log'.format(datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
     logging.basicConfig(level=logging.DEBUG,
@@ -170,7 +166,7 @@ if __name__ == "__main__":
             logging.info('---> Version {} to {}: {}'.format(format(date_start,"%Y-%m-%d"),
                                                             format(date_end,"%Y-%m-%d"),
                                                             version['QC_todo']))
-            
+
             # Check if data_sios is empty
             if type(version['data_sios']) is float:
                 if pd.isnull(version['data_sios']):
@@ -227,7 +223,7 @@ if __name__ == "__main__":
                     ## Save to CSV
                     logging.info('---> Save data output in: {}'.format(fname_csv))
                     df.to_csv(fname_csv)
-
+                    
                     ## Save custom ini
                     # filename ini
                     fname_ini = 'ini/{}.ini'.format(fname)
