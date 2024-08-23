@@ -38,17 +38,17 @@ from datetime import timedelta
 
 # Dictionary for variables to meteoIO input format    
 dict_corres = {
-    'TA':['TA', 1, 273.15], # Air temperature [deg. K]
+    # For Austfonna data - if not working manually edit file header to match dictionary keys
+    'TA':['TA',1,273.15],        # Air temperature [deg. C -> K]
     'RH':['RH',0.01,0],            # Relative humidity [% -> 1-0]
-    'HS':['HS',1,0],       # Height of snow [cm -> m]
-    'P':['P',100, 0],              # Air pressure [Pa]
-    'VW':['VW',1,0],           # Wind velocity [m.s-1]
-    'DW':['DW',1,0],             # Wind direction [degree from North]
-    'TSS':['TSS',1,0],     # Temperature of the snow surface [deg. C -> K]
-    'ISWR':['ISWR',1,0],               # Incoming SW [W/m2]
-    'RSWR':['RSWR',1,0],               # Reflected SW []
-    'ILWR':['ILWR',1,0],               # Incoming LW []
-    
+    'HS':['HS',1,0],               # Height of snow [cm -> m?] or [m?]
+    'P':['P',100, 0],              # Air pressure [hPa -> Pa]
+    'VW':['VW',1,0],               # Wind velocity [m.s-1]
+    'DW':['DW',1,0],               # Wind direction [degree from North]
+    'TSS':['TSS',1,0],             # Temperature of the snow surface [deg. C -> K]
+    'ISWR':['ISWR',1,0],           # Incoming shortwave [w.m-2]
+    'RSWR':['RSWR',1,0],           # Outgoing/Reflected shortwave [w.m-2]
+    'ILWR':['ILWR',1,0],           # Incoming longwave [w.m-2]
 }
 
 #========== Script ============
@@ -126,10 +126,6 @@ if __name__ == "__main__":
                     if os.path.exists(path_out):
                         os.remove(path_out)
                         logging.info('---> Deleted existing file: {}'.format(path_out))
-                    
-                    ## Save to CSV
-                    #logging.info('---> Save data output in: {}'.format(fname_csv))
-                    #df.to_csv(fname_csv)
                     
                     ## Save custom ini
                     # filename ini

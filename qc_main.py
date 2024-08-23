@@ -6,8 +6,8 @@ Script to control QC routine
 
 
 Script input (parse with argparse):
-   - network.yml
-   - WSN_meteoio_template.ini
+   - network.yml: austfonna_ETON2.yml, ...
+   - template.ini: meteoio_austfonna.ini, WSN_meteoio_template.ini, ...
 
 Logic:
     1. parse network.yml file
@@ -99,14 +99,15 @@ def calibration_snow(df,node_snow,date_start,date_end):
 
 # Dictionary for variables to meteoIO input format    
 dict_corres = {
+    # For wsn data - covering all sensors
     'tmp_temperature':['TA',1,273.15], # Air temperature [deg. C -> K]
     'wind_temp':['TA',1,273.15],       # Air temperature [deg. C -> K]
     'ds2_temp':['TA',1,273.15],        # Air temperature [deg. C -> K]
     'bme_tc':['TA',1,273.15],          # Air temperature [deg. C -> K]
     'bme_hum':['RH',0.01,0],           # Relative humidity [% -> 1-0]
     'sht_hum':['RH',0.01,0],           # Relative humidity [% -> 1-0]
-    'mb_distance':['HS',0.001,0],          # Height of snow [mm -> m]
-    'vl_distance':['HS',0.001,0],          # Height of snow [mm -> m]
+    'mb_distance':['HS',0.001,0],      # Height of snow [mm -> m]
+    'vl_distance':['HS',0.001,0],      # Height of snow [mm -> m]
     'bme_pres':['P',100,0],            # Air pressure [hPa -> Pa]
     'wind_speed':['VW',1,0],           # Wind velocity [m.s-1]
     'wind_dir':['DW',1,0],             # Wind direction [degree from North]
@@ -114,7 +115,18 @@ dict_corres = {
     'ds2_dir':['DW',1,0],              # Wind direction [degree from North]
     'mlx_object':['TSS',1,273.15],     # Temperature of the snow surface [deg. C -> K]
     '':['TSG',1,273.15],               # Temperature of the ground surface [deg. C -> K]
-    '':['VW_MAX',1,0]
+    '':['VW_MAX',1,0],
+    # For Austfonna data - if not working manually edit file header to match dictionary keys
+    'TA':['TA',1,273.15],        # Air temperature [deg. C -> K]
+    'RH':['RH',0.01,0],            # Relative humidity [% -> 1-0]
+    'HS':['HS',1,0],               # Height of snow [cm -> m?] or [m?]
+    'P':['P',100, 0],              # Air pressure [hPa -> Pa]
+    'VW':['VW',1,0],               # Wind velocity [m.s-1]
+    'DW':['DW',1,0],               # Wind direction [degree from North]
+    'TSS':['TSS',1,0],             # Temperature of the snow surface [deg. C -> K]
+    'ISWR':['ISWR',1,0],           # Incoming shortwave [w.m-2]
+    'RSWR':['RSWR',1,0],           # Outgoing/Reflected shortwave [w.m-2]
+    'ILWR':['ILWR',1,0],           # Incoming longwave [w.m-2]
 }
 
 #========== Script ============
@@ -180,33 +192,6 @@ if __name__ == "__main__":
                 continue
             else:
                 try:
-                    # Query database
-                    df = query.query('postgresql',
-                                     name=node['id'],
-                                     fields=version['data_sios'],
-                                     time__gte=date_start,
-                                     time__lte=date_end,
-                                     limit=2000000000000)
-                    logging.info('---> Downloading {}'.format(version['data_sios']))
-
-                    ## Formatting
-                    # Replace Nones in empty lists by NaNs 
-                    df = df.fillna(value=np.nan)
-                    # Assign NaNs to -9999 values
-                    df = df.replace('-9999',np.nan)
-                    # Remove column with time as number
-                    del df['time']
-
-                    ## Snow depth calibration
-                    if "mb_distance" in version['data_sios']:
-                        logging.info('---> Snow depth calibration')
-                        df['mb_distance'] = calibration_snow(df['mb_distance'],
-                                                             node['snow'],
-                                                             date_start,
-                                                             date_end)
-                    else:
-                        logging.info('---> No snow depth data: skip calibration')
-                    
                     ## Handling filenames
                     fname = 'aws-{}-{}-{}'.format(node['id'],
                                               format(date_start,"%Y%m%d"),
@@ -219,10 +204,38 @@ if __name__ == "__main__":
                     if os.path.exists(path_out):
                         os.remove(path_out)
                         logging.info('---> Deleted existing file: {}'.format(path_out))
-                    
-                    ## Save to CSV
-                    logging.info('---> Save data output in: {}'.format(fname_csv))
-                    df.to_csv(fname_csv)
+
+                    if "sw-" in node['id']:
+                        # Query database
+                        df = query.query('postgresql',
+                                         name=node['id'],
+                                         fields=version['data_sios'],
+                                         time__gte=date_start,
+                                         time__lte=date_end,
+                                         limit=2000000000000)
+                        logging.info('---> Downloading {}'.format(version['data_sios']))
+    
+                        ## Formatting
+                        # Replace Nones in empty lists by NaNs 
+                        df = df.fillna(value=np.nan)
+                        # Assign NaNs to -9999 values
+                        df = df.replace('-9999',np.nan)
+                        # Remove column with time as number
+                        del df['time']
+    
+                        ## Snow depth calibration
+                        if "mb_distance" in version['data_sios']:
+                            logging.info('---> Snow depth calibration')
+                            df['mb_distance'] = calibration_snow(df['mb_distance'],
+                                                                 node['snow'],
+                                                                 date_start,
+                                                                 date_end)
+                        else:
+                            logging.info('---> No snow depth data: skip calibration')
+                        
+                        ## Save to CSV
+                        logging.info('---> Save data output in: {}'.format(fname_csv))
+                        df.to_csv(fname_csv)
                     
                     ## Save custom ini
                     # filename ini
@@ -284,48 +297,48 @@ if __name__ == "__main__":
                     logging.info(e)
                     logging.info(sys.exc_type)
     
-
-        ## Merge yearly netcdf into one file using ncrcat
-        # Assign filenames
-        file_path = '{}/aws-{}'.format(folder_output,node['id'])
-        file_nc = '{}.nc'.format(file_path)
-        
-        # If file already exists skip merging
-        if os.path.isfile(file_nc): 
-            logging.info('---> Merged file exists, skip merging')
-            continue
-        else:
-            logging.info('---> Merge Netcdf yearly files into: {}'.format(file_nc))
-        
-            # Remove old or temporary files
-            if os.path.isfile(file_nc): os.remove(file_nc)
-            for file_tmp in glob.glob('{}*.tmp'.format(file_path)):
-                os.remove(file_tmp)
-
-            # Loop through yearly files to add empty variables
-            for file_year in glob.glob('{}-*.nc'.format(file_path)):
-                logging.info('---> Process: {}'.format(file_year))
-
-                # Extract header as textfile
-                file_header = '{}/temp_header.txt'.format(folder_output)
-                header_as_textfile = 'ncks -m {} > {}'.format(file_year,file_header)
-                subprocess.run([header_as_textfile], shell=True)
-
-                # Add empty variables when missing in header
-                with open(file_header) as f:
-                    f_text = ' '.join(f.read().split())
-                    for var in ["ps", "hur", "ta", "ts", "ws", "dw", "snd"]:
-                        #logging.info('---> Check variable: {}'.format(var))
-                        if not '{}:'.format(var) in f_text:
-                            logging.info('---> Add empty variable: {}'.format(var))
-                            add_empty_variable = 'ncap2 -s "{}[time,station]=-999.0" {} -O {}'.format(var, file_year, file_year)
-                            add_fill_value = 'ncatted -a _FillValue,{},a,d,-999.0 {} -O {}'.format(var, file_year, file_year)
-                            subprocess.run([add_empty_variable], shell=True)
-                            subprocess.run([add_fill_value], shell=True)
-
-                # Clean
-                if os.path.isfile(file_header): os.remove(file_header)
-
-            # Mere netcdf yearly files into one
-            merge_netcdf = 'ncrcat {}-*.nc -o {}'.format(file_path, file_nc)
-            subprocess.run(merge_netcdf, shell=True)#, capture_output=True, text=True
+        if "sw-" in node['id']:
+            ## Merge yearly netcdf into one file using ncrcat
+            # Assign filenames
+            file_path = '{}/aws-{}'.format(folder_output,node['id'])
+            file_nc = '{}.nc'.format(file_path)
+            
+            # If file already exists skip merging
+            if os.path.isfile(file_nc): 
+                logging.info('---> Merged file exists, skip merging')
+                continue
+            else:
+                logging.info('---> Merge Netcdf yearly files into: {}'.format(file_nc))
+            
+                # Remove old or temporary files
+                if os.path.isfile(file_nc): os.remove(file_nc)
+                for file_tmp in glob.glob('{}*.tmp'.format(file_path)):
+                    os.remove(file_tmp)
+    
+                # Loop through yearly files to add empty variables
+                for file_year in glob.glob('{}-*.nc'.format(file_path)):
+                    logging.info('---> Process: {}'.format(file_year))
+    
+                    # Extract header as textfile
+                    file_header = '{}/temp_header.txt'.format(folder_output)
+                    header_as_textfile = 'ncks -m {} > {}'.format(file_year,file_header)
+                    subprocess.run([header_as_textfile], shell=True)
+    
+                    # Add empty variables when missing in header
+                    with open(file_header) as f:
+                        f_text = ' '.join(f.read().split())
+                        for var in ["ps", "hur", "ta", "ts", "ws", "dw", "snd"]:
+                            #logging.info('---> Check variable: {}'.format(var))
+                            if not '{}:'.format(var) in f_text:
+                                logging.info('---> Add empty variable: {}'.format(var))
+                                add_empty_variable = 'ncap2 -s "{}[time,station]=-999.0" {} -O {}'.format(var, file_year, file_year)
+                                add_fill_value = 'ncatted -a _FillValue,{},a,d,-999.0 {} -O {}'.format(var, file_year, file_year)
+                                subprocess.run([add_empty_variable], shell=True)
+                                subprocess.run([add_fill_value], shell=True)
+    
+                    # Clean
+                    if os.path.isfile(file_header): os.remove(file_header)
+    
+                # Mere netcdf yearly files into one
+                merge_netcdf = 'ncrcat {}-*.nc -o {}'.format(file_path, file_nc)
+                subprocess.run(merge_netcdf, shell=True)#, capture_output=True, text=True
