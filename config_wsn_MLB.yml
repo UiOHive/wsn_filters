@@ -5,8 +5,8 @@ network:
   country: Svalbard
   description: Wireless Sensor Network on the Midtre Lovenbreen glacier in Svalbard
   date_installation: 2021-04-01
-  date_update: 2022-06-10
-  year_hydro: [ 2020-09-01, 2021-09-25, 2022-09-01, 2023-09-01, 2024-09-01, 2025-09-01 ] #legacy
+  date_update: 2025-04-06
+  year_hydro: [ 2020-09-01, 2021-09-25, 2022-09-01, 2023-09-01, 2024-09-01, 2025-09-01, 2026-09-01 ] #legacy
   timezone: UTC+0
 
 # Directory tree
@@ -40,6 +40,8 @@ node:
       - {date: 2023-09-08, dist_surf_sensor: 3030, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'validation',   pers: 'PML' } # missing record so approximated from sw-120 plus 60mm offset
       - {date: 2024-04-08, dist_surf_sensor: 2030, snow_depth: 1200, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SKI'  } # SKI=Satu Karoliina Innanen 
       - {date: 2024-04-16, dist_surf_sensor: 360,  snow_depth: 980,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
+      - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' } # before removal
+      - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-25, source: 'record',  author: 'PML'}
@@ -47,6 +49,7 @@ node:
       - {date: 2023-09-08, source: 'record',  author: 'PML'}
       - {date: 2024-09-01, source: 'default', author: 'PML'}
       - {date: 2025-09-01, source: 'default', author: 'PML'}
+      - {date: 2026-09-01, source: 'default', author: 'PML'}
     version:
 #---------- 2021 ----------
       - date_start: 2021-04-26 15:00:01
@@ -103,23 +106,40 @@ node:
           - {date: 2023-04-23, text: "Reinstallation of station on newly drilled stake by Simon Filhol.", author: 'SF' }
 #---------- 2024 ----------
       - date_start: 2024-04-16 09:50:00 #TO VERIFY
-        date_end: 2025-05-01 00:00:00 #TO VERIFY
+        date_end: 2025-03-30 00:00:00 #TO VERIFY
         version: 2
         commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb
         QC_todo: False # TO DO in 2025
-        data_sios: .NaN
+        data_sios: .NaN # No data?
         sensor: [bme_int, mb, atmos, qtpy]
         config:
           address: .NaN # Lora switched off
           run_system: bat=10 gps=12:00 acc=10 lan=10
           run_sensor: bme_int=10 mb=10 atmos22=10 qtpy=10
-          destination: .NaN
-          lora_mode: .NaN
-        data: .NaN
+          destination: .NaN # Lora switched off
+          lora_mode: .NaN # Lora switched off
+        data: .NaN # No data?
         note:
           - {date: 2024-04-08, text: "Station taken down between 12:01 CEST and 12:30 CEST by Steinar and Satu. Wind sensor is pointing roughly North and arm 89 degrees East from North.", author: 'SKI' }
           - {date: 2024-04-16, text: "New stake drilled by Daga, Ingrid and Ceslav. Installation of station on new stake at 11:50 CEST. Added dessicant and reboot. Lora is switched off so station has no Lora antenna. Wind sensor is pointing roughly 8 degrees West of North and arm roughly East.", author: 'PML' }
-                              
+#---------- 2025 ----------
+      - date_start: 2025-03-30 00:00:00 #TO VERIFY
+        date_end: 2026-05-01 00:00:00 #TO VERIFY
+        version: 2
+        commit: d83aab38115aacf5b20d7b602f4a2713eda91dcb #TO VERIFY
+        QC_todo: False # TO DO in 2026
+        data_sios: .NaN #TO VERIFY
+        sensor: [bme_int, mb, atmos, qtpy] #TO VERIFY
+        config:
+          address: .NaN # Lora switched off
+          run_system: bat=10 gps=12:00 acc=10 lan=10 #TO VERIFY
+          run_sensor: bme_int=10 mb=10 atmos22=10 qtpy=10 #TO VERIFY
+          destination: .NaN # Lora switched off
+          lora_mode: .NaN # Lora switched off
+        data: .NaN #TO VERIFY
+        note:
+          - {date: 2025-03-30, text: "", author: 'PML' }
+                                            
 #---------------------------SW-120------------------------------
   - id: sw-120
     name: MLB5
