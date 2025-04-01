@@ -40,7 +40,7 @@ node:
       - {date: 2023-09-08, dist_surf_sensor: 3030, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'validation',   pers: 'PML' } # missing record so approximated from sw-120 plus 60mm offset
       - {date: 2024-04-08, dist_surf_sensor: 2030, snow_depth: 1200, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'SKI'  } # SKI=Satu Karoliina Innanen 
       - {date: 2024-04-16, dist_surf_sensor: 360,  snow_depth: 980,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
-      - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' } # before removal
+      - {date: 2025-03-30, dist_surf_sensor: 3550, snow_depth: 630,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' } # before removal
       - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
@@ -163,7 +163,7 @@ node:
       - {date: 2023-09-08, dist_surf_sensor: 2970, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' } # a bit of noise in the data
       - {date: 2024-04-08, dist_surf_sensor: 1610, snow_depth: 1400, offset: 50, source: 'field observation', usage: 'validation',   pers: 'PML' }
       - {date: 2024-04-16, dist_surf_sensor: 340,  snow_depth: 1180, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
-      - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' } # before removal
+      - {date: 2025-03-30, dist_surf_sensor: 3150, snow_depth: 990,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' } 
       - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
    date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
@@ -289,8 +289,8 @@ node:
       - {date: 2023-09-06, dist_surf_sensor: 4480, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' } # missing data after 2023-09-06
       - {date: 2024-04-08, dist_surf_sensor: 2750, snow_depth: 1930, offset: 0,  source: 'field observation', usage: 'calibration',  pers: 'PML' } 
       - {date: 2024-04-16, dist_surf_sensor: 235,  snow_depth: 1700, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
-      - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' } # before removal
-      - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
+      - {date: 2025-03-30, dist_surf_sensor: 1770, snow_depth: 1820, offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' } # before removal
+      - {date: 2025-03-30, dist_surf_sensor: 1620, snow_depth: 400,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
       - {date: 2021-09-24, source: 'approx',  author: 'PML'}
@@ -413,7 +413,7 @@ node:
       - {date: 2023-09-05, dist_surf_sensor: 4675, snow_depth: 0,    offset: 0,  source: 'record analysis',   usage: 'calibration',  pers: 'PML' } # missing data after 2023-09-05
       - {date: 2024-04-08, dist_surf_sensor: 3010, snow_depth: 1670, offset: 50, source: 'field observation', usage: 'validation',   pers: 'SKI' } # Satu Karoliina Innanen 
       - {date: 2024-04-16, dist_surf_sensor: 400,  snow_depth: 1430, offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
-      - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' } # before removal
+      - {date: 2025-03-30, dist_surf_sensor: 2490, snow_depth: 1380,  offset: 50, source: 'field observation', usage: 'validation',  pers: 'PML' }
       - {date: 2025-03-30, dist_surf_sensor: ,  snow_depth: ,  offset: 50, source: 'field observation', usage: 'calibration',  pers: 'PML' } # height reset
     date_last_melt:
       - {date: 2020-09-01, source: 'default', author: 'PML'}
